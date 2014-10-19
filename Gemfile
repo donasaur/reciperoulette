@@ -14,6 +14,8 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer',  platforms: :ruby
 
+gem 'bootstrap-sass', '3.2.0.0'
+
 # Automatic Authentication!
 gem 'devise', '~> 3.4.0'
 
