@@ -80,7 +80,8 @@ class UsersController < ApplicationController
     end
 
     def gather_user_recipe_names
-      user_ingredients = User.ingredients # list of ingredient objects
+      byebug
+      user_ingredients = current_user.pantry.ingredients # list of ingredient objects
       recipe_search_results = Set.new
 
       user_ingredients.each do |ingredient|
