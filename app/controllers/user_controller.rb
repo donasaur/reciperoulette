@@ -18,4 +18,7 @@ class UserController < ApplicationController
   def destroy
   end
 
+  def roulette
+  end
+
 end
