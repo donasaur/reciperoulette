@@ -1,5 +1,6 @@
 class UserController < ApplicationController
 
+  # test
   def new
   end
 
