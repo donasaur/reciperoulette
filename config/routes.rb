@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users
-  root to: "user#new"
-  post 'users/roulette' => 'user#roulette'
+  devise_for :users, controllers: {
+        sessions: 'users/sessions',
+        registrations: 'users/registrations',
+        passwords: 'users/passwords'
+      }
+  root to: "users#new"
+  post 'users/roulette' => 'users#roulette'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
