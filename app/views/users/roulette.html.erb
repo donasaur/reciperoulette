@@ -1,4 +1,4 @@
-<% # pretend i gave you a recipe name called recipe_name %>
+<% #@recipe_name is the instance variable passed to this view %>
 
 <div class="row" id="row1">
   <div class="col-md-2">
@@ -8,8 +8,12 @@
   </div>
   <div class="col-md-4 col-md-offset-2">
 
+    <div id="recipe-name">
+      <%= @recipe_name %>
+    </div>
+
     <div id="picture">
-      <%= image_tag "#{recipe_name}.jpg" %>
+      <%= image_tag "#{@recipe_name}.jpg" %>
     </div>
   
   </div>
