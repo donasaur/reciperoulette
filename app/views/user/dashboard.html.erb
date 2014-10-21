@@ -1,0 +1,17 @@
+<html>
+	<h1>Dashboard</h1>
+	<div class='dashboard-pantry'>
+		<% # Will return ul block of li elements%>
+		<%= render 'user/pantry' %>
+	</div>
+
+
+	<div class='dashboard-saved-recipes'>
+		<% # Return ul block li elements %>
+		<%= render 'user/saved_recipes' %>
+	</div>
+
+	<%= button_to "Play Roulette", action: "user_roulette_path", method: :post %>
+	
+
+</html>
