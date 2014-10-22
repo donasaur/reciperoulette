@@ -22,7 +22,6 @@ class UserController < ApplicationController
   def dashboard
     @user = current_user
     @pantry = @user.pantry
-    p @pantry
   end
 
   # has_modified_pantry (cookie key) -> True/False
