@@ -1,17 +1,24 @@
 <html>
-	<h1>Dashboard</h1>
-	<div class='dashboard-pantry'>
-		<% # Will return ul block of li elements%>
-		<%= render 'user/pantry' %>
+  <div class="dashboard-header-big">
+	<h1> <%= "Welcome to your dashboard, #{@user.email}!" %> </h1>
+	</div>
+	<div id="dashboard-pantry">
+		<div class="dashboard-header-med">
+		  <h2> Your Pantry </h2>
+		</div>
+		<%= render 'user/dashboard/pantry' %>
 	</div>
 
-
-	<div class='dashboard-saved-recipes'>
-		<% # Return ul block li elements %>
-		<%= render 'user/saved_recipes' %>
+	<div id="dashboard-saved-recipes">
+	  <div class="dashboard-header-med">
+	    <h2> Your Saved Recipes </h2>
+		</div>
+		<%= render 'user/dashboard/savedrecipes' %>
 	</div>
 
-	<%= button_to "Play Roulette", action: "user_roulette_path", method: :post %>
+	<div id="roulette-button">
+	  <%= button_to "Play Roulette", action: "roulette", method: :post %>
+	</div>
 	
 
 </html>

@@ -19,6 +19,12 @@ class UserController < ApplicationController
   def destroy
   end
 
+  def dashboard
+    @user = current_user
+    @pantry = @user.pantry
+    p @pantry
+  end
+
   # has_modified_pantry (cookie key) -> True/False
   # has_modified_pantry is set to T if they modified pantry
   # has_modified_pantry is set to F when they play roulette

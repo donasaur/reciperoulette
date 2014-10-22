@@ -1,0 +1,9 @@
+<ul>
+  <% @user.recipes.each do |recipe| %>
+    <li>
+    <div class="saved-recipe">
+      <%= "#{recipe.name}" %>
+    </div>
+    </li>
+  <% end %>
+</ul>
