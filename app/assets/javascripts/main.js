@@ -1,5 +1,5 @@
 var update_view_button_url = function(list_of_recipe_names, recipe_index) {
-  $("#open").find("form").attr("action", window.location.host + "/recipe/" + list_of_recipe_names[recipe_index]);
+  $("#open").find("form").attr("action", "http://" + window.location.host + "/recipes/" + list_of_recipe_names[recipe_index]);
 };
 
 // for now, all this function does is it swaps out the old image
