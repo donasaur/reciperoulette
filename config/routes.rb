@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   post 'users/roulette' => 'user#roulette'
   post 'users/block' => 'user#block'
   get  'users/dashboard' => 'user#dashboard'
-  get 'recipes/:name' => 'recipes#show'
+  get 'recipes/:name' => 'recipe#show'
   resources :recipes
 
   # The priority is based upon order of creation: first created -> highest priority.
