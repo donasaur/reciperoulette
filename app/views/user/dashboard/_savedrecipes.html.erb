@@ -2,7 +2,7 @@
   <% @user.recipes.each do |recipe| %>
     <li>
     <div class="saved-recipe">
-      <%= "#{recipe.name}" %>
+      <%= link_to "#{recipe.name}", recipe_path(recipe) %>
     </div>
     </li>
   <% end %>

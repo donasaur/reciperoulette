@@ -1,24 +1,25 @@
 <div class="add-ingredient">
   <% # This form should link to an update route to add ingredients %>
-  <%= form_tag(users_dashboard_path, method: "get") do %>
-    <%= label_tag(:ingredient, "Add ingredient:") %>
-    <%= text_field_tag(:ingredient) %>
-    <%= submit_tag("Add") %>
+  <%= form_for :ingredient do |i| %>
+    Add Ingredient: <%= i.text_field :name %>
+    <%= i.submit "Add Ingredient" %>
   <% end %>
 </div>
-
-<div class="pantry-ingredients">
+<div class="pantry-list">
 <ul>
   <% @pantry.ingredients.each do |ingredient| %>
+    <div class="pantry-ingredient">
     <li>
     	<% # This form should link up to an update route to remove ingredients %>
-	    <%= form_tag(users_dashboard_path, method: "get") do %>
-	    	<%= "#{ingredient.name}" %>
-	    	<div class="remove-button">
-	        <%= submit_tag("Remove") %>
-	      </div>
-	    <% end %>
+      <%= form_for :ingredient do |i| %>
+        <%= i.hidden_field :ingredient_id, :value => ingredient.id %>
+        <%= "#{ingredient.name}" %>
+        <div class="remove-button">
+          <%= i.submit "Remove Ingredient" %>
+        </div>
+      <% end %>
 	  </li>
+    </div>
 	<% end %>
 </ul>
 </div>

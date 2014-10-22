@@ -65,12 +65,17 @@ body {
 	clear:both;
 }
 
-.pantry-ingredients {
+.pantry-list {
   background-color:hotpink;
+  padding:10px;
+}
+
+.pantry-ingredient {
 }
 
 .add-ingredient {
   text-align:center;
+  padding:10px
 }
 
 .remove-button {
