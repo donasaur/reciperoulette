@@ -1,13 +1,13 @@
 // Place all the styles related to the user controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/* roulette page styles */
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-/* roulette page styles */
-#roulette-picture img{
-  height:400 !important;
-  width:350 !important;
+#roulette-picture img {
+  width:350px;
 }
 
 html,

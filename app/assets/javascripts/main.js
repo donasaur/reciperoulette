@@ -1,3 +1,7 @@
+var update_view_button_url = function(list_of_recipe_names, recipe_index) {
+  $("#open").find("form").attr("action", window.location.host + "/recipe/" + list_of_recipe_names[recipe_index]);
+};
+
 // for now, all this function does is it swaps out the old image
 // with a new image when the recipe is changed
 // also modifies the recipe name.
@@ -8,7 +12,11 @@ var change_displayed_recipe = function(list_of_recipe_names, recipe_index) {
   new_image_element = old_image_element;
   new_image_element = old_image_element.replace(/\/assets\/\w+/, "/assets/" + list_of_recipe_names[recipe_index]);
   $("#roulette-picture").html(new_image_element);
+
+  update_view_button_url(list_of_recipe_names, recipe_index);
 };
+
+
 
 $(document).ready(function() {
   var recipe_names_in_json = $.cookie('list_of_recipe_names');
@@ -23,6 +31,6 @@ $(document).ready(function() {
     change_displayed_recipe(list_of_recipe_names, recipe_index);
   });
 
-
+  update_view_button_url(list_of_recipe_names, recipe_index);
 
 });
