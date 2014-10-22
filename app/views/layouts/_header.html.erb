@@ -1,6 +1,10 @@
   <header class="navbar navbar-fixed-top header">
     <div class="container">
-      <%= link_to "Recipe Roulette", "#", id: "logo" %>
+      <% if user_signed_in? %>
+        <%= link_to "Recipe Roulette", users_dashboard_path, class: "logo" %>
+      <% else %>
+        <%= link_to "Recipe Roulette", root_path, class: "logo" %>
+      <% end %>
       <nav>
         <ul class="nav navbar-nav pull-right">
           <% if user_signed_in? %>
