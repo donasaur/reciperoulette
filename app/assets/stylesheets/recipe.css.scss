@@ -1,3 +1,32 @@
 // Place all the styles related to the recipe controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* styles for the recipe page */
+
+#recipe-title {
+	color:red;
+}
+
+#recipe-name{
+	color:blue;
+}
+
+#recipe-picture {
+	width:350px;
+}
+
+#title-prep-time {
+	
+}
+
+#prep-cook-time{
+
+}
+
+#recipe-ingredients-list{
+
+}

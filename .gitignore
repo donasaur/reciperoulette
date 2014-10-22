@@ -17,3 +17,6 @@
 
 # Ignore rvm files
 .rvmrc
+
+#ignore ds.store file
+.DS_Store
