@@ -4,9 +4,10 @@
 var change_displayed_recipe = function(list_of_recipe_names, recipe_index) {
   $("#recipe-name").html(list_of_recipe_names[recipe_index]);
 
-  old_image_element = $("#picture").html();
+  old_image_element = $("#roulette-picture").html();
+  new_image_element = old_image_element;
   new_image_element = old_image_element.replace(/\/assets\/\w+/, "/assets/" + list_of_recipe_names[recipe_index]);
-  $("#picture").html(new_image_element);
+  $("#roulette-picture").html(new_image_element);
 };
 
 $(document).ready(function() {
