@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   }
   root to: "user#new"
   post 'users/roulette' => 'user#roulette'
+  post 'users/block' => 'user#block'
   get  'users/dashboard' => 'user#dashboard'
   resources :recipes
 

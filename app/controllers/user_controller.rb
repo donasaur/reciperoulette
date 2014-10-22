@@ -46,6 +46,9 @@ class UserController < ApplicationController
     end
   end
 
+  def block
+  end
+
   private
     def read_has_modified_pantry_cookie
       if cookies.permanent[:has_modified_pantry] == "false"
