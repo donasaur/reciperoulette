@@ -11,7 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141022112128) do
+ActiveRecord::Schema.define(version: 20141023043851) do
+
+  create_table "blockedrecipelists", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+  end
+
+  add_index "blockedrecipelists", ["user_id"], name: "index_blockedrecipelists_on_user_id"
+
+  create_table "blockedrecipelists_recipes", id: false, force: true do |t|
+    t.integer "blockedrecipelist_id"
+    t.integer "recipe_id"
+  end
 
   create_table "ingredients", force: true do |t|
     t.string   "name"

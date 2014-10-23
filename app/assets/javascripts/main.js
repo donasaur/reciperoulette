@@ -1,5 +1,9 @@
 var update_view_button_url = function(list_of_recipe_names, recipe_index) {
-  $("#open").find("form").attr("action", "http://" + window.location.host + "/recipes/" + list_of_recipe_names[recipe_index]);
+  $("#open").find("a").attr("href", "http://" + window.location.host + "/recipes/" + list_of_recipe_names[recipe_index]);
+};
+
+var update_block_button_url = function(list_of_recipe_names, recipe_index) {
+  $("#block").find("form").attr("action", "http://" + window.location.host + "/users/block/" + list_of_recipe_names[recipe_index]);
 };
 
 // for now, all this function does is it swaps out the old image
@@ -14,6 +18,7 @@ var change_displayed_recipe = function(list_of_recipe_names, recipe_index) {
   $("#roulette-picture").html(new_image_element);
 
   update_view_button_url(list_of_recipe_names, recipe_index);
+  update_block_button_url(list_of_recipe_names, recipe_index);
 };
 
 
@@ -32,5 +37,10 @@ $(document).ready(function() {
   });
 
   update_view_button_url(list_of_recipe_names, recipe_index);
+  update_block_button_url(list_of_recipe_names, recipe_index);
 
+
+  if (window.location.href.indexOf("/block/") > -1) {
+    window.history.pushState("Roulette", "Roulette", "/users/roulette");
+  }
 });
