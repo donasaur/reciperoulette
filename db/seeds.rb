@@ -6,15 +6,20 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# Seed the first user with some stuff
-first_user = User.find(1)
+# Seed a test user with some stuff
+seed_user = User.new
+seed_user.email = 'test@example.com'
+seed_user.password = 'password'
+seed_user.password_confirmation = 'password'
+seed_user.save
+
 ingredient_one = Ingredient.create({name: 'nitrogen'})
 ingredient_two = Ingredient.create({name: 'oxygen'})
 recipe = Recipe.create({name: 'nitrousoxide',
                         ingredients: Ingredient.where(:name => ['nitrogen', 'oxygen'])})
-first_user.recipes << recipe
+seed_user.recipes << recipe
 
-first_user.pantry.ingredients << Ingredient.where(:name => ['nitrogen', 'oxygen'])
+seed_user.pantry.ingredients << Ingredient.where(:name => ['nitrogen', 'oxygen'])
 
 ingredient_three = Ingredient.create({name: 'carbon'})
 ingredient_four = Ingredient.create({name: 'hydrogen'})
