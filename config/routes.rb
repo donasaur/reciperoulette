@@ -4,10 +4,11 @@ Rails.application.routes.draw do
     registrations: 'user/registrations',
     passwords: 'user/passwords'
   }
-  root to: "user#new"
+  root to: "user#dashboard"
   post 'users/roulette' => 'user#roulette'
   post 'users/block/:name' => 'user#block'
   get  'users/dashboard' => 'user#dashboard'
+  post 'users/dashboard' => 'user#update'
   get 'recipes/:name' => 'recipe#show'
   resources :recipes
 

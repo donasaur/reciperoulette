@@ -1,3 +1,9 @@
+<% if flash[:ingredienterror] %>
+  <p class="error">
+    <%= h flash[:ingredienterror] %>
+  </p>
+<% end %>
+
 <div class="add-ingredient">
   <% # This form should link to an update route to add ingredients %>
   <%= form_for :ingredient do |i| %>
