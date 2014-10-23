@@ -1,5 +1,13 @@
+<div id="recipe-ingredients-list-header">
+  <h2>Ingredients</h2>
+</div>
+
 <div id="recipe-ingredients-list">
+  <ul>
 	<% @recipe.ingredients.each do |ingredient| %>
-		<%= ingredient %><br>
+		<li>
+    <% #At some point we should add ingredient qtys here %><%= ingredient %>
+    </li>
 	<% end %>
+  </ul>
 </div>

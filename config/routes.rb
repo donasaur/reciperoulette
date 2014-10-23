@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     registrations: 'user/registrations',
     passwords: 'user/passwords'
   }
-  root to: "user#dashboard"
+  root to: redirect('users/dashboard')
   post 'users/roulette' => 'user#roulette'
   post 'users/block/:name' => 'user#block'
   get  'users/dashboard' => 'user#dashboard'
