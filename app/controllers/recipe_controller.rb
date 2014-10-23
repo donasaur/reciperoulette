@@ -8,6 +8,7 @@ class RecipeController < ApplicationController
 
   def show
     @recipe = Recipe.where(name: params[:name]).first
+    render 'recipe'
   end
 
   def edit
