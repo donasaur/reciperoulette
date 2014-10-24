@@ -6,10 +6,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-#roulette-picture img {
-  width:350px;
-}
-
 html,
 body {
   margin:0;
@@ -49,6 +45,28 @@ body {
   bottom:0;
   left:0;
 }
+
+/* Roulette page styles */
+
+.roulette{
+  width:400px;
+  float:center;
+  background-color:oldlace;
+  padding: 25px;
+}
+
+#roulette-picture img {
+  width:350px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#recipe-name{
+  text-align: center;
+  padding-bottom: 10px;
+  font-weight: bold;
+}
+
 
 /* dashboard styles */
 
