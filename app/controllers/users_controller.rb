@@ -45,16 +45,13 @@ class UsersController < ApplicationController
     end
   end
 
-  # list_of_recipe_names (cookie key) -> e.g. [bread, potato]
   # list_of_recipe_names is set to a list when they play roulette (can be empty)
   # any time they hit roulette page, force re-query of database
   def roulette
-    list_of_recipe_names = gather_user_recipe_names
-    list_of_recipe_names.shuffle! # randomize names!
+    @list_of_recipe_names = gather_user_recipe_names
+    @list_of_recipe_names.shuffle! # randomize names!
 
-    update_list_of_recipe_names_cookie(list_of_recipe_names)
-
-    render_appropriate_page(list_of_recipe_names)
+    render_appropriate_page(@list_of_recipe_names)
   end
 
   def block
@@ -68,19 +65,6 @@ class UsersController < ApplicationController
   end
 
   private
-    def read_list_of_recipe_names_cookie
-      recipe_names_list_in_cookie = cookies.permanent[:list_of_recipe_names]
-      if recipe_names_list_in_cookie
-        JSON.parse(recipe_names_list_in_cookie)
-      else
-        []
-      end
-    end
-
-    # set list_of_recipe_names cookie to a list (possibly empty)
-    def update_list_of_recipe_names_cookie(list_of_recipe_names)
-      cookies.permanent[:list_of_recipe_names] = JSON.generate(list_of_recipe_names)
-    end
 
     def render_appropriate_page(list_of_recipe_names)
       if list_of_recipe_names.length > 0

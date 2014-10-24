@@ -24,7 +24,7 @@ describe "UserModel" do
 
   it "should not accept if password confirmation differs from password" do
     @user.password = 'password'
-    @user.password = 'passwor1'
+    @user.password_confirmation = 'passwor1'
     expect(@user.valid?).to eq false
   end
 

@@ -59,3 +59,51 @@ RSpec.describe UsersController, :type => :controller do
     expect(response).to render_template('users/dashboard')
   end
 end
+
+RSpec.describe UsersController, :type => :controller do
+
+  before(:each) do
+    load Rails.root + "db/seeds_snapshot_iter1.rb"
+    @user = User.where(email: "test@example.com").first
+    sign_in @user
+  end
+
+  # Note: only one recipe is shown to the user at a time
+  # but the list of possible recipes is fetched in advance
+  # so that the user does not requery the database every time
+  # the user wants to view the next recipe in the roulette
+  it "should make sure that matched recipes are displayed to the user" do
+    post :roulette
+    expect(response).to render_template('users/roulette')
+    expect(assigns(:list_of_recipe_names)).to include("Spaghetti")
+    expect(assigns(:list_of_recipe_names)).to include("Chicken_Fajitas")
+    expect(assigns(:list_of_recipe_names)).to include("Roast_Chicken")
+    expect(assigns(:list_of_recipe_names)).to include("Scrambled_Eggs")
+  end
+
+  it "should make sure that unmatched recipes are not displayed to the user" do
+    post :roulette
+    expect(response).to render_template('users/roulette')
+    expect(assigns(:list_of_recipe_names)).not_to include("Quesadilla")
+  end
+
+  it "should make sure that sending a POST request to /users/block/recipe_name prevents recipe from being shown again" do
+    post :block, { :name => "Spaghetti" }
+    expect(assigns(:list_of_recipe_names)).not_to include("Spaghetti")
+    expect(assigns(:list_of_recipe_names)).to include("Chicken_Fajitas")
+    expect(assigns(:list_of_recipe_names)).to include("Roast_Chicken")
+    expect(assigns(:list_of_recipe_names)).to include("Scrambled_Eggs")
+  end
+
+  it "should make sure sorry page is displayed when there are no matched recipes" do
+    post :block, { :name => "Spaghetti" }
+    post :block, { :name => "Chicken_Fajitas" }
+    post :block, { :name => "Roast_Chicken" }
+    post :block, { :name => "Scrambled_Eggs" }
+
+    post :roulette
+    expect(response).to render_template('users/sorry')
+  end
+
+end
+
