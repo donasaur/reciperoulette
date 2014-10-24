@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141023043851) do
+ActiveRecord::Schema.define(version: 20141024064920) do
 
   create_table "blockedrecipelists", force: true do |t|
     t.datetime "created_at"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 20141023043851) do
     t.integer  "cook_time"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "description"
   end
 
   create_table "recipes_users", id: false, force: true do |t|

@@ -31,3 +31,8 @@
     </div>
   </div>
 </div> <!-- end of row2 -->
+
+<script type="text/javascript">
+  var list_of_recipe_names = <%= raw @list_of_recipe_names.to_json %>;
+  <%= render 'roulettebuttons.js' %>
+</script>

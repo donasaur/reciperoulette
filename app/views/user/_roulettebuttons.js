@@ -24,10 +24,6 @@ var change_displayed_recipe = function(list_of_recipe_names, recipe_index) {
 
 
 $(document).ready(function() {
-  var recipe_names_in_json = $.cookie('list_of_recipe_names');
-  console.log(recipe_names_in_json); // todo: need to see value of this
-
-  var list_of_recipe_names = JSON.parse(recipe_names_in_json);
   var recipe_index = 0;
   var len_of_recipe_list = list_of_recipe_names.length; // length should be at least one
   
