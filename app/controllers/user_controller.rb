@@ -21,11 +21,11 @@ class UserController < ApplicationController
       @pantry.ingredients.delete(@ingredient)
       @pantry.save
     elsif params[:commit] == 'Add Ingredient'
-      @ingredient = Ingredient.where(name: params[:ingredient][:name]).first
-      if @ingredient && !@pantry.ingredients.exists?(@ingredient)
-        @pantry.ingredients << @ingredient
+      ingredient = Ingredient.where(name: params[:ingredient][:name]).first
+      if ingredient && !@pantry.ingredients.exists?(@ingredient)
+        @pantry.ingredients << ingredient
         @pantry.save
-      elsif !@ingredient
+      elsif !ingredient
         # Probably want to flash message that ingredient couldn't be found
         flash.now[:ingredienterror] = "Sorry, #{params[:ingredient][:name]} is not a valid ingredient"
       end

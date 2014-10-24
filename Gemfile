@@ -30,6 +30,9 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'spring',        group: :development
 gem 'rspec-rails',          '~> 3.0.0'
 
+gem 'simplecov', :require => false, :group => :test
+
+
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'

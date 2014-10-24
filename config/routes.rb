@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get  'users/dashboard' => 'user#dashboard'
   post 'users/dashboard' => 'user#update'
   get 'recipes/:name' => 'recipe#show'
-  resources :recipes
+  resources :recipe
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
