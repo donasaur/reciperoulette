@@ -8,4 +8,6 @@ class User < ActiveRecord::Base
   has_one :pantry
   before_create :build_pantry
   before_create :build_blockedrecipelist
+  validates_associated :blockedrecipelist
+  validates_associated :pantry
 end

@@ -10,7 +10,7 @@ describe "IngredientModel" do
   end
 
   it "should have to_s equal to the name of the Ingredient" do
-    expect(@ingredient.to_s).to eq @ingredient.to_s
+    expect(@ingredient.to_s).to eq @ingredient.name
   end
 
 end
