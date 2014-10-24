@@ -12,20 +12,16 @@
   <% end %>
 </div>
 <div class="pantry-list">
-<ul>
-  <% @pantry.ingredients.each do |ingredient| %>
-    <div class="pantry-ingredient">
-    <li>
-    	<% # This form should link up to an update route to remove ingredients %>
-      <%= form_for :ingredient do |i| %>
-        <%= i.hidden_field :ingredient_id, :value => ingredient.id %>
-        <%= "#{ingredient.name}" %>
-        <div class="remove-button">
-          <%= i.submit "Remove Ingredient" %>
+  <ul>
+    <%= form_for(:pantry) do |f|%>
+      <% @pantry.ingredients.each do |ingredient| %>
+        <div class="pantry-ingredient">
+          <%= hidden_field_tag "pantry[category_ids][]", nil %>
+          <%= check_box_tag "pantry[ingredient_ids][]", ingredient.id %>
+          <%= label_tag dom_id(ingredient), ingredient.name %><br>
         </div>
       <% end %>
-	  </li>
-    </div>
-	<% end %>
-</ul>
+      <%= submit_tag "Delete Ingredients" %>
+  	<% end %>
+  </ul>
 </div>

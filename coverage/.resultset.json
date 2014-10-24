@@ -1,14 +1,14 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/spec/controllers/recipe_controller_spec.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/spec/controllers/recipe_controller_spec.rb": [
         1,
         null,
         1,
         null,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/spec/rails_helper.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/spec/rails_helper.rb": [
         null,
         1,
         1,
@@ -53,14 +53,14 @@
         1,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/config/environment.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/config/environment.rb": [
         null,
         1,
         null,
         null,
         1
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/config/application.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/config/application.rb": [
         1,
         null,
         1,
@@ -85,13 +85,13 @@
         null,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/config/boot.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/config/boot.rb": [
         null,
         1,
         null,
         1
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/config/environments/test.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/config/environments/test.rb": [
         1,
         null,
         null,
@@ -132,7 +132,7 @@
         null,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/config/initializers/assets.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/config/initializers/assets.rb": [
         null,
         null,
         null,
@@ -142,7 +142,7 @@
         null,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/config/initializers/backtrace_silencers.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/config/initializers/backtrace_silencers.rb": [
         null,
         null,
         null,
@@ -151,12 +151,12 @@
         null,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/config/initializers/cookies_serializer.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/config/initializers/cookies_serializer.rb": [
         null,
         null,
         1
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/config/initializers/devise.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/config/initializers/devise.rb": [
         null,
         null,
         1,
@@ -417,13 +417,13 @@
         null,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/config/initializers/filter_parameter_logging.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/config/initializers/filter_parameter_logging.rb": [
         null,
         null,
         null,
         1
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/config/initializers/inflections.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/config/initializers/inflections.rb": [
         null,
         null,
         null,
@@ -441,18 +441,18 @@
         null,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/config/initializers/mime_types.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/config/initializers/mime_types.rb": [
         null,
         null,
         null,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/config/initializers/session_store.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/config/initializers/session_store.rb": [
         null,
         null,
         1
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/config/initializers/wrap_parameters.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/config/initializers/wrap_parameters.rb": [
         null,
         null,
         null,
@@ -468,7 +468,7 @@
         null,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/spec/factories/ingredients.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/spec/factories/ingredients.rb": [
         null,
         null,
         1,
@@ -476,7 +476,7 @@
         null,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/spec/factories/pantries.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/spec/factories/pantries.rb": [
         null,
         null,
         1,
@@ -484,7 +484,7 @@
         null,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/spec/factories/recipes.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/spec/factories/recipes.rb": [
         null,
         null,
         1,
@@ -492,7 +492,7 @@
         null,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/spec/factories/users.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/spec/factories/users.rb": [
         null,
         null,
         1,
@@ -500,7 +500,7 @@
         null,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/config/routes.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/config/routes.rb": [
         1,
         1,
         null,
@@ -571,7 +571,7 @@
         null,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/app/models/user.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/app/models/user.rb": [
         1,
         null,
         null,
@@ -584,22 +584,119 @@
         1,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/app/helpers/application_helper.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/app/helpers/recipe_helper.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/app/helpers/recipe_helper.rb": [
         1,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/app/helpers/user_helper.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/app/helpers/user_helper.rb": [
         1,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/spec/support/controller_helpers.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/spec/support/controller_helpers.rb": [
 
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/app/controllers/recipe_controller.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/db/schema.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/NolanC/Git_Projects/reciperoulette/app/controllers/recipe_controller.rb": [
         1,
         null,
         1,
@@ -627,14 +724,14 @@
         null,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/app/controllers/application_controller.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/app/controllers/application_controller.rb": [
         1,
         null,
         null,
         1,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/spec/controllers/user_controller_spec.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/spec/controllers/user_controller_spec.rb": [
         1,
         1,
         null,
@@ -660,7 +757,7 @@
         null,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/app/controllers/user_controller.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/app/controllers/user_controller.rb": [
         1,
         null,
         null,
@@ -777,24 +874,7 @@
         null,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/spec/helpers/recipe_helper_spec.rb": [
-        1,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/spec/helpers/user_helper_spec.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/spec/helpers/recipe_helper_spec.rb": [
         1,
         null,
         null,
@@ -811,35 +891,52 @@
         null,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/spec/models/blockedrecipelist_spec.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/spec/helpers/user_helper_spec.rb": [
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/Users/NolanC/Git_Projects/reciperoulette/spec/models/blockedrecipelist_spec.rb": [
         1,
         null,
         null,
         null,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/spec/models/ingredient_spec.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/spec/models/ingredient_spec.rb": [
         1,
         null,
         null,
         null,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/spec/models/pantry_spec.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/spec/models/pantry_spec.rb": [
         1,
         null,
         null,
         null,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/spec/models/recipe_spec.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/spec/models/recipe_spec.rb": [
         1,
         null,
         null,
         null,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/spec/models/user_spec.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/spec/models/user_spec.rb": [
         1,
         null,
         null,
@@ -878,19 +975,19 @@
         null,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/app/models/pantry.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/app/models/pantry.rb": [
         1,
         1,
         1,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/app/models/blockedrecipelist.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/app/models/blockedrecipelist.rb": [
         1,
         1,
         1,
         null
       ],
-      "/home/rkuo-ruby/Rails_Projects/reciperoulette/app/models/ingredient.rb": [
+      "/Users/NolanC/Git_Projects/reciperoulette/app/models/ingredient.rb": [
         1,
         1,
         null,
@@ -900,6 +997,6 @@
         null
       ]
     },
-    "timestamp": 1414110747
+    "timestamp": 1414127494
   }
 }

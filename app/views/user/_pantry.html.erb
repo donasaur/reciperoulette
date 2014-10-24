@@ -1,0 +1,7 @@
+<div class="field">
+  <% Ingredient.all.each do |ingredient| %>
+    <%= hidden_field_tag "product[category_ids][]", nil %>
+    <%= check_box_tag "ingredients[ingredient_ids][]", ingredient.id, current_user.pantry.ingredient_ids.include(ingredient.id), id: dom_id(ingredient) %>
+    <%= label_tag dom_id(ingredient), ingredient.name %><br>
+  <% end %>
+</div>
