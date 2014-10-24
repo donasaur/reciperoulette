@@ -13,15 +13,15 @@
 </div>
 <div class="pantry-list">
   <ul>
-    <%= form_for(:pantry) do |f|%>
+    <%= form_for(@pantry) do |f|%>
       <% @pantry.ingredients.each do |ingredient| %>
         <div class="pantry-ingredient">
-          <%= hidden_field_tag "pantry[category_ids][]", nil %>
+          <%= hidden_field_tag "pantry[ingredient_ids][]", nil %>
           <%= check_box_tag "pantry[ingredient_ids][]", ingredient.id %>
           <%= label_tag dom_id(ingredient), ingredient.name %><br>
         </div>
       <% end %>
-      <%= submit_tag "Delete Ingredients" %>
+      <%= submit_tag "Delete Ingredients", class: "btn btn-default" %>
   	<% end %>
   </ul>
 </div>
