@@ -33,3 +33,81 @@ ingredient_four = Ingredient.create({name: 'hydrogen'})
 
 # add another recipe and associate ingredients with it
 recipe_two = Recipe.create(name: 'caffeine', ingredients: Ingredient.where(:name => ['carbon', 'nitrogen', 'oxygen', 'hydrogen']))
+
+
+
+# Recipes
+Recipe.create({name: 'Roast Chicken',
+                        ingredients: Ingredient.where(:name => ['whole chicken', 'salt', 'pepper', 'paprika', 'onion', 'celery', 'carrot', 'garlic', 'bay leaf', 'olive oil'])})
+
+Recipe.create(name: 'Scrambled Eggs', ingredients: Ingredient.where(:name => ['egg', 'butter', 'salt', 'pepper']))
+
+Recipe.create(name: 'Spaghetti', ingredients: Ingredient.where(:name => ['spaghetti', 'tomato sauce', 'pepper', 'salt']))
+
+Recipe.create(name: 'Chicken Fajitas', ingredients: Ingredient.where(:name => ['chicken breast', 'onion', 'bell pepper', 'salt', 'pepper']))
+
+Recipe.create(name: 'Quesadilla', ingredients: Ingredient.where(:name => ['cheese', 'tortilla']))
+
+Recipe.create(name: 'French Toast', ingredients: Ingredient.where(:name => ['egg', 'bread', 'butter', 'sugar', 'cinnamon', 'syrup']))
+
+
+
+
+#create a ton of ingredients
+Ingredient.create({name: 'salt'})
+Ingredient.create({name: 'pepper'})
+Ingredient.create({name: 'egg'})
+Ingredient.create({name: 'rice'})
+Ingredient.create({name: 'tomato'})
+Ingredient.create({name: 'sour cream'})
+Ingredient.create({name: 'spinach'})
+Ingredient.create({name: 'bell pepper'})
+Ingredient.create({name: 'ham'})
+Ingredient.create({name: 'onion'})
+Ingredient.create({name: 'carrot'})
+Ingredient.create({name: 'sugar'})
+Ingredient.create({name: 'cinnamon'})
+Ingredient.create({name: 'ketchup'})
+Ingredient.create({name: 'mustard'})
+Ingredient.create({name: 'garlic'})
+Ingredient.create({name: 'paprika'})
+Ingredient.create({name: 'oregano'})
+Ingredient.create({name: 'olive oil'})
+Ingredient.create({name: 'vegetable oil'})
+Ingredient.create({name: 'honey'})
+Ingredient.create({name: 'soy sauce'})
+Ingredient.create({name: 'tuna'})
+Ingredient.create({name: 'basil'})
+Ingredient.create({name: 'cheese'})
+Ingredient.create({name: 'lemon'})
+Ingredient.create({name: 'lime'})
+Ingredient.create({name: 'chicken breast'})
+Ingredient.create({name: 'ground beef'})
+Ingredient.create({name: 'ground turkey'})
+Ingredient.create({name: 'bacon'})
+Ingredient.create({name: 'corn'})
+Ingredient.create({name: 'butter'})
+Ingredient.create({name: 'spaghetti'})
+Ingredient.create({name: 'parsley'})
+Ingredient.create({name: 'mayonnaise'})
+Ingredient.create({name: 'cornstarch'})
+Ingredient.create({name: 'lamb'})
+Ingredient.create({name: 'steak'})
+Ingredient.create({name: 'ginger'})
+Ingredient.create({name: 'potato'})
+Ingredient.create({name: 'thyme'})
+Ingredient.create({name: 'milk'})
+Ingredient.create({name: 'noodles'})
+Ingredient.create({name: 'bay leaf'})
+Ingredient.create({name: 'whole chicken'})
+Ingredient.create({name: 'celery'})
+Ingredient.create({name: 'tomato sauce'})
+Ingredient.create({name: 'tortilla'})
+Ingredient.create({name: 'syrup'})
+
+
+
+
+
+
+
