@@ -14,44 +14,24 @@ seed_user.password_confirmation = 'password'
 seed_user.save
 
 # create two ingredients
-ingredient_one = Ingredient.create({name: 'nitrogen'})
-ingredient_two = Ingredient.create({name: 'oxygen'})
+# ingredient_one = Ingredient.create({name: 'nitrogen'})
+# ingredient_two = Ingredient.create({name: 'oxygen'})
 
 # associate those ingredients with a created recipe
-recipe = Recipe.create({name: 'nitrousoxide',
-                        ingredients: Ingredient.where(:name => ['nitrogen', 'oxygen'])})
+# recipe = Recipe.create({name: 'nitrousoxide', ingredients: Ingredient.where(:name => ['nitrogen', 'oxygen'])})
 
 # make this created recipe a saved recipe for the seed user
-seed_user.recipes << recipe
+# seed_user.recipes << recipe
 
 # add ingredients to the user's pantry
-seed_user.pantry.ingredients << Ingredient.where(:name => ['nitrogen', 'oxygen'])
+# seed_user.pantry.ingredients << Ingredient.where(:name => ['salt', 'pepper'])
 
 # create two more ingredients
-ingredient_three = Ingredient.create({name: 'carbon'})
-ingredient_four = Ingredient.create({name: 'hydrogen'})
+# ingredient_three = Ingredient.create({name: 'carbon'})
+# ingredient_four = Ingredient.create({name: 'hydrogen'})
 
 # add another recipe and associate ingredients with it
-recipe_two = Recipe.create(name: 'caffeine', ingredients: Ingredient.where(:name => ['carbon', 'nitrogen', 'oxygen', 'hydrogen']))
-
-
-
-# Recipes
-Recipe.create({name: 'Roast Chicken',
-                        ingredients: Ingredient.where(:name => ['whole chicken', 'salt', 'pepper', 'paprika', 'onion', 'celery', 'carrot', 'garlic', 'bay leaf', 'olive oil'])})
-
-Recipe.create(name: 'Scrambled Eggs', ingredients: Ingredient.where(:name => ['egg', 'butter', 'salt', 'pepper']))
-
-Recipe.create(name: 'Spaghetti', ingredients: Ingredient.where(:name => ['spaghetti', 'tomato sauce', 'pepper', 'salt']))
-
-Recipe.create(name: 'Chicken Fajitas', ingredients: Ingredient.where(:name => ['chicken breast', 'onion', 'bell pepper', 'salt', 'pepper']))
-
-Recipe.create(name: 'Quesadilla', ingredients: Ingredient.where(:name => ['cheese', 'tortilla']))
-
-Recipe.create(name: 'French Toast', ingredients: Ingredient.where(:name => ['egg', 'bread', 'butter', 'sugar', 'cinnamon', 'syrup']))
-
-
-
+# recipe_two = Recipe.create(name: 'caffeine', ingredients: Ingredient.where(:name => ['carbon', 'nitrogen', 'oxygen', 'hydrogen']))
 
 #create a ton of ingredients
 Ingredient.create({name: 'salt'})
@@ -104,7 +84,24 @@ Ingredient.create({name: 'celery'})
 Ingredient.create({name: 'tomato sauce'})
 Ingredient.create({name: 'tortilla'})
 Ingredient.create({name: 'syrup'})
+Ingredient.create({name: 'bread'})
 
+# Add ingredient to user's pantry
+seed_user.pantry.ingredients << Ingredient.where(:name => ['salt', 'pepper'])
+
+# Recipes
+recipe_one = Recipe.create({name: 'Roast Chicken',
+                        ingredients: Ingredient.where(:name => ['whole chicken', 'salt', 'pepper', 'paprika', 'onion', 'celery', 'carrot', 'garlic', 'bay leaf', 'olive oil'])})
+
+recipe_two = Recipe.create(name: 'Scrambled Eggs', ingredients: Ingredient.where(:name => ['egg', 'butter', 'salt', 'pepper']))
+
+recipe_three = Recipe.create(name: 'Spaghetti', ingredients: Ingredient.where(:name => ['spaghetti', 'tomato sauce', 'pepper', 'salt']))
+
+recipe_four = Recipe.create(name: 'Chicken Fajitas', ingredients: Ingredient.where(:name => ['chicken breast', 'onion', 'bell pepper', 'salt', 'pepper']))
+
+recipe_five = Recipe.create(name: 'Quesadilla', ingredients: Ingredient.where(:name => ['cheese', 'tortilla']))
+
+recipe_six = Recipe.create(name: 'French Toast', ingredients: Ingredient.where(:name => ['egg', 'bread', 'butter', 'sugar', 'cinnamon', 'syrup']))
 
 
 
