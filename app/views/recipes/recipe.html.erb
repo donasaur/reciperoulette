@@ -1,17 +1,18 @@
-<div class="row">
-	<div class="col-md-4 col-md-offset-2" id="recipe-picture">
-		<%= image_tag "#{@recipe.name}.jpg" %>
-	</div>
-	<div class="col-md-3 col-md-offset-1" id="title-prep-time">
-		<%= render 'recipes/titleprep' %>
-	</div>
-</div>
+<div class="outer-recipe contain-center">
 
-<div class="row">
-	<div class="col-lg-4 col-lg-offset-1" id="recipe-ingredients">
-		<%= render 'recipes/ingredients' %>
-	</div>
-	<div class="col-lg-4 col-lg-offset-1" id="recipe-instructions">
-		<%= render 'recipes/instructions' %>
-	</div>
-</div>
+	<div class="row">
+	  <div class="recipe col-lg-4 col-lg-offset-2">
+	    <div id="recipe-name">
+	      <%= @recipe.name %>
+	     </div>
+	     <div id="recipe-picture">
+	      <%= image_tag "#{@recipe.name}.jpg" %>
+	    </div>
+	  </div>
+
+	  <div class="recipe-ingredients col-lg-3 col-lg-offset-2">
+	    <%= render 'recipes/ingredients' %>
+	  </div>
+	 </div>
+
+</div

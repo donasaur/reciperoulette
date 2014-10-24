@@ -13,6 +13,27 @@ body {
   height:100%;
 }
 
+/* header styles */
+.logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: black;
+  /*text-transform: uppercase;*/
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+}
+
+.logo:hover {
+  color: blue;
+  text-decoration: none;
+}
+
+.dropdown-toggle{
+  color:black;
+}
+
 /* main HTML layout styles */
 
 #wrapper {
@@ -49,23 +70,32 @@ body {
 /* Roulette page styles */
 
 .outer-roulette{
-  background-color: yellow;
   margin:0 auto;
   width: 60%;
   padding: 10px;
-  min-width: 500px;
-  display: table;
+  min-width: 550px;
+  height: 600;
+}
+
+.block-div{
+  margin:0 auto;
+  width:70px;
+  padding:5px;
 }
 
 #skip{
-  vertical-align: middle;
-  margin-top: auto;
-  margin-bottom: auto;
+  float:left;
+  margin-top: 150px;
+}
+
+#open{
+  float:right;
+  margin-top: 150px;
 }
 
 .roulette{
   width:400px;
-  float:center;
+  float:none;
   background-color:oldlace;
   padding: 25px;
 }
@@ -77,6 +107,7 @@ body {
 }
 
 #recipe-name{
+  color:black;
   text-align: center;
   padding-bottom: 10px;
   font-weight: bold;
