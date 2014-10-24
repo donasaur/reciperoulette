@@ -1,22 +1,26 @@
 <% #@recipe_name is the instance variable passed to this view %>
 
 <div class="row" id="row1">
-  <div class="col-md-2">
-    <div id="skip">
-      <button class="btn" type="button">Skip</button>
-    </div>
-  </div>
-  <div class="roulette col-md-8 contain-center">
 
-    <div id="recipe-name">
-      <%= @recipe_name %>
+  <div class="outer-roulette contain-center">
+    
+    <div class="col-md-8" id="skip">
+        <button class="btn" type="button">Skip</button>
     </div>
 
-    <div id="roulette-picture">
-      <%= image_tag "#{@recipe_name}.jpg" %>
-    </div>
-  
-  </div>
+    <div class="roulette col-md-8 contain-center">
+
+      <div id="recipe-name">
+        <%= @recipe_name %>
+      </div>
+
+      <div id="roulette-picture">
+        <%= image_tag "#{@recipe_name}.jpg" %>
+      </div>
+    
+    </div> <!-- end of roulette -->
+  </div> <!-- end of outer roulette -->
+
   <div class="col-md-2">
     <div id="open">
       <%= link_to "View", 'http://willbeinsertedby.js' %> 

@@ -48,6 +48,21 @@ body {
 
 /* Roulette page styles */
 
+.outer-roulette{
+  background-color: yellow;
+  margin:0 auto;
+  width: 60%;
+  padding: 10px;
+  min-width: 500px;
+  display: table;
+}
+
+#skip{
+  vertical-align: middle;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .roulette{
   width:400px;
   float:center;
