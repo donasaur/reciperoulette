@@ -28,7 +28,6 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
-gem 'rspec-rails',          '~> 3.0.0'
 
 gem 'simplecov', :require => false, :group => :test
 
@@ -36,7 +35,8 @@ gem 'simplecov', :require => false, :group => :test
 group :development, :test do
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
-  
+  # Want rspec for rails
+  gem 'rspec-rails'
   gem 'byebug',               '~> 3.1'
   gem 'factory_girl',         '~> 4.4'
   gem 'factory_girl_rails',   '~> 4.4'
