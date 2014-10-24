@@ -24,6 +24,8 @@ var change_displayed_recipe = function(list_of_recipe_names, recipe_index) {
 
 
 $(document).ready(function() {
+  console.log(list_of_recipe_names);
+  
   var recipe_index = 0;
   var len_of_recipe_list = list_of_recipe_names.length; // length should be at least one
   
