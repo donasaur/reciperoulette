@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       @pantry.save
     elsif params[:commit] == 'Add Ingredient'
       ingredient = Ingredient.where(name: params[:ingredient][:name]).first
-      if ingredient && !@pantry.ingredients.exists?(@ingredient)
+      if ingredient && !@pantry.ingredients.exists?(ingredient)
         @pantry.ingredients << ingredient
         @pantry.save
       elsif !ingredient
