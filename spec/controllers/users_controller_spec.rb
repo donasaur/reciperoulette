@@ -48,6 +48,23 @@ RSpec.describe UsersController, :type => :controller do
     expect(flash.now[:ingredienterror]).to_not be_nil
   end
 
+  it "should not add an ingredient to the user pantry if ingredient already in pantry" do
+    expect(@user.valid?).to be true
+    expect(@user.pantry.ingredients.where( :name => @ingredient.name ).count).to eq 0
+    params = {}
+    params[:commit] = "Add Ingredient"
+    params[:ingredient] = {}
+    params[:ingredient][:name] = @ingredient.name
+    post :update, parameters = params
+    expect(response).to render_template('users/dashboard')
+    expect(@user.pantry.ingredients.where( :name => @ingredient.name ).count).to eq 1
+    expect(flash.now[:ingredienterror]).to be_nil
+    post :update, parameters = params
+    expect(response).to render_template('users/dashboard')
+    expect(@user.pantry.ingredients.where( :name => @ingredient.name ).count).to eq 1
+    expect(flash.now[:ingredienterror]).to be_nil
+  end
+
   it "should render new if not logged in" do
     sign_out @user
     get :dashboard
