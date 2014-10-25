@@ -33,5 +33,20 @@ describe "UserModel" do
     expect(@user.valid?).to eq false
   end
 
+  it "should have a valid email ." do
+    @user.email = "user.bob"
+    expect(@user.valid?).to eq false
+  end
+
+  it "should have a valid email @" do
+    @user.email = "user@bob"
+    expect(@user.valid?).to eq false
+  end
+
+  it "should not accept a user with the same a duplicate email" do
+    user1 = User.create(email: "hello@world.gov", password: 'password', password_confirmation: 'password')
+    user2 = User.new(email: "hello@world.gov", password: 'password', password_confirmation: 'password')
+    expect(user2.save).to eq false
+  end
 
 end

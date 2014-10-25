@@ -13,4 +13,10 @@ describe "IngredientModel" do
     expect(@ingredient.to_s).to eq @ingredient.name
   end
 
+  it "should not be able to create two identical ingredients" do
+    i = Ingredient.create(name: "sugar")
+    j = Ingredient.new(name: "sugar")
+    expect(j.save).to eq false
+  end
+
 end
