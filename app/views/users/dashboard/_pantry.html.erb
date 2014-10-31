@@ -6,26 +6,22 @@
 
 <div class="add-ingredient">
   <% # This form should link to an update route to add ingredients %>
-  <%= form_for :ingredient do |i| %>
-    Add Ingredient: <%= i.text_field :name %>
-    <%= i.submit "Add Ingredient" %>
+  <%= form_for(@pantry) do |i| %>
+    <%= select_tag 'ingredient', options_from_collection_for_select(Ingredient.all, 'id', 'name') %>
+    <%= submit_tag "Add Ingredient" %>
   <% end %>
 </div>
 <div class="pantry-list">
-<ul>
-  <% @pantry.ingredients.each do |ingredient| %>
-    <div class="pantry-ingredient">
-    <li>
-    	<% # This form should link up to an update route to remove ingredients %>
-      <%= form_for :ingredient do |i| %>
-        <%= i.hidden_field :ingredient_id, :value => ingredient.id %>
-        <%= "#{ingredient.name}" %>
-        <div class="remove-button">
-          <%= i.submit "Remove Ingredient" %>
+  <ul>
+    <%= form_for(@pantry) do |f|%>
+      <% @pantry.ingredients.each do |ingredient| %>
+        <div class="pantry-ingredient">
+          <%= hidden_field_tag "pantry[ingredient_ids][]", nil %>
+          <%= check_box_tag "pantry[ingredient_ids][]", ingredient.id , false, id: dom_id(ingredient)%>
+          <%= label_tag dom_id(ingredient), ingredient.name %><br>
         </div>
       <% end %>
-	  </li>
-    </div>
-	<% end %>
-</ul>
+      <%= submit_tag "Delete Ingredients", class: "btn btn-default" %>
+  	<% end %>
+  </ul>
 </div>
