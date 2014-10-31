@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
   }
   root to: redirect('users/dashboard')
+  get 'users/roulette' => 'users#dashboard'
   post 'users/roulette' => 'users#roulette'
   post 'users/block/:name' => 'users#block'
   get  'users/dashboard' => 'users#dashboard'
