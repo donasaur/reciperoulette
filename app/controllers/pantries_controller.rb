@@ -5,12 +5,12 @@ class PantriesController < ApplicationController
     if params["commit"] == "Add Ingredient"
       added_ingredient = params["ingredient"].to_i
       @pantry.ingredient_ids = @pantry.ingredient_ids << added_ingredient
-      render "user/dashboard"
+      render "users/dashboard"
     elsif params["commit"] == "Delete Ingredients"
       ingredient_ids = params["pantry"]["ingredient_ids"].map(&:to_i)
       @pantry.ingredient_ids = @pantry.ingredient_ids - ingredient_ids
       @pantry.save
-      render "user/dashboard"
+      render "users/dashboard"
     end
   end
 end
