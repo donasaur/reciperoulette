@@ -7,9 +7,9 @@ Rails.application.routes.draw do
   post 'users/block/:name' => 'users#block'
   get  'users/dashboard' => 'users#dashboard'
   post 'users/dashboard' => 'users#update'
-  get 'recipes/:name' => 'recipe#show'
+  get 'recipes/:name' => 'recipes#show'
   post 'pantries/update' => 'pantries#update'
-  resources :recipe
+  resources :recipes
   resources :pantries
 
   # The priority is based upon order of creation: first created -> highest priority.
