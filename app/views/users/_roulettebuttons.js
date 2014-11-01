@@ -1,5 +1,5 @@
 var update_view_button_url = function(list_of_recipe_names, recipe_index) {
-  $("#open").find("a").attr("href", "http://" + window.location.host + "/recipes/" + list_of_recipe_names[recipe_index]);
+  $("#roulette-picture").find("a").attr("href", "http://" + window.location.host + "/recipes/" + list_of_recipe_names[recipe_index]);
 };
 
 var update_block_button_url = function(list_of_recipe_names, recipe_index) {

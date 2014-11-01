@@ -2,13 +2,12 @@
 
 <div class="outer-roulette contain-center">
 
-  <div id="skip">
-    <button class="btn" type="button">Skip</button>
+  <div id="block">
+    <%= button_to "Block", 'http://willbeinsertedby.js', {class: 'btn'} %>
   </div>
 
-  <div id="open" class='btn'>
-    <%= link_to "View", 'http://willbeinsertedby.js', :class => 'btn' %> 
-    <% #button_to "View", 'http://willbeinsertedby.js', :method => :get, :class => 'btn' %>
+  <div id="skip">
+    <button class="btn" type="button">Skip</button>
   </div>
 
   <div class="row" id="row1">
@@ -19,7 +18,7 @@
       </div>
 
       <div id="roulette-picture">
-        <%= image_tag "#{@recipe_name}.jpg" %>
+        <%= link_to (image_tag "#{@recipe_name}.jpg"), 'http://willbeinsertedby.js' %> 
       </div>
     </div> <!-- end of roulette -->
 
@@ -27,8 +26,8 @@
 
   <br>
   <div class="row contain-center block-div">
-    <div id="block">
-      <%= button_to "Block", 'http://willbeinsertedby.js', {class: 'btn'} %>
+    <div id="oldblock">
+      <% #button_to "Block", 'http://willbeinsertedby.js', {class: 'btn'} %>
     </div>
   </div>
 
