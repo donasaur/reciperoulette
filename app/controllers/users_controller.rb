@@ -53,8 +53,8 @@ class UsersController < ApplicationController
       return
     end
 
-    @list_of_recipe_ids = gather_user_recipe_ids
-    @list_of_recipe_ids.shuffle! # randomize names!
+    set_of_recipes = gather_user_recipes
+    @list_of_recipe_ids = weighted_randomize(set_of_recipes)
 
     render_appropriate_page(@list_of_recipe_ids)
   end
@@ -71,6 +71,56 @@ class UsersController < ApplicationController
 
   private
 
+    def weighted_randomize(set_of_recipes)
+
+      # Initialization
+      @user = current_user # to get list of user ingredients
+      list_of_recipes = set_of_recipes.to_a
+      list_of_recipe_frequencies = []
+
+      rtn_list_of_recipe_ids = []
+      num_of_recipes = list_of_recipes.length
+
+      # generate list of random numbers
+      list_of_samples = (0..num_of_recipes).map do |recipe_num|
+        rand
+      end
+
+      # algorithm portion
+      # recipe with twice the number of ingred. matched is twice as likely to show up
+      list_of_recipes.each do |recipe|
+        list_of_recipe_frequencies << (recipe.ingredients & @user.pantry.ingredients).length
+      end
+
+      # each itertion adds one recipe id to the rtn_list_of_recipe_ids
+      (0..num_of_recipes).each do
+        normalization_factor = list_of_recipe_frequencies.inject(:+)
+
+        list_of_recipe_probabilities = list_of_recipe_frequencies.map do |frequency|
+          frequency.fdiv(normalization_factor)
+        end
+
+        cumulative_probability_array = cumulative_sum_array(list_of_recipe_probabilities)
+
+        cumulative_probability_array.each_with_index do |cumulative_probabiity, index|
+          if list_of_samples[index] < cumulative_probabiity
+            # remove relevant recipe from list_of_recipes, list_of_recipe_frequencies
+            rtn_list_of_recipe_ids << list_of_recipes.delete_at(index).id
+            list_of_recipe_frequencies.delete_at(index)
+            break
+          end
+        end
+      end
+
+      rtn_list_of_recipe_ids
+
+    end
+
+    def cumulative_sum_array(array)
+      sum = 0
+      array.map{|x| sum += x}
+    end
+
     def render_page_with_selected_recipe(recipe_id)
       @recipe = Recipe.find(recipe_id)
       render partial: 'roulettemain'
@@ -85,7 +135,7 @@ class UsersController < ApplicationController
       end
     end
 
-    def gather_user_recipe_ids
+    def gather_user_recipes
       user_ingredients = current_user.pantry.ingredients # list of ingredient objects
       recipe_search_results = Set.new
 
@@ -98,12 +148,7 @@ class UsersController < ApplicationController
         recipe_search_results.delete?(blocked_recipe)
       end
 
-      # here, recipe_search_results is a list of relevant recipes
-      list_of_recipe_ids = recipe_search_results.map do |recipe|
-        recipe.id
-      end
-
-      list_of_recipe_ids # return list of recipe ids
+      recipe_search_results
     end
 
 end
