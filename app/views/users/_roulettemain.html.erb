@@ -15,6 +15,11 @@
         <%= @recipe.name %>
       </div>
 
+      <% #replace with progress bar UI element %>
+      <div id="recipe-percentage">
+        <center><%= progress_bar_percentage(@recipe) %></center>
+      </div>
+
       <div id="roulette-picture">
         <% #Change "#{@recipe.name}.jpg" to "#{@recipe.img_url}" to support Imgur hosting %>
         <%= link_to (image_tag "#{@recipe.name}.jpg"), 'http://willbeinsertedby.js' %> 

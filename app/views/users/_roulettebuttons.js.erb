@@ -12,7 +12,7 @@ $(document).ready(function() {
   
   $("body").on("click", "#skip", function() {
     recipe_index = (recipe_index + 1) % len_of_recipe_list;
-    console.log(recipe_index);
+    console.log(list_of_recipe_ids[recipe_index]);
     change_displayed_recipe(list_of_recipe_ids[recipe_index]);
   });
 
