@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root to: redirect('users/dashboard')
   get 'users/roulette' => 'users#dashboard'
   post 'users/roulette' => 'users#roulette'
-  post 'users/block/:name' => 'users#block'
+  post 'users/block/:id' => 'users#block'
   get  'users/dashboard' => 'users#dashboard'
   post 'users/dashboard' => 'users#update'
   get 'recipes/:name' => 'recipes#show'

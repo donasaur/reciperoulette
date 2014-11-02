@@ -1,39 +1,8 @@
-<% #@recipe_name is the instance variable passed to this view %>
+<% #@recipe is the instance variable passed to this view %>
 
-<div class="outer-roulette contain-center">
-
-  <div id="block">
-    <%= button_to "Block", 'http://willbeinsertedby.js', {class: 'btn'} %>
-  </div>
-
-  <div id="skip">
-    <button class="btn" type="button">Skip</button>
-  </div>
-
-  <div class="row" id="row1">
-  
-    <div class="roulette contain-center">
-      <div id="recipe-name">
-        <%= @recipe_name %>
-      </div>
-
-      <div id="roulette-picture">
-        <%= link_to (image_tag "#{@recipe_name}.jpg"), 'http://willbeinsertedby.js' %> 
-      </div>
-    </div> <!-- end of roulette -->
-
-  </div> <!-- end of row1 -->
-
-  <br>
-  <div class="row contain-center block-div">
-    <div id="oldblock">
-      <% #button_to "Block", 'http://willbeinsertedby.js', {class: 'btn'} %>
-    </div>
-  </div>
-
-</div> <!-- end of outer roulette -->
+<%= render 'roulettemain' %>
 
 <script type="text/javascript">
-  var list_of_recipe_names = <%= raw @list_of_recipe_names.to_json %>;
+  var list_of_recipe_ids = <%= raw @list_of_recipe_ids.to_json %>;
   <%= render 'roulettebuttons.js' %>
 </script>

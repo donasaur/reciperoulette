@@ -45,19 +45,24 @@ class UsersController < ApplicationController
     end
   end
 
-  # list_of_recipe_names is set to a list when they play roulette (can be empty)
+  # list_of_recipe_ids is set to a list when they play roulette (can be empty)
   # any time they hit roulette page, force re-query of database
   def roulette
-    @list_of_recipe_names = gather_user_recipe_names
-    @list_of_recipe_names.shuffle! # randomize names!
+    unless params[:recipe_id].nil?
+      render_page_with_selected_recipe(params[:recipe_id])
+      return
+    end
 
-    render_appropriate_page(@list_of_recipe_names)
+    @list_of_recipe_ids = gather_user_recipe_ids
+    @list_of_recipe_ids.shuffle! # randomize names!
+
+    render_appropriate_page(@list_of_recipe_ids)
   end
 
   def block
     @user = current_user
 
-    recipe = Recipe.where({name: params[:name]}).first
+    recipe = Recipe.find(params[:id])
     recipe_already_blocked = @user.blockedrecipelist.recipes.where(id: recipe.id).length > 0
     @user.blockedrecipelist.recipes << recipe unless recipe_already_blocked
 
@@ -66,16 +71,21 @@ class UsersController < ApplicationController
 
   private
 
-    def render_appropriate_page(list_of_recipe_names)
-      if list_of_recipe_names.length > 0
-        @recipe_name = list_of_recipe_names[0]
+    def render_page_with_selected_recipe(recipe_id)
+      @recipe = Recipe.find(recipe_id)
+      render partial: 'roulettemain'
+    end
+
+    def render_appropriate_page(list_of_recipe_ids)
+      if list_of_recipe_ids.length > 0
+        @recipe = Recipe.find(list_of_recipe_ids[0])
         render 'roulette'
       else
         render "sorry"
       end
     end
 
-    def gather_user_recipe_names
+    def gather_user_recipe_ids
       user_ingredients = current_user.pantry.ingredients # list of ingredient objects
       recipe_search_results = Set.new
 
@@ -89,11 +99,11 @@ class UsersController < ApplicationController
       end
 
       # here, recipe_search_results is a list of relevant recipes
-      list_of_recipe_names = recipe_search_results.map do |recipe|
-        recipe.to_s
+      list_of_recipe_ids = recipe_search_results.map do |recipe|
+        recipe.id
       end
 
-      list_of_recipe_names # return list of recipe names
+      list_of_recipe_ids # return list of recipe ids
     end
 
 end
