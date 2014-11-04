@@ -10,14 +10,9 @@
 
   <div class="row" id="row1">
   
-    <div class="roulette contain-center">
+    <div class="roulette contain-center" style = "background-color:<%=progress_bar_percentage(@recipe)%>"=>
       <div id="recipe-name">
         <%= @recipe.name %>
-      </div>
-
-      <% #replace with progress bar UI element %>
-      <div id="recipe-percentage">
-        <center><%= progress_bar_percentage(@recipe) %></center>
       </div>
 
       <div id="roulette-picture">
