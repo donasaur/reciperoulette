@@ -7,7 +7,7 @@ class RecipesController < ApplicationController
   end
 
   def show
-    @recipe = Recipe.where(name: params[:name]).first
+    @recipe = Recipe.find(params[:id])
     render 'recipe'
   end
 
