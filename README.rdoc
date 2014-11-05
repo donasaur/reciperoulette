@@ -1,8 +1,9 @@
 == README
 
 If you want to run this code locally,
-just make sure you have Ruby on Rails, and then install the gems in the Gemfile (with bundle install --without production), and then run "rake db:reset"
-Then just run "rails s" in the root directory
+just make sure you have Ruby on Rails, and then install the gems in the Gemfile (with bundle install --without production), and then run "rake db:reset". Then just run "rails s" in the root directory
+
+Be sure to run db:reset so some sample ingredients and a few sample recipes can get seeded into the database. These are already seeded on heroku. Users can only add pre-existing ingredients to their pantries. The list of valid ingredients for this iteration can be found below. Along with the recipe and ingredient seeds, there is also seeded user with username: "test@example.com" password: "password". This user already has "salt" and "pepper" as ingredients added in their pantry - feel free to add more or just check out the roulette feature immediately. 
 
 If you want to run the unit + functional tests locally, just type:
   rspec
@@ -11,3 +12,9 @@ If you want to see our code on production, go here:
   http://reciperoulette.herokuapp.com/
 
 Enjoy!
+
+== Current list of valid ingredients:
+  salt, pepper, egg, rice, tomato, sour cream, spinach, bell pepper, ham, onion, carrot, sugar, cinnamon, ketchup, mustard, garlic, paprika, oregano, olive oil, vegetable oil, honey, soy sauce, tuna, basil, cheese, lemon, lime, chicken breast, ground beef, ground turkey, bacon, corn, butter, spaghetti, parsley, mayonnaise, cornstarch, lamb, steak, ginger, potato, thyme, milk, noodles, bay leaf, whole chicken, celery, tomato sauce, tortilla, syrup, bread
+
+== Current list of Recipes:
+  Roast_Chicken, Scrambled_Eggs, Spaghetti, Chicken_Fajitas, Quesadilla, French_Toast

@@ -1,0 +1,22 @@
+var change_displayed_recipe = function(recipe_id) {
+  $.post("/users/roulette", { "recipe_id": recipe_id }, function(data) {
+      $(".outer-roulette").replaceWith(data);
+    }, "html");
+};
+
+$(document).ready(function() {
+  console.log(list_of_recipe_ids);
+
+  var recipe_index = 0;
+  var len_of_recipe_list = list_of_recipe_ids.length; // length should be at least one
+  
+  $("body").on("click", "#skip", function() {
+    recipe_index = (recipe_index + 1) % len_of_recipe_list;
+    console.log(list_of_recipe_ids[recipe_index]);
+    change_displayed_recipe(list_of_recipe_ids[recipe_index]);
+  });
+
+  if (window.location.href.indexOf("/block/") > -1) {
+    window.history.pushState("Roulette", "Roulette", "/users/roulette");
+  }
+});

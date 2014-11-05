@@ -19,4 +19,9 @@ describe "IngredientModel" do
     expect(j.save).to eq false
   end
 
+  it "should not be able to create an ingredient with empty name" do
+    i = Ingredient.new(name: "")
+    expect(i.save).to eq false
+  end
+
 end

@@ -2,12 +2,15 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
   }
   root to: redirect('users/dashboard')
+  get 'users/roulette' => 'users#dashboard'
   post 'users/roulette' => 'users#roulette'
-  post 'users/block/:name' => 'users#block'
+  post 'users/block/:id' => 'users#block'
   get  'users/dashboard' => 'users#dashboard'
   post 'users/dashboard' => 'users#update'
-  get 'recipes/:name' => 'recipes#show'
+  get 'recipes/:id' => 'recipes#show'
+  post 'pantries/update' => 'pantries#update'
   resources :recipes
+  resources :pantries
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
