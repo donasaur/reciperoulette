@@ -12,16 +12,16 @@
   <% end %>
 </div>
 <div class="pantry-list">
-  <ul>
-    <%= form_for(@pantry) do |f|%>
+  <%= form_for(@pantry) do |f|%>
+    <ul id="ingredients">
       <% @pantry.ingredients.each do |ingredient| %>
-        <div class="pantry-ingredient">
+        <%= content_tag_for :li, ingredient do %>
           <%= hidden_field_tag "pantry[ingredient_ids][]", nil %>
           <%= check_box_tag "pantry[ingredient_ids][]", ingredient.id , false, id: dom_id(ingredient)%>
           <%= label_tag dom_id(ingredient), ingredient.name %><br>
-        </div>
+        <% end %>
       <% end %>
       <%= submit_tag "Delete Ingredients", class: "btn btn-default" %>
-  	<% end %>
-  </ul>
+    </ul>
+  <% end %>
 </div>
