@@ -40,6 +40,7 @@ class UsersController < ApplicationController
     @user = current_user
     if @user
       @pantry = @user.pantry
+      @ingredients = @pantry.ingredients.sort_by {|a| a.pantry_ingredients[0].position}
     else
       render 'new'
     end
