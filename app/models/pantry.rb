@@ -1,5 +1,6 @@
 class Pantry < ActiveRecord::Base
-  has_and_belongs_to_many :ingredients
+  has_many :pantry_ingredients
+  has_many :ingredients, through: :pantry_ingredients
   belongs_to :user
   validates :user_id, presence: true
 end
