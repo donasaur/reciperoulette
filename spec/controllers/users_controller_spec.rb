@@ -6,63 +6,6 @@ RSpec.describe UsersController, :type => :controller do
     @user = User.new(email: "obama@whitehouse.gov", password: 'password', password_confirmation: 'password')
     @user.save
     sign_in @user
-    @ingredient = Ingredient.create(name: "salt")
-  end
-
-  it "should add an ingredient to the user pantry" do
-    expect(@user.valid?).to be true
-    params = {}
-    params[:commit] = "Add Ingredient"
-    params[:ingredient] = {}
-    params[:ingredient][:name] = @ingredient.name
-    post :update, parameters = params
-    expect(response).to render_template('users/dashboard')
-    expect(@user.pantry.ingredients.exists?(@ingredient)).to be true
-    expect(flash.now[:ingredienterror]).to be_nil
-  end
-
-  it "should remove an ingredient to the user pantry" do
-    expect(@user.valid?).to be true
-    @user.pantry.ingredients << @ingredient
-    expect(@user.pantry.ingredients.exists?(@ingredient)).to be true
-    params = {}
-    params[:commit] = "Remove Ingredient"
-    params[:ingredient] = {}
-    params[:ingredient][:ingredient_id] = @ingredient.id
-    post :update, parameters = params
-    expect(response).to render_template('users/dashboard')
-    expect(@user.pantry.ingredients.exists?(@ingredient)).to be false
-    expect(flash.now[:ingredienterror]).to be_nil
-  end
-
-  it "should not add an ingredient to the user pantry if ingredient not in database" do
-    expect(@user.valid?).to be true
-    bad_ingredient = 'pepper'
-    params = {}
-    params[:commit] = "Add Ingredient"
-    params[:ingredient] = {}
-    params[:ingredient][:name] = bad_ingredient
-    post :update, parameters = params
-    expect(response).to render_template('users/dashboard')
-    expect(@user.pantry.ingredients.exists?( :name => bad_ingredient )).to be false
-    expect(flash.now[:ingredienterror]).to_not be_nil
-  end
-
-  it "should not add an ingredient to the user pantry if ingredient already in pantry" do
-    expect(@user.valid?).to be true
-    expect(@user.pantry.ingredients.where( :name => @ingredient.name ).count).to eq 0
-    params = {}
-    params[:commit] = "Add Ingredient"
-    params[:ingredient] = {}
-    params[:ingredient][:name] = @ingredient.name
-    post :update, parameters = params
-    expect(response).to render_template('users/dashboard')
-    expect(@user.pantry.ingredients.where( :name => @ingredient.name ).count).to eq 1
-    expect(flash.now[:ingredienterror]).to be_nil
-    post :update, parameters = params
-    expect(response).to render_template('users/dashboard')
-    expect(@user.pantry.ingredients.where( :name => @ingredient.name ).count).to eq 1
-    expect(flash.now[:ingredienterror]).to be_nil
   end
 
   it "should render new if not logged in" do
@@ -83,6 +26,11 @@ RSpec.describe UsersController, :type => :controller do
     load Rails.root + "db/seeds_snapshot_iter1.rb"
     @user = User.where(email: "test@example.com").first
     sign_in @user
+    @spaghetti_id = Recipe.find_by(name: "Spaghetti").id
+    @chicken_fajitas_id = Recipe.find_by(name: "Chicken_Fajitas").id
+    @roast_chicken_id = Recipe.find_by(name: "Roast_Chicken").id
+    @scrambled_eggs_id = Recipe.find_by(name: "Scrambled_Eggs").id
+    @quesadilla_id = Recipe.find_by(name: "Quesadilla").id
   end
 
   # Note: only one recipe is shown to the user at a time
@@ -92,31 +40,32 @@ RSpec.describe UsersController, :type => :controller do
   it "should make sure that matched recipes are displayed to the user" do
     post :roulette
     expect(response).to render_template('users/roulette')
-    expect(assigns(:list_of_recipe_names)).to include("Spaghetti")
-    expect(assigns(:list_of_recipe_names)).to include("Chicken_Fajitas")
-    expect(assigns(:list_of_recipe_names)).to include("Roast_Chicken")
-    expect(assigns(:list_of_recipe_names)).to include("Scrambled_Eggs")
+
+    expect(assigns(:list_of_recipe_ids)).to include(@spaghetti_id)
+    expect(assigns(:list_of_recipe_ids)).to include(@chicken_fajitas_id)
+    expect(assigns(:list_of_recipe_ids)).to include(@roast_chicken_id)
+    expect(assigns(:list_of_recipe_ids)).to include(@scrambled_eggs_id)
   end
 
   it "should make sure that unmatched recipes are not displayed to the user" do
     post :roulette
     expect(response).to render_template('users/roulette')
-    expect(assigns(:list_of_recipe_names)).not_to include("Quesadilla")
+    expect(assigns(:list_of_recipe_ids)).not_to include(@quesadilla_id)
   end
 
   it "should make sure that sending a POST request to /users/block/recipe_name prevents recipe from being shown again" do
-    post :block, { :name => "Spaghetti" }
-    expect(assigns(:list_of_recipe_names)).not_to include("Spaghetti")
-    expect(assigns(:list_of_recipe_names)).to include("Chicken_Fajitas")
-    expect(assigns(:list_of_recipe_names)).to include("Roast_Chicken")
-    expect(assigns(:list_of_recipe_names)).to include("Scrambled_Eggs")
+    post :block, { :id => @spaghetti_id }
+    expect(assigns(:list_of_recipe_ids)).not_to include(@spaghetti_id)
+    expect(assigns(:list_of_recipe_ids)).to include(@chicken_fajitas_id)
+    expect(assigns(:list_of_recipe_ids)).to include(@roast_chicken_id)
+    expect(assigns(:list_of_recipe_ids)).to include(@scrambled_eggs_id)
   end
 
   it "should make sure sorry page is displayed when there are no matched recipes" do
-    post :block, { :name => "Spaghetti" }
-    post :block, { :name => "Chicken_Fajitas" }
-    post :block, { :name => "Roast_Chicken" }
-    post :block, { :name => "Scrambled_Eggs" }
+    post :block, { :id => @spaghetti_id }
+    post :block, { :id => @chicken_fajitas_id }
+    post :block, { :id => @roast_chicken_id }
+    post :block, { :id => @scrambled_eggs_id }
 
     post :roulette
     expect(response).to render_template('users/sorry')

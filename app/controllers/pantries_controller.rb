@@ -3,14 +3,16 @@ class PantriesController < ApplicationController
     @user = current_user
     @pantry = @user.pantry
     if params["commit"] == "Add Ingredient"
-      added_ingredient = params["ingredient"].to_i
-      @pantry.ingredient_ids = @pantry.ingredient_ids << added_ingredient
-      render "users/dashboard"
-    elsif params["commit"] == "Delete Ingredients"
-      ingredient_ids = params["pantry"]["ingredient_ids"].map(&:to_i)
-      @pantry.ingredient_ids = @pantry.ingredient_ids - ingredient_ids
+      added_ingredient = Ingredient.find(params["ingredient"].to_i)
+      if !@pantry.ingredients.exists?(added_ingredient)
+        @pantry.ingredients << added_ingredient
+        @pantry.save
+      end
+    elsif params["commit"] == "Delete Ingredient"
+      deleted_ingredient = Ingredient.find(params["ingredient"].to_i)
+      @pantry.ingredients.delete(deleted_ingredient)
       @pantry.save
-      render "users/dashboard"
     end
+    redirect_to users_dashboard_path
   end
 end

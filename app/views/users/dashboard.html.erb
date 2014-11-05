@@ -6,7 +6,32 @@
 		<div class="dashboard-header-med">
 		  <h2> Your Pantry </h2>
 		</div>
-		<%= render 'users/dashboard/pantry' %>
+		<% if flash[:ingredienterror] %>
+			<p class="error">
+  			<%= h flash[:ingredienterror] %>
+			</p>
+		<% end %>
+
+		<div class="add-ingredient">
+			<% # This form should link to an update route to add ingredients %>
+			<%= form_for(@pantry) do |i| %>
+  			<%= select_tag 'ingredient', options_from_collection_for_select(Ingredient.all.order('name ASC'), 'id', 'name') %>
+  			<%= submit_tag "Add Ingredient" %>
+			<% end %>
+		</div>
+		<div class="pantry-list">
+  		<ul>
+    		<% @pantry.ingredients.order('name ASC').each do |ingredient| %>
+      		<div class="pantry-ingredient">
+        		<%= check_box_tag(ingredient.id, ingredient.id, false) %>
+        		<%= label_tag dom_id(ingredient), ingredient.name %>
+        		<span class="remove-button">
+          		<%= button_to("X", { action: 'update', method: :post, controller: "pantries", commit: "Delete Ingredient", ingredient: ingredient.id}) %>
+          	</span>
+      		</div>
+    		<% end %>
+  		</ul>
+		</div>
 	</div>
 
 	<div id="dashboard-saved-recipes">

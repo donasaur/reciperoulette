@@ -145,8 +145,8 @@ body {
 }
 
 .pantry-ingredient {
-  padding-top:10px;
-  padding-bottom:10px;
+  padding-top:5px;
+  padding-bottom:5px;
 }
 
 .add-ingredient {
@@ -156,8 +156,14 @@ body {
 
 .remove-button {
   float:right;
+  position:relative;
   display: inline-block;
   vertical-align:middle;
+  font-weight:bolder;
+  color:red;
+}
+
+.remove-button-text {
 }
 
 .ingredient {
