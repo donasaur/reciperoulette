@@ -1,53 +1,51 @@
-<html>
-  <div class="dashboard-header-big">
+<div class="dashboard-header-big">
 	<h1> <%= "Welcome to your dashboard, #{@user.email}!" %> </h1>
+</div>
+<div id="dashboard-pantry">
+	<div class="dashboard-header-med">
+	  <h2> Your Pantry </h2>
 	</div>
-	<div id="dashboard-pantry">
-		<div class="dashboard-header-med">
-		  <h2> Your Pantry </h2>
-		</div>
-		<% if flash[:ingredienterror] %>
-			<p class="error">
-  			<%= h flash[:ingredienterror] %>
-			</p>
-		<% end %>
-
-		<div class="add-ingredient">
-			<% # This form should link to an update route to add ingredients %>
-			<%= form_for(@pantry) do |i| %>
-  			<%= select_tag 'ingredient', options_from_collection_for_select(Ingredient.all.order('name ASC'), 'id', 'name') %>
-  			<%= submit_tag "Add Ingredient" %>
-			<% end %>
-		</div>
-		<div class="pantry-list">
-  		<ul>
-      <%= form_tag({ controller: 'users', action: 'roulette' }, method: :post) do %>
-    		<% @pantry.ingredients.order('name ASC').each do |ingredient| %>
-      		<div class="pantry-ingredient">
-        		<%= check_box_tag("pantry[ingredient_ids][]", ingredient.id, PantryIngredient.find_by(pantry_id: @pantry.id, ingredient_id: ingredient.id).active, id: dom_id(ingredient)) %>
-        		<%= label_tag dom_id(ingredient), ingredient.name %>
-        		<span class="remove-button">
-            	<%= link_to("X", { action: 'update', controller: "pantries", commit: "Delete Ingredient", ingredient: ingredient.id }, style: 'color:red', method: :post) %>
-          	</span>
-      		</div>
-    		<% end %>
-  		</ul>
-		</div>
-	</div>
-
-	<div id="dashboard-saved-recipes">
-	  <div class="dashboard-header-med">
-	    <h2> Your Saved Recipes </h2>
-		</div>
-		<%= render 'users/dashboard/savedrecipes' %>
-	</div>
-
-	<div id="roulette-button">
-    <%= submit_tag "Play Roulette", controller: :users, action: "roulette", method: :post, class: "btn btn-default" %>
-
-	  <% # button_to "Play Roulette", controller: :users, action: "roulette", method: :post %>
+	<% if flash[:ingredienterror] %>
+		<p class="error">
+			<%= h flash[:ingredienterror] %>
+		</p>
+	<% end %>
+  <div class="add-ingredient">
+    <% # This form should link to an update route to add ingredients %>
+    <%= form_for(@pantry) do |i| %>
+      <%= select_tag 'ingredient', options_from_collection_for_select(Ingredient.all.order('name ASC'), 'id', 'name') %>
+      <%= submit_tag "Add Ingredient" %>
     <% end %>
+  </div>
+  <div class="pantry-list">
+    <%= form_for(@pantry) do |f|%>
+      <ul id="ingredients" data-update-url="<%= sort_pantries_url %>">
+        <% @ingredients.each do |ingredient| %>
+          <%= content_tag_for :li, ingredient do %>
+            <%= hidden_field_tag "pantry[ingredient_ids][]", nil %>
+            <%= check_box_tag(ingredient.id, ingredient.id, false) %>
+            <%= label_tag dom_id(ingredient), ingredient.name %>
+            <span class="remove-button">
+              <%= button_to("X", { action: 'update', method: :post, controller: "pantries", commit: "Delete Ingredient", ingredient: ingredient.id}) %>
+            </span>
+          <% end %>
+        <% end %>
+      </ul>
+      <%= submit_tag "Delete Ingredients", class: "btn btn-default" %>
+    <% end %>
+  </div>
+</div>
+
+<div id="dashboard-saved-recipes">
+  <div class="dashboard-header-med">
+    <h2> Your Saved Recipes </h2>
 	</div>
+	<%= render 'users/dashboard/savedrecipes' %>
+</div>
 
+<div id="roulette-button">
+  <%= submit_tag "Play Roulette", controller: :users, action: "roulette", method: :post, class: "btn btn-default" %>
 
-</html>
+  <% # button_to "Play Roulette", controller: :users, action: "roulette", method: :post %>
+</div>
+

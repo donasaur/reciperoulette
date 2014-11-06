@@ -27,4 +27,13 @@ class PantriesController < ApplicationController
       redirect_to users_roulette_path
     end
   end
+
+  def sort
+    params[:ingredient].each_with_index do |id, index|
+      i = Ingredient.find(id).pantry_ingredients[0]
+      i.position = index + 1
+      i.save
+    end
+    render nothing: true
+  end
 end
