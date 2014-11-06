@@ -48,13 +48,30 @@ class UsersController < ApplicationController
   # list_of_recipe_ids is set to a list when they play roulette (can be empty)
   # any time they hit roulette page, force re-query of database
   def roulette
+    @user = current_user
+    @pantry = @user.pantry
+    if params["commit"] == "Play Roulette"
+      ingredient_ids = []
+      if params["pantry"]
+        ingredient_ids = params["pantry"]["ingredient_ids"].map(&:to_i)
+      end
+      @pantry.ingredients.each do |ingredient|
+        pantry_ingredient = @pantry.pantry_ingredients.find_by(ingredient_id: ingredient.id)
+        active = ingredient_ids.include?(ingredient.id)
+        pantry_ingredient.active = active
+        pantry_ingredient.save
+      end
+    end
+
+    @active_ingredients = get_active_ingredients(@user)
+
     unless params[:recipe_id].nil?
       render_page_with_selected_recipe(params[:recipe_id])
       return
     end
 
-    set_of_recipes = gather_user_recipes
-    @list_of_recipe_ids = weighted_randomize(set_of_recipes)
+    set_of_recipes = gather_user_recipes(@active_ingredients)
+    @list_of_recipe_ids = weighted_randomize(set_of_recipes, @active_ingredients)
 
     render_appropriate_page(@list_of_recipe_ids)
   end
@@ -71,7 +88,23 @@ class UsersController < ApplicationController
 
   private
 
-    def weighted_randomize(set_of_recipes)
+    # For a given user, returns a list of ingredient objects that are active in the pantry
+    # If no ingredients are active, will return all ingredients in pantry
+    def get_active_ingredients(user)
+      pantry = user.pantry
+      pantry_ingredients = PantryIngredient.where(pantry_id: pantry.id, active: true)
+      if pantry_ingredients.empty?
+        pantry_ingredients = PantryIngredient.where(pantry_id: pantry.id)
+      end
+
+      active_ingredients = []
+      pantry_ingredients.each do |pantry_ingredient|
+        active_ingredients << Ingredient.find(pantry_ingredient.ingredient_id)
+      end
+      return active_ingredients
+    end
+
+    def weighted_randomize(set_of_recipes, active_ingredients)
 
       # Initialization
       @user = current_user # to get list of user ingredients
@@ -89,7 +122,7 @@ class UsersController < ApplicationController
       # algorithm portion
       # recipe with twice the number of ingred. matched is twice as likely to show up
       list_of_recipes.each do |recipe|
-        list_of_recipe_frequencies << (recipe.ingredients & @user.pantry.ingredients).length
+        list_of_recipe_frequencies << (recipe.ingredients & active_ingredients).length
       end
 
       # each itertion adds one recipe id to the rtn_list_of_recipe_ids
@@ -135,7 +168,7 @@ class UsersController < ApplicationController
       end
     end
 
-    def gather_user_recipes
+    def gather_user_recipes(user_ingredients = current_user.pantry.ingredients)
       user_ingredients = current_user.pantry.ingredients # list of ingredient objects
       recipe_search_results = Set.new
 
