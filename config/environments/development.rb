@@ -39,4 +39,9 @@ Rails.application.configure do
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
 
   # Need to set action_mailer host correctly for production
+
+  # Default paperclip settings
+  config.paperclip_defaults = {
+  :storage => :filesystem
+  }
 end

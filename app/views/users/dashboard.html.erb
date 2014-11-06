@@ -6,7 +6,35 @@
 		<div class="dashboard-header-med">
 		  <h2> Your Pantry </h2>
 		</div>
-		<%= render 'users/dashboard/pantry' %>
+		<% if flash[:ingredienterror] %>
+			<p class="error">
+  			<%= h flash[:ingredienterror] %>
+			</p>
+		<% end %>
+
+		<div class="add-ingredient">
+			<% # This form should link to an update route to add ingredients %>
+			<%= form_for(@pantry) do |i| %>
+  			<%= select_tag 'ingredient', options_from_collection_for_select(Ingredient.all.order('name ASC'), 'id', 'name') %>
+  			<%= submit_tag "Add Ingredient", class: "btn btn-success" %>
+			<% end %>
+		</div>
+		<div class="pantry-list">
+      <%= form_tag({ controller: 'users', action: 'roulette' }, method: :post) do %>
+  		  <ul id="ingredients" data-update-url="<%= sort_pantries_url%>">
+    		<% @pantry.ingredients.sort_by {|a| a.pantry_ingredients[0].position}.each do |ingredient| %>
+          <%= content_tag_for :li, ingredient do %>
+        		<div class="pantry-ingredient">
+          		<%= check_box_tag("pantry[ingredient_ids][]", ingredient.id, PantryIngredient.find_by(pantry_id: @pantry.id, ingredient_id: ingredient.id).active, id: dom_id(ingredient)) %>
+          		<%= label_tag dom_id(ingredient), ingredient.name %>
+          		<span class="remove-button">
+              	<%= link_to("X", { action: 'update', controller: "pantries", commit: "Delete Ingredient", ingredient: ingredient.id }, style: 'color:red', method: :post) %>
+            	</span>
+        		</div>
+          <% end -%>
+    		<% end %>
+  		</ul>
+		</div>
 	</div>
 
 	<div id="dashboard-saved-recipes">
@@ -15,9 +43,23 @@
 		</div>
 		<%= render 'users/dashboard/savedrecipes' %>
 	</div>
+  <div id="dashboard-add-recipe">
+    <%= link_to "Add a new recipe", new_recipe_path, class: "btn btn-success" %>
+  </div>
+
+  <div id="dashboard-tags">
+    <h2> Recipe Filters </h2>
+    <% Tag.all.each do |t| %>
+      <span class="tag">
+        <%= check_box_tag("tags[tag_ids][]", t.id, true, id: dom_id(t)) %>
+        <%= label_tag dom_id(t), t.name %>
+      </span>
+    <% end %>
+  </div>
 
 	<div id="roulette-button">
-	  <%= button_to "Play Roulette", controller: :users, action: "roulette", method: :post %>
+    <%= submit_tag "Play Roulette", controller: :users, action: "roulette", method: :post, class: "btn btn-primary btn-lg" %>
+    <% end %>
 	</div>
 
 

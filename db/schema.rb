@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141024064920) do
+ActiveRecord::Schema.define(version: 20141106093822) do
 
   create_table "blockedrecipelists", force: true do |t|
     t.datetime "created_at"
@@ -32,14 +32,6 @@ ActiveRecord::Schema.define(version: 20141024064920) do
     t.datetime "updated_at"
   end
 
-  create_table "ingredients_pantries", id: false, force: true do |t|
-    t.integer "ingredient_id"
-    t.integer "pantry_id"
-  end
-
-  add_index "ingredients_pantries", ["ingredient_id", "pantry_id"], name: "index_ingredients_pantries_on_ingredient_id_and_pantry_id"
-  add_index "ingredients_pantries", ["pantry_id"], name: "index_ingredients_pantries_on_pantry_id"
-
   create_table "ingredients_recipes", id: false, force: true do |t|
     t.integer "ingredient_id"
     t.integer "recipe_id"
@@ -56,6 +48,15 @@ ActiveRecord::Schema.define(version: 20141024064920) do
 
   add_index "pantries", ["user_id"], name: "index_pantries_on_user_id"
 
+  create_table "pantry_ingredients", force: true do |t|
+    t.integer  "pantry_id"
+    t.integer  "ingredient_id"
+    t.boolean  "active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "position",      default: 0
+  end
+
   create_table "recipes", force: true do |t|
     t.string   "name"
     t.string   "tag"
@@ -65,6 +66,15 @@ ActiveRecord::Schema.define(version: 20141024064920) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+  end
+
+  create_table "recipes_tags", force: true do |t|
+    t.integer "tag_id"
+    t.integer "recipe_id"
   end
 
   create_table "recipes_users", id: false, force: true do |t|
@@ -74,6 +84,12 @@ ActiveRecord::Schema.define(version: 20141024064920) do
 
   add_index "recipes_users", ["recipe_id", "user_id"], name: "index_recipes_users_on_recipe_id_and_user_id"
   add_index "recipes_users", ["user_id"], name: "index_recipes_users_on_user_id"
+
+  create_table "tags", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

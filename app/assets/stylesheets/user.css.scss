@@ -118,7 +118,7 @@ body {
 
 #dashboard-pantry {
 	line-height:30px;
-  background-color:pink;
+  background-color:lightblue;
   width:40%;
   float:left;
   padding:10px;
@@ -128,8 +128,27 @@ body {
 	line-height:30px;
   width:40%;
   float:right;
-  background-color:lightblue;
+  background-color:darkturquoise;
   padding:10px;
+}
+
+#dashboard-add-recipe {
+  width:40%;
+  float:right;
+  padding:10px;
+}
+
+#dashboard-tags {
+  padding:10px;
+  position:relative;
+  text-align:center;
+  clear:both;
+}
+
+.tag {
+  padding:5px;
+  border-style:groove;
+  border-width:2px;
 }
 
 #roulette-button {
@@ -140,13 +159,14 @@ body {
 }
 
 .pantry-list {
-  background-color:hotpink;
   padding:10px;
 }
 
 .pantry-ingredient {
-  padding-top:10px;
-  padding-bottom:10px;
+  padding:5px;
+    background-color:aliceblue;
+
+  border-style:groove;
 }
 
 .add-ingredient {
@@ -156,8 +176,14 @@ body {
 
 .remove-button {
   float:right;
+  position:relative;
   display: inline-block;
   vertical-align:middle;
+  font-weight:bolder;
+  color:red;
+}
+
+.remove-button-text {
 }
 
 .ingredient {
@@ -175,4 +201,7 @@ body {
 .dashboard-header-med {
   text-align:center;
   padding-bottom:10px;
+  border-style:ridge;
+  border-width:5px;
+  border-color:silver;
 }

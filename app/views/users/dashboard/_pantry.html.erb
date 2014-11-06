@@ -18,7 +18,9 @@
         <div class="pantry-ingredient">
           <%= hidden_field_tag "pantry[ingredient_ids][]", nil %>
           <%= check_box_tag "pantry[ingredient_ids][]", ingredient.id , false, id: dom_id(ingredient)%>
-          <%= label_tag dom_id(ingredient), ingredient.name %><br>
+          <%= label_tag dom_id(ingredient), ingredient.name %>
+            <%= link_to "X", method: :post, class: "btn btn-small btn-danger" %>
+          <%= button_to "Delete Ingredient", { action: "update", controller: "pantries", id: ingredient.id }, { method: :post, button_class: "btn btn-small btn-danger" } %>
         </div>
       <% end %>
       <%= submit_tag "Delete Ingredients", class: "btn btn-default" %>

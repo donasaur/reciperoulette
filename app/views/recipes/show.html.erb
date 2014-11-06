@@ -6,7 +6,7 @@
 	      <%= @recipe.name %>
 	     </div>
 	     <div id="recipe-picture">
-	      <%= image_tag "#{@recipe.name}.jpg" %>
+	      <%= image_tag @recipe.image.url(:medium) %>
 	    </div>
 	  </div>
 
