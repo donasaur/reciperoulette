@@ -46,6 +46,9 @@ group :development, :test do
   gem 'byebug',               '~> 3.1'
   gem 'factory_girl',         '~> 4.4'
   gem 'factory_girl_rails',   '~> 4.4'
+  gem 'cucumber-rails', :require => false
+  # database cleaner recommended for use with cucumber
+  gem 'database_cleaner'
 end
 
 group :production do
