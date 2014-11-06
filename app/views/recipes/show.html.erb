@@ -1,18 +1,41 @@
 <div class="outer-recipe contain-center">
 
 	<div class="row">
-	  <div class="recipe col-lg-4 col-lg-offset-2">
-	    <div id="recipe-name">
-	      <%= @recipe.name %>
-	     </div>
-	     <div id="recipe-picture">
-	      <%= image_tag @recipe.image.url(:medium) %>
-	    </div>
-	  </div>
+		<div class="row1">
 
-	  <div class="recipe-ingredients col-lg-3 col-lg-offset-2">
-	    <%= render 'recipes/ingredients' %>
-	  </div>
+		  <div id="block">
+		    <button class="btn" type="button">Block</button>
+		  </div>
+
+		  <div id="skip">
+		    <button class="btn" type="button">Save</button>
+		  </div>
+		  
+		  <div class="recipe">
+		    <div id="recipe-name">
+		      <%= @recipe.name %>
+		     </div>
+		     <div id="recipe-picture">
+		      <%= image_tag @recipe.image.url(:medium) %>
+		    </div>
+		    <div class="times">
+		    	<strong>Prep Time:</strong> <%= @recipe.prep_time %> min<br>
+		    	<strong>Cook Time:</strong> <%= @recipe.cook_time %> min
+		    </div>
+		  </div>
+
+		</div>
+	 </div>
+
+	 <div class="row">
+	 	<div class="row2">
+		 	<div class="bottomleft">
+		 		<%= render 'recipes/ingredients' %>
+		 	</div>
+		 	<div class="bottomright">
+		 		Instructions
+		 	</div>
+		 </div>
 	 </div>
 
 </div

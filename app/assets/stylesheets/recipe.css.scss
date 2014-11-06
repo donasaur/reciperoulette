@@ -8,7 +8,7 @@
 /* styles for the recipe page */
 
 .outer-recipe{
-  margin:0 auto;
+  margin:50 auto;
   width:100%;
   padding: 10px;
   min-width: 800px
@@ -18,36 +18,56 @@
 .recipe{
   width:400px;
   float:none;
-  /*background-color:oldlace;*/
+  background-color:oldlace;
   padding: 25px;
-}
-
-#recipe-title {
-  color:red;
+  margin-left:auto;
+  margin-right: auto;
 }
 
 #recipe-name{
   color:blue;
   padding: 10px;
   font-weight: bold;
+  font-size: 20px;
 }
 
 #recipe-picture img{
 	width:350px;
   margin-left: auto;
   margin-right: auto;
+  padding-bottom:15px;
 }
 
-/* box around ingredients */
-.recipe-ingredients{
-  /*background-color: yellow;*/
-  padding: 20px;
-  width: 300px;
-  float:none;
-  position: relative;
-  right:0; 
+.times{
+  text-align: center;
 }
 
-#recipe-ingredients-list{
+.row1{
+  width:60%;
+  min-width:550px;
+  // background-color:yellow;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+.row2{
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bottomleft{
+  min-height: 100px;
+  width:30%;
+  float:left;
+  background-color: red;
+  padding:30px
+}
+
+.bottomright{
+  min-height: 100px;
+  width: 65%;
+  float:right;
+  background-color:blue;
+  padding:30px;
 }
