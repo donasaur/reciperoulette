@@ -18,15 +18,11 @@
         <%= content_tag_for :li, ingredient do %>
           <%= hidden_field_tag "pantry[ingredient_ids][]", nil %>
           <%= check_box_tag "pantry[ingredient_ids][]", ingredient.id , false, id: dom_id(ingredient)%>
-<<<<<<< HEAD
-          <%= label_tag dom_id(ingredient), ingredient.name %>
-            <%= link_to "X", method: :post, class: "btn btn-small btn-danger" %>
-          <%= button_to "Delete Ingredient", { action: "update", controller: "pantries", id: ingredient.id }, { method: :post, button_class: "btn btn-small btn-danger" } %>
-        </div>
-=======
-          <%= label_tag dom_id(ingredient), ingredient.name %>  [drag] <br>
+          <%= label_tag dom_id(ingredient), ingredient.name %>  [drag]
+          <span class="remove-button">
+            <%= button_to("X", { action: 'update', method: :post, controller: "pantries", commit: "Delete Ingredient", ingredient: ingredient.id}) %>
+          </span>
         <% end %>
->>>>>>> sortable_pantry
       <% end %>
     </ul>
   <%= submit_tag "Delete Ingredients", class: "btn btn-default" %>
