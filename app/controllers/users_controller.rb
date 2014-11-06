@@ -50,6 +50,7 @@ class UsersController < ApplicationController
   def roulette
     @user = current_user
     @pantry = @user.pantry
+    @tags = []
     if params["commit"] == "Play Roulette"
       ingredient_ids = []
       if params["pantry"]
@@ -61,6 +62,9 @@ class UsersController < ApplicationController
         pantry_ingredient.active = active
         pantry_ingredient.save
       end
+      if params["tags"]
+        @tags = Tag.where(id: params["tags"]["tag_ids"].map(&:to_i))
+      end
     end
 
     @active_ingredients = get_active_ingredients(@user)
@@ -70,7 +74,7 @@ class UsersController < ApplicationController
       return
     end
 
-    set_of_recipes = gather_user_recipes(@active_ingredients)
+    set_of_recipes = gather_user_recipes(@active_ingredients, @tags)
     @list_of_recipe_ids = weighted_randomize(set_of_recipes, @active_ingredients)
 
     render_appropriate_page(@list_of_recipe_ids)
@@ -168,7 +172,7 @@ class UsersController < ApplicationController
       end
     end
 
-    def gather_user_recipes(user_ingredients = current_user.pantry.ingredients)
+    def gather_user_recipes(user_ingredients, tags)
       user_ingredients = current_user.pantry.ingredients # list of ingredient objects
       recipe_search_results = Set.new
 
@@ -179,6 +183,12 @@ class UsersController < ApplicationController
 
       current_user.blockedrecipelist.recipes.each do |blocked_recipe|
         recipe_search_results.delete?(blocked_recipe)
+      end
+
+      recipe_search_results.each do |recipe|
+        if (recipe.tags & tags).length == 0
+          recipe_search_results.delete?(recipe)
+        end
       end
 
       recipe_search_results

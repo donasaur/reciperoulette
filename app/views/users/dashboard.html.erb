@@ -16,7 +16,7 @@
 			<% # This form should link to an update route to add ingredients %>
 			<%= form_for(@pantry) do |i| %>
   			<%= select_tag 'ingredient', options_from_collection_for_select(Ingredient.all.order('name ASC'), 'id', 'name') %>
-  			<%= submit_tag "Add Ingredient", class: "btn btn-info" %>
+  			<%= submit_tag "Add Ingredient", class: "btn btn-success" %>
 			<% end %>
 		</div>
 		<div class="pantry-list">
@@ -44,7 +44,17 @@
 		<%= render 'users/dashboard/savedrecipes' %>
 	</div>
   <div id="dashboard-add-recipe">
-    <%= link_to "Add a new recipe", new_recipe_path, class: "btn btn-info" %>
+    <%= link_to "Add a new recipe", new_recipe_path, class: "btn btn-success" %>
+  </div>
+
+  <div id="dashboard-tags">
+    <h2> Recipe Filters </h2>
+    <% Tag.all.each do |t| %>
+      <span class="tag">
+        <%= check_box_tag("tags[tag_ids][]", t.id, true, id: dom_id(t)) %>
+        <%= label_tag dom_id(t), t.name %>
+      </span>
+    <% end %>
   </div>
 
 	<div id="roulette-button">
