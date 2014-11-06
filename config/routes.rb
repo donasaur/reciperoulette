@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   post 'users/block/:id' => 'users#block'
   get  'users/dashboard' => 'users#dashboard'
   post 'users/dashboard' => 'users#update'
-  get 'recipes/:id' => 'recipes#show'
   post 'pantries/update' => 'pantries#update'
   resources :recipes
   resources :pantries

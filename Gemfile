@@ -31,6 +31,9 @@ gem 'spring',        group: :development
 
 gem 'simplecov', :require => false, :group => :test
 
+gem 'paperclip'
+gem 'aws-sdk'
+
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record

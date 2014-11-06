@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141105012613) do
+ActiveRecord::Schema.define(version: 20141106060223) do
 
   create_table "blockedrecipelists", force: true do |t|
     t.datetime "created_at"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20141105012613) do
     t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "position",      default: 0
   end
 
   create_table "recipes", force: true do |t|
@@ -65,6 +66,10 @@ ActiveRecord::Schema.define(version: 20141105012613) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "recipes_users", id: false, force: true do |t|
