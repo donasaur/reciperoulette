@@ -17,8 +17,8 @@ module UsersHelper
   end
 
   # given a recipe, returns a percent of ingredients matched
-  def progress_bar_percentage(recipe)
-    num_of_ingredients_matched = (recipe.ingredients & get_active_ingredients(current_user)).length
+  def progress_bar_percentage(recipe, user = current_user)
+    num_of_ingredients_matched = (recipe.ingredients & get_active_ingredients(user)).length
     percent_of_ingredients_matched = num_of_ingredients_matched.fdiv(recipe.ingredients.length) * 100
     case percent_of_ingredients_matched
     when 0..25
