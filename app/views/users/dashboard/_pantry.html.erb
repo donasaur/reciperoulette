@@ -12,18 +12,23 @@
   <% end %>
 </div>
 <div class="pantry-list">
-  <ul>
-    <%= form_for(@pantry) do |f|%>
-      <% @pantry.ingredients.each do |ingredient| %>
-        <div class="pantry-ingredient">
+  <%= form_for(@pantry) do |f|%>
+    <ul id="ingredients" data-update-url="<%= sort_pantries_url %>">
+      <% @ingredients.each do |ingredient| %>
+        <%= content_tag_for :li, ingredient do %>
           <%= hidden_field_tag "pantry[ingredient_ids][]", nil %>
           <%= check_box_tag "pantry[ingredient_ids][]", ingredient.id , false, id: dom_id(ingredient)%>
+<<<<<<< HEAD
           <%= label_tag dom_id(ingredient), ingredient.name %>
             <%= link_to "X", method: :post, class: "btn btn-small btn-danger" %>
           <%= button_to "Delete Ingredient", { action: "update", controller: "pantries", id: ingredient.id }, { method: :post, button_class: "btn btn-small btn-danger" } %>
         </div>
+=======
+          <%= label_tag dom_id(ingredient), ingredient.name %>  [drag] <br>
+        <% end %>
+>>>>>>> sortable_pantry
       <% end %>
-      <%= submit_tag "Delete Ingredients", class: "btn btn-default" %>
-  	<% end %>
-  </ul>
+    </ul>
+  <%= submit_tag "Delete Ingredients", class: "btn btn-default" %>
+  <% end %>
 </div>

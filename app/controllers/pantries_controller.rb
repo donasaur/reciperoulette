@@ -15,4 +15,13 @@ class PantriesController < ApplicationController
     end
     redirect_to users_dashboard_path
   end
+
+  def sort
+    params[:ingredient].each_with_index do |id, index|
+      i = Ingredient.find(id).pantry_ingredients[0]
+      i.position = index + 1
+      i.save
+    end
+    render nothing: true
+  end
 end
