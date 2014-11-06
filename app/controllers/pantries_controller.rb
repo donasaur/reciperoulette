@@ -3,7 +3,7 @@ class PantriesController < ApplicationController
     @user = current_user
     @pantry = @user.pantry
     if params["commit"] == "Add Ingredient"
-      added_ingredient = Ingredient.find(params["ingredient"].to_i)
+      added_ingredient = Ingredient.find_by_name(params[:ingredient_name])
       if !@pantry.ingredients.exists?(added_ingredient)
         @pantry.ingredients << added_ingredient
         @pantry.save

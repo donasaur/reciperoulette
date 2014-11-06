@@ -1,55 +1,55 @@
-<html>
-  <div class="dashboard-header-big">
-	<h1> <%= "Welcome to your dashboard, #{@user.email}!" %> </h1>
+
+<div class="dashboard-header-big">
+  <h1> <%= "Welcome to your dashboard, #{@user.email}!" %> </h1>
+  </div>
+<div id="dashboard-pantry">
+	<div class="dashboard-header-med">
+	  <h2> Your Pantry </h2>
 	</div>
-	<div id="dashboard-pantry">
-		<div class="dashboard-header-med">
-		  <h2> Your Pantry </h2>
-		</div>
-		<% if flash[:ingredienterror] %>
-			<p class="error">
-  			<%= h flash[:ingredienterror] %>
-			</p>
+	<% if flash[:ingredienterror] %>
+		<p class="error">
+			<%= h flash[:ingredienterror] %>
+		</p>
+	<% end %>
+
+	<div class="add-ingredient">
+		<% # This form should link to an update route to add ingredients %>
+		<%= form_for(@pantry) do |i| %>
+      <%= i.label :ingredient_name %> <br />
+      <%= text_field_tag :ingredient_name, nil, placeholder: "ingredient",  data: {autocomplete_source: Ingredient.all.map(&:name)} %>
+			<%= submit_tag "Add Ingredient" %>
 		<% end %>
-
-		<div class="add-ingredient">
-			<% # This form should link to an update route to add ingredients %>
-			<%= form_for(@pantry) do |i| %>
-  			<%= select_tag 'ingredient', options_from_collection_for_select(Ingredient.all.order('name ASC'), 'id', 'name') %>
-  			<%= submit_tag "Add Ingredient" %>
-			<% end %>
-		</div>
-		<div class="pantry-list">
-      <%= form_tag({ controller: 'users', action: 'roulette' }, method: :post) do %>
-  		  <ul id="ingredients" data-update-url="<%= sort_pantries_url%>">
-    		<% @pantry.ingredients.sort_by {|a| a.pantry_ingredients[0].position}.each do |ingredient| %>
-          <%= content_tag_for :li, ingredient do %>
-        		<div class="pantry-ingredient">
-          		<%= check_box_tag("pantry[ingredient_ids][]", ingredient.id, PantryIngredient.find_by(pantry_id: @pantry.id, ingredient_id: ingredient.id).active, id: dom_id(ingredient)) %>
-          		<%= label_tag dom_id(ingredient), ingredient.name %>
-          		<span class="remove-button">
-              	<%= link_to("X", { action: 'update', controller: "pantries", commit: "Delete Ingredient", ingredient: ingredient.id }, style: 'color:red', method: :post) %>
-            	</span>
-        		</div>
-          <% end -%>
-    		<% end %>
-  		</ul>
-		</div>
 	</div>
-
-	<div id="dashboard-saved-recipes">
-	  <div class="dashboard-header-med">
-	    <h2> Your Saved Recipes </h2>
-		</div>
-		<%= render 'users/dashboard/savedrecipes' %>
+	<div class="pantry-list">
+    <%= form_tag({ controller: 'users', action: 'roulette' }, method: :post) do %>
+		  <ul id="ingredients" data-update-url="<%= sort_pantries_url%>">
+  		<% @pantry.ingredients.sort_by {|a| a.pantry_ingredients[0].position}.each do |ingredient| %>
+        <%= content_tag_for :li, ingredient do %>
+      		<div class="pantry-ingredient">
+        		<%= check_box_tag("pantry[ingredient_ids][]", ingredient.id, PantryIngredient.find_by(pantry_id: @pantry.id, ingredient_id: ingredient.id).active, id: dom_id(ingredient)) %>
+        		<%= label_tag dom_id(ingredient), ingredient.name %>
+        		<span class="remove-button">
+            	<%= link_to("X", { action: 'update', controller: "pantries", commit: "Delete Ingredient", ingredient: ingredient.id }, style: 'color:red', method: :post) %>
+          	</span>
+      		</div>
+        <% end -%>
+  		<% end %>
+		</ul>
 	</div>
+</div>
 
-	<div id="roulette-button">
-    <%= submit_tag "Play Roulette", controller: :users, action: "roulette", method: :post, class: "btn btn-default" %>
-
-	  <% # button_to "Play Roulette", controller: :users, action: "roulette", method: :post %>
-    <% end %>
+<div id="dashboard-saved-recipes">
+  <div class="dashboard-header-med">
+    <h2> Your Saved Recipes </h2>
 	</div>
+	<%= render 'users/dashboard/savedrecipes' %>
+</div>
+
+<div id="roulette-button">
+  <%= submit_tag "Play Roulette", controller: :users, action: "roulette", method: :post, class: "btn btn-default" %>
+
+  <% # button_to "Play Roulette", controller: :users, action: "roulette", method: :post %>
+  <% end %>
+</div>
 
 
-</html>
