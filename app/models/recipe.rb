@@ -5,12 +5,17 @@ class Recipe < ActiveRecord::Base
 
   has_attached_file :image, styles: {
     thumb: '100x100>',
-    square: '200x200#',
-    medium: '300x300>',
+    medium: '500x500>',
     large:  '1000x1000>'
   }
 
   validates :name, presence: true, uniqueness: true
+
+  validates_attachment :image, 
+  :content_type => { :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"] },
+  :size => { :in => 0..2.megabytes }
+
+
 
   def to_s
     name

@@ -35,6 +35,7 @@ gem 'simplecov', :require => false, :group => :test
 
 gem 'paperclip'
 gem 'aws-sdk'
+gem 'rmagick'
 
 
 group :development, :test do

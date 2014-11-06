@@ -91,17 +91,27 @@ seed_user.pantry.ingredients << Ingredient.where(:name => ['salt', 'pepper'])
 
 # Recipes
 recipe_one = Recipe.create({name: 'Roast_Chicken',
+                        image: File.new("app/assets/images/Roast_Chicken.jpg"),
                         ingredients: Ingredient.where(:name => ['whole chicken', 'salt', 'pepper', 'paprika', 'onion', 'celery', 'carrot', 'garlic', 'bay leaf', 'olive oil'])})
+recipe_two = Recipe.create(name: 'Scrambled_Eggs', 
+                        image: File.new("app/assets/images/Scrambled_Eggs.jpg"),
+                        ingredients: Ingredient.where(:name => ['egg', 'butter', 'salt', 'pepper']))
 
-recipe_two = Recipe.create(name: 'Scrambled_Eggs', ingredients: Ingredient.where(:name => ['egg', 'butter', 'salt', 'pepper']))
+recipe_three = Recipe.create(name: 'Spaghetti', 
+                        image: File.new("app/assets/images/Spaghetti.jpg"),
+                        ingredients: Ingredient.where(:name => ['spaghetti', 'tomato sauce', 'pepper', 'salt']))
 
-recipe_three = Recipe.create(name: 'Spaghetti', ingredients: Ingredient.where(:name => ['spaghetti', 'tomato sauce', 'pepper', 'salt']))
+recipe_four = Recipe.create(name: 'Chicken_Fajitas', 
+                        image: File.new("app/assets/images/Chicken_Fajitas.jpg"),
+                        ingredients: Ingredient.where(:name => ['chicken breast', 'onion', 'bell pepper', 'salt', 'pepper']))
 
-recipe_four = Recipe.create(name: 'Chicken_Fajitas', ingredients: Ingredient.where(:name => ['chicken breast', 'onion', 'bell pepper', 'salt', 'pepper']))
+recipe_five = Recipe.create(name: 'Quesadilla', 
+                        image: File.new("app/assets/images/Quesadilla.jpg"),
+                        ingredients: Ingredient.where(:name => ['cheese', 'tortilla']))
 
-recipe_five = Recipe.create(name: 'Quesadilla', ingredients: Ingredient.where(:name => ['cheese', 'tortilla']))
-
-recipe_six = Recipe.create(name: 'French_Toast', ingredients: Ingredient.where(:name => ['egg', 'bread', 'butter', 'sugar', 'cinnamon', 'syrup']))
+recipe_six = Recipe.create(name: 'French_Toast', 
+                        image: File.new("app/assets/images/French_Toast.jpg"),
+                        ingredients: Ingredient.where(:name => ['egg', 'bread', 'butter', 'sugar', 'cinnamon', 'syrup']))
 
 
 
