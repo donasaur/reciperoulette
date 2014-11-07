@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'users/roulette' => 'users#dashboard'
   post 'users/roulette' => 'users#roulette'
   post 'users/block/:id' => 'users#block'
+  get 'users/unblock_all' => 'users#unblock_all'
   get  'users/dashboard' => 'users#dashboard'
   post 'users/dashboard' => 'users#update'
   post 'pantries/update' => 'pantries#update'

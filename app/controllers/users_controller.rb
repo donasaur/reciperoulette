@@ -40,6 +40,7 @@ class UsersController < ApplicationController
     @user = current_user
     if @user
       @pantry = @user.pantry
+      render 'dashboard'
     else
       render 'new'
     end
@@ -87,7 +88,13 @@ class UsersController < ApplicationController
     recipe_already_blocked = @user.blockedrecipelist.recipes.where(id: recipe.id).length > 0
     @user.blockedrecipelist.recipes << recipe unless recipe_already_blocked
 
-    render nothing: true
+    dashboard
+  end
+
+  def unblock_all
+    current_user.blockedrecipelist.recipes.clear
+
+    render :nothing => true
   end
 
   private

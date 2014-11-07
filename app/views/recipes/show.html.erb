@@ -4,7 +4,7 @@
 		<div class="row1">
 
 		  <div id="block">
-		    <button class="btn" type="button">Block</button>
+		    <%= button_to "Block", { controller: :users, action: "block", id: @recipe.id }, {class: 'btn'} %>
 		  </div>
 
 		  <div id="skip">
@@ -38,4 +38,4 @@
 		 </div>
 	 </div>
 
-</div
+</div>
