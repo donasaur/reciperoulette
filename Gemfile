@@ -43,6 +43,10 @@ group :development, :test do
   gem 'sqlite3'
   # Want rspec for rails
   gem 'rspec-rails'
+  gem 'capybara'
+
+  # Todo: only need to install this gem if supporting JS UI testing
+  # gem "capybara-webkit"
   gem 'byebug',               '~> 3.1'
   gem 'factory_girl',         '~> 4.4'
   gem 'factory_girl_rails',   '~> 4.4'
