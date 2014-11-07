@@ -94,8 +94,12 @@ class UsersController < ApplicationController
   def save
     @user = current_user
     recipe = Recipe.find(params[:id])
-    @user.recipes << recipe unless @user.recipes.include?(recipe)
-
+    unless @user.recipes.include?(recipe)
+      @user.recipes << recipe
+      flash[:notice] = "Recipe saved!"
+    else
+      flash[:notice] = "Recipe already saved!"
+    end
     redirect_to recipe_path(recipe)
   end
 

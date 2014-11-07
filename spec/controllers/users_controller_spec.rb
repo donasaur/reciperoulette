@@ -2,82 +2,97 @@ require 'rails_helper'
 include Devise::TestHelpers
 
 RSpec.describe UsersController, :type => :controller do
-  before(:each) do
-    @user = User.new(email: "obama@whitehouse.gov", password: 'password', password_confirmation: 'password')
-    @user.save
-    sign_in @user
+
+  describe "logging in activity" do
+
+    before(:each) do
+      @user = User.new(email: "obama@whitehouse.gov", password: 'password', password_confirmation: 'password')
+      @user.save
+      sign_in @user
+    end
+
+    it "should render new if not logged in" do
+      sign_out @user
+      get :dashboard
+      expect(response).to render_template('users/new')
+    end
+
+    it "should render dashboard if logged in" do
+      get :dashboard
+      expect(response).to render_template('users/dashboard')
+    end
   end
 
-  it "should render new if not logged in" do
-    sign_out @user
-    get :dashboard
-    expect(response).to render_template('users/new')
-  end
+  describe "user activity" do
 
-  it "should render dashboard if logged in" do
-    get :dashboard
-    expect(response).to render_template('users/dashboard')
-  end
-end
+    before(:each) do
+      load Rails.root + "db/seeds.rb"
+      @user = User.where(email: "test@example.com").first
+      sign_in @user
+      @spaghetti_id = Recipe.find_by(name: "Spaghetti").id
+      @chicken_fajitas_id = Recipe.find_by(name: "Chicken Fajitas").id
+      @roast_chicken_id = Recipe.find_by(name: "Roast Chicken").id
+      @scrambled_eggs_id = Recipe.find_by(name: "Scrambled Eggs").id
+      @quesadilla_id = Recipe.find_by(name: "Quesadilla").id
+    end
 
-RSpec.describe UsersController, :type => :controller do
+    # Note: only one recipe is shown to the user at a time
+    # but the list of possible recipes is fetched in advance
+    # so that the user does not requery the database every time
+    # the user wants to view the next recipe in the roulette
+    it "should make sure that matched recipes are displayed to the user" do
+      post :roulette, { commit: 'Play Roulette',
+                        pantry: { ingredient_ids: @user.pantry.ingredients.pluck(:id) },
+                        tags: { tag_ids: Tag.pluck(:id) } }
+      expect(response).to render_template('users/roulette')
 
-  before(:each) do
-    load Rails.root + "db/seeds.rb"
-    @user = User.where(email: "test@example.com").first
-    sign_in @user
-    @spaghetti_id = Recipe.find_by(name: "Spaghetti").id
-    @chicken_fajitas_id = Recipe.find_by(name: "Chicken Fajitas").id
-    @roast_chicken_id = Recipe.find_by(name: "Roast Chicken").id
-    @scrambled_eggs_id = Recipe.find_by(name: "Scrambled Eggs").id
-    @quesadilla_id = Recipe.find_by(name: "Quesadilla").id
-  end
+      expect(assigns(:list_of_recipe_ids)).to include(@spaghetti_id)
+      expect(assigns(:list_of_recipe_ids)).to include(@chicken_fajitas_id)
+      expect(assigns(:list_of_recipe_ids)).to include(@roast_chicken_id)
+      expect(assigns(:list_of_recipe_ids)).to include(@scrambled_eggs_id)
+    end
 
-  # Note: only one recipe is shown to the user at a time
-  # but the list of possible recipes is fetched in advance
-  # so that the user does not requery the database every time
-  # the user wants to view the next recipe in the roulette
-  it "should make sure that matched recipes are displayed to the user" do
-    post :roulette, { commit: 'Play Roulette',
+    it "should make sure that unmatched recipes are not displayed to the user" do
+      post :roulette, { commit: 'Play Roulette',
+                        pantry: { ingredient_ids: @user.pantry.ingredients.pluck(:id) },
+                        tags: { tag_ids: Tag.pluck(:id) } }    
+      expect(response).to render_template('users/roulette')
+      expect(assigns(:list_of_recipe_ids)).not_to include(@quesadilla_id)
+    end
+
+    it "should make sure that sending a POST request to /users/block/recipe_name prevents recipe from being shown again", :type => 'special' do
+      post :block, { :id => @spaghetti_id,
+                      commit: 'Play Roulette',
                       pantry: { ingredient_ids: @user.pantry.ingredients.pluck(:id) },
                       tags: { tag_ids: Tag.pluck(:id) } }
-    expect(response).to render_template('users/roulette')
 
-    expect(assigns(:list_of_recipe_ids)).to include(@spaghetti_id)
-    expect(assigns(:list_of_recipe_ids)).to include(@chicken_fajitas_id)
-    expect(assigns(:list_of_recipe_ids)).to include(@roast_chicken_id)
-    expect(assigns(:list_of_recipe_ids)).to include(@scrambled_eggs_id)
-  end
+      post :roulette
+      expect(assigns(:list_of_recipe_ids)).not_to include(@spaghetti_id)
+      expect(assigns(:list_of_recipe_ids)).to include(@chicken_fajitas_id)
+      expect(assigns(:list_of_recipe_ids)).to include(@roast_chicken_id)
+      expect(assigns(:list_of_recipe_ids)).to include(@scrambled_eggs_id)
+    end
 
-  it "should make sure that unmatched recipes are not displayed to the user" do
-    post :roulette, { commit: 'Play Roulette',
-                      pantry: { ingredient_ids: @user.pantry.ingredients.pluck(:id) },
-                      tags: { tag_ids: Tag.pluck(:id) } }    
-    expect(response).to render_template('users/roulette')
-    expect(assigns(:list_of_recipe_ids)).not_to include(@quesadilla_id)
-  end
+    it "should make sure sorry page is displayed when there are no matched recipes" do
+      post :block, { :id => @spaghetti_id }
+      post :block, { :id => @chicken_fajitas_id }
+      post :block, { :id => @roast_chicken_id }
+      post :block, { :id => @scrambled_eggs_id }
 
-  it "should make sure that sending a POST request to /users/block/recipe_name prevents recipe from being shown again", :type => 'special' do
-    post :block, { :id => @spaghetti_id,
-                    commit: 'Play Roulette',
-                    pantry: { ingredient_ids: @user.pantry.ingredients.pluck(:id) },
-                    tags: { tag_ids: Tag.pluck(:id) } }
+      post :roulette
+      expect(response).to render_template('users/sorry')
+    end
 
-    post :roulette
-    expect(assigns(:list_of_recipe_ids)).not_to include(@spaghetti_id)
-    expect(assigns(:list_of_recipe_ids)).to include(@chicken_fajitas_id)
-    expect(assigns(:list_of_recipe_ids)).to include(@roast_chicken_id)
-    expect(assigns(:list_of_recipe_ids)).to include(@scrambled_eggs_id)
-  end
-
-  it "should make sure sorry page is displayed when there are no matched recipes" do
-    post :block, { :id => @spaghetti_id }
-    post :block, { :id => @chicken_fajitas_id }
-    post :block, { :id => @roast_chicken_id }
-    post :block, { :id => @scrambled_eggs_id }
-
-    post :roulette
-    expect(response).to render_template('users/sorry')
+    it "should properly save a recipe" do
+      post :save, { id: @spaghetti_id }
+      expect(response).to redirect_to(recipe_path(Recipe.find(@spaghetti_id)))
+      expect(flash[:notice]).to eq "Recipe saved!"
+      expect(@user.recipes.length).to eq 1
+      post :save, { id: @spaghetti_id }
+      expect(response).to redirect_to(recipe_path(Recipe.find(@spaghetti_id)))
+      expect(flash[:notice]).to eq "Recipe already saved!" 
+      expect(@user.recipes.length).to eq 1
+    end
   end
 
 end
