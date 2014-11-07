@@ -3,10 +3,15 @@ class PantriesController < ApplicationController
     @user = current_user
     @pantry = @user.pantry
     if params["commit"] == "Add Ingredient"
-      added_ingredient = Ingredient.find_by_name(params[:ingredient_name])
-      if !@pantry.ingredients.exists?(added_ingredient)
-        @pantry.ingredients << added_ingredient
-        @pantry.save
+      ingredient_name = params[:ingredient_name].downcase
+      added_ingredient = Ingredient.find_by_name(ingredient_name)
+      if added_ingredient
+        if !@pantry.ingredients.exists?(added_ingredient)
+          @pantry.ingredients << added_ingredient
+          @pantry.save
+        end
+      else
+        flash[:notice] = "Attempted to add invalid ingredient: #{ingredient_name}"
       end
     elsif params["commit"] == "Delete Ingredient"
       deleted_ingredient = Ingredient.find(params["ingredient"].to_i)

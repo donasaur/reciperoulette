@@ -6,66 +6,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-html,
-body {
-  margin:0;
-  padding:0;
-  height:100%;
-}
-
-/* header styles */
-.logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: black;
-  /*text-transform: uppercase;*/
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-}
-
-.logo:hover {
-  color: blue;
-  text-decoration: none;
-}
-
-.dropdown-toggle{
-  color:black;
-}
-
-/* main HTML layout styles */
-
-#wrapper {
-  min-height:100%;
-  position:relative;
-}
-
-.header {
-  padding-top: 10px;
-  padding-left:10px;
-  padding-right:10px;
-}
-
-.mainbody {
-  padding-top: 100px;
-  // margin-left: auto;
-  // margin-right: auto;
-  padding-bottom:50px;   /* Height of the foot element */
-}
-
-.contain-center{
-  float:none;
-  margin:0 auto;
-}
-
-.foot {
-  width:100%;
-  height:50px;
-  position:absolute;
-  bottom:0;
-  left:0;
-}
 
 /* Roulette page styles */
 

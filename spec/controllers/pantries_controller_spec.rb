@@ -25,6 +25,15 @@ RSpec.describe PantriesController, :type => :controller do
     expect(@user.pantry.ingredients.exists?(@ingredient)).to be true
   end
 
+  it "should not add an invalid ingredient to the user pantry" do
+    params = {}
+    params[:commit] = "Add Ingredient"
+    params[:ingredient_name] = "poop"
+    post :update, parameters = params
+    expect(response).to redirect_to users_dashboard_path
+    expect(@user.pantry.ingredients.find_by(name: "poop")).to be nil
+  end
+
   it "should remove an ingredient to the user pantry" do
     @user.pantry.ingredients << @ingredient
     expect(@user.pantry.ingredients.exists?(@ingredient)).to be true
