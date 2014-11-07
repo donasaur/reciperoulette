@@ -11,7 +11,7 @@ To install ImageMagick on Mac OS X with MacPorts, just type:
 If you don't have MacPorts, you can get it here:
   https://www.macports.org/
 
-Be sure to run db:reset so some sample ingredients and a few sample recipes can get seeded into the database. These are already seeded on heroku. Users can only add pre-existing ingredients to their pantries. The list of valid ingredients for this iteration can be found below. Along with the recipe and ingredient seeds, there is also seeded user with username: "test@example.com" password: "password". This user already has "salt" and "pepper" as ingredients added in their pantry - feel free to add more or just check out the roulette feature immediately. 
+Be sure to run db:reset so some sample ingredients and a few sample recipes can get seeded into the database. These are already seeded on heroku. Users can only add pre-existing ingredients to their pantries. The list of valid ingredients for this iteration can be found below. Along with the recipe and ingredient seeds, there is also seeded user with username: "test@example.com" password: "password". This user already has "salt" and "pepper" as ingredients added in their pantry - feel free to add more or just check out the roulette feature immediately.
 
 If you want to run the unit + functional tests locally, just type:
   rspec
@@ -21,11 +21,11 @@ If you want to see our code on production, go here:
 
 Enjoy!
 
-== How to use the app 
+== How to use the app
 When you first open the app, you should be directed an empty page. On the top right will find two links: sign up and login. You can choose to make your own account or log in with an existing one (such as the one mentioned above). Once logged in, you will see a dashboard page.
-=== Dashboard 
+=== Dashboard
 
-==== Pantry   
+==== Pantry
 On the left side, you will see a panel that allows you modify your pantry. You can enter your desired ingredient into the text box and a list of valid ingredients are suggested below it. When ready to add the ingredient to your pantry, you can click the 'Add Ingredient' button. It should then appear in your pantry.
 
 Below the text box is the list of ingredients that already exist in your pantry. You can remove an ingredient by clicking on the 'X' to the right of the ingredient name. You can mark an ingredient as 'Active' for your roulette search (explained in the 'Roulette' section below) with the check box to the left of the ingredient name. Marking no check boxes is the same as marking all the check boxes. You can also organize your pantry by dragging and dropping the ingredients.
@@ -48,7 +48,7 @@ On the recipe page you can see all the information about your recipe: its name, 
 
 
 == Current list of valid ingredients:
-  salt, pepper, egg, rice, tomato, sour cream, spinach, bell pepper, ham, onion, carrot, sugar, cinnamon, ketchup, mustard, garlic, paprika, oregano, olive oil, vegetable oil, honey, soy sauce, tuna, basil, cheese, lemon, lime, chicken breast, ground beef, ground turkey, bacon, corn, butter, spaghetti, parsley, mayonnaise, cornstarch, lamb, steak, ginger, potato, thyme, milk, noodles, bay leaf, whole chicken, celery, tomato sauce, tortilla, syrup, bread
+  salt, pepper, egg, rice, tomato, sour cream, spinach, bell pepper, ham, onion, carrot, sugar, cinnamon, ketchup, mustard, garlic, paprika, oregano, olive oil, vegetable oil, honey, soy sauce, tuna, basil, cheese, lemon, lime, chicken breast, ground beef, ground turkey, bacon, corn, butter, spaghetti, parsley, mayonnaise, cornstarch, lamb, steak, ginger, potato, thyme, milk, noodles, bay leaf, whole chicken, celery, tomato sauce, tortilla, syrup, bread, avocado, pork, lettuce, bbq sauce
 
 == Current list of Recipes:
-  Roast Chicken, Scrambled Eggs, Spaghetti, Chicken Fajitas, Quesadilla, French Toast
+  Roast Chicken, Scrambled Eggs, Spaghetti, Chicken Fajitas, Quesadilla, French Toast, Ham and Egg Fried Rice, Avocado BLT, Pulled Pork Sandwhich, Mashed Potatoes

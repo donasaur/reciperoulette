@@ -8,7 +8,7 @@ RSpec.describe PantriesController, :type => :controller do
     @user.save
     sign_in @user
     @pantry = @user.pantry
-    @ingredient = Ingredient.create(name: "salt")
+    @ingredient = Ingredient.create(id: 1, name: "salt")
   end
 
   it "should validate the tested user & pantry" do
@@ -56,5 +56,16 @@ RSpec.describe PantriesController, :type => :controller do
     post :update, parameters = params
     expect(response).to redirect_to users_dashboard_path
     expect(@user.pantry.ingredients.where( :name => @ingredient.name ).count).to eq 1
+  end
+
+  it "should sort pantry ingredients properly given correct params" do
+    @pantry.ingredients << @ingredient
+    @pantry.ingredients << Ingredient.create(id: 2, name: "pepper")
+    @pantry.ingredients << Ingredient.create(id: 3, name: "msg")
+    @pantry.ingredients << Ingredient.create(id: 4, name: "oregano")
+    params = {}
+    params[:ingredient] = ["3", "4", "2", "1"]
+    post :sort, parameters = params
+    expect(@pantry.ingredients.sort_by {|a| a.pantry_ingredients[0].position}.first.id).to be 3
   end
 end
