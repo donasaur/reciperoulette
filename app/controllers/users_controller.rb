@@ -87,7 +87,7 @@ class UsersController < ApplicationController
     recipe_already_blocked = @user.blockedrecipelist.recipes.where(id: recipe.id).length > 0
     @user.blockedrecipelist.recipes << recipe unless recipe_already_blocked
 
-    roulette
+    render nothing: true
   end
 
   private
@@ -159,8 +159,12 @@ class UsersController < ApplicationController
     end
 
     def render_page_with_selected_recipe(recipe_id)
-      @recipe = Recipe.find(recipe_id)
-      render partial: 'roulettemain'
+      if recipe_id == "None"
+        render "sorry"
+      else
+        @recipe = Recipe.find(recipe_id)
+        render partial: 'roulettemain'
+      end
     end
 
     def render_appropriate_page(list_of_recipe_ids)
