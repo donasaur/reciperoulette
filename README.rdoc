@@ -43,7 +43,7 @@ On the roulette pages, you can see a recipe, a 'Block' button and a 'Skip' butto
 
 The border around the recipe indicates how many of the recipe's ingredients are present in your active ingredients list. Its color ranges from red (indicating very few matching ingredients) to green (indicating mostly matching ingredients).
 
-=== Recipe ===
+=== Recipe
 On the recipe page you can see all the information about your recipe: its name, an image, its preparation and cooking time, the ingredients and the instructions. The 'Block' button from the roulette pages is also present and has the same functionality except it sends you back to your dashboard page instead of a new roulette page. The 'Save' button allows you to save this recipe to your saved recipes list for future viewing.
 
 
