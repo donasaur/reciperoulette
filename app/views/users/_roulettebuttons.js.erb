@@ -15,12 +15,12 @@ $(document).ready(function() {
 
   var len_of_recipe_list = list_of_recipe_ids.length; // length should be at least one
   
-  $("body").on("click", "#skip", function() {
+  $("body").on("click", "#skip-button", function() {
     recipe_index = (recipe_index + 1) % len_of_recipe_list;
     change_displayed_recipe(list_of_recipe_ids[recipe_index]);
   });
 
-  $("body").on("click", "#block", function() {
+  $("body").on("click", "#block-button", function() {
     block_displayed_recipe(list_of_recipe_ids[recipe_index]);
     list_of_recipe_ids.splice(recipe_index, 1);
     len_of_recipe_list = list_of_recipe_ids.length;

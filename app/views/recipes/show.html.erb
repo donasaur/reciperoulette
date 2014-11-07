@@ -3,11 +3,11 @@
 	<div class="row">
 		<div class="row1">
 
-		  <div id="block">
+		  <div id="block-button">
 		    <%= button_to "Block", { controller: :users, action: "block", id: @recipe.id }, {class: 'btn'} %>
 		  </div>
 
-		  <div id="skip">
+		  <div id="save-button">
 		  	<%= button_to "Save", { controller: :users, action: "save", id: @recipe.id }, { class: 'btn' } %>
 		  </div>
 		  
