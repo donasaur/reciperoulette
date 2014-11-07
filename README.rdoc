@@ -3,6 +3,14 @@
 If you want to run this code locally,
 just make sure you have Ruby on Rails, and then install the gems in the Gemfile (with bundle install --without production), and then run "rake db:reset". Then just run "rails s" in the root directory
 
+Note: You will need to install ImageMagick, which is a dependency for one of the gems.
+
+To install ImageMagick on Mac OS X with MacPorts, just type:
+  sudo port install ImageMagick
+
+If you don't have MacPorts, you can get it here:
+  https://www.macports.org/
+
 Be sure to run db:reset so some sample ingredients and a few sample recipes can get seeded into the database. These are already seeded on heroku. Users can only add pre-existing ingredients to their pantries. The list of valid ingredients for this iteration can be found below. Along with the recipe and ingredient seeds, there is also seeded user with username: "test@example.com" password: "password". This user already has "salt" and "pepper" as ingredients added in their pantry - feel free to add more or just check out the roulette feature immediately. 
 
 If you want to run the unit + functional tests locally, just type:
