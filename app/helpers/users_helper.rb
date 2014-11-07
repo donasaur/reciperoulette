@@ -27,7 +27,7 @@ module UsersHelper
       return "rgba(255,165,0,0.7)"
     when 50..75
       return "rgba(255,255,0,0.7)"
-    when 75..100
+    else
       return "rgba(0,100,0,0.7)"
     end
   end

@@ -57,11 +57,13 @@ RSpec.describe UsersController, :type => :controller do
     expect(assigns(:list_of_recipe_ids)).not_to include(@quesadilla_id)
   end
 
-  it "should make sure that sending a POST request to /users/block/recipe_name prevents recipe from being shown again" do
+  it "should make sure that sending a POST request to /users/block/recipe_name prevents recipe from being shown again", :type => 'special' do
     post :block, { :id => @spaghetti_id,
                     commit: 'Play Roulette',
                     pantry: { ingredient_ids: @user.pantry.ingredients.pluck(:id) },
                     tags: { tag_ids: Tag.pluck(:id) } }
+
+    post :roulette
     expect(assigns(:list_of_recipe_ids)).not_to include(@spaghetti_id)
     expect(assigns(:list_of_recipe_ids)).to include(@chicken_fajitas_id)
     expect(assigns(:list_of_recipe_ids)).to include(@roast_chicken_id)
