@@ -177,7 +177,6 @@ class UsersController < ApplicationController
     end
 
     def gather_user_recipes(user_ingredients, tags)
-      user_ingredients = current_user.pantry.ingredients # list of ingredient objects
       recipe_search_results = Set.new
 
       user_ingredients.each do |ingredient|
@@ -189,9 +188,11 @@ class UsersController < ApplicationController
         recipe_search_results.delete?(blocked_recipe)
       end
 
-      recipe_search_results.each do |recipe|
-        if (recipe.tags & tags).length == 0
-          recipe_search_results.delete?(recipe)
+      if tags.length != 0
+        recipe_search_results.each do |recipe|
+          if (recipe.tags & tags).length == 0
+            recipe_search_results.delete?(recipe)
+          end
         end
       end
 
