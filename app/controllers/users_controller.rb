@@ -91,6 +91,14 @@ class UsersController < ApplicationController
     dashboard
   end
 
+  def save
+    @user = current_user
+    recipe = Recipe.find(params[:id])
+    @user.recipes << recipe unless @user.recipes.include?(recipe)
+
+    redirect_to recipe_path(recipe)
+  end
+
   def unblock_all
     current_user.blockedrecipelist.recipes.clear
 

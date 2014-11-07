@@ -8,7 +8,7 @@
 		  </div>
 
 		  <div id="skip">
-		    <button class="btn" type="button">Save</button>
+		  	<%= button_to "Save", { controller: :users, action: "save", id: @recipe.id }, { class: 'btn' } %>
 		  </div>
 		  
 		  <div class="recipe">
