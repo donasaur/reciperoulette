@@ -1,41 +1,5 @@
 class UsersController < ApplicationController
 
-  # test
-  def new
-  end
-
-  def create
-  end
-
-  def show
-  end
-
-  def edit
-  end
-
-  def update
-    # @user = current_user
-    # @pantry = @user.pantry
-    # if params[:commit] == 'Remove Ingredient'
-    #   @ingredient = Ingredient.find(params[:ingredient][:ingredient_id])
-    #   @pantry.ingredients.delete(@ingredient)
-    #   @pantry.save
-    # elsif params[:commit] == 'Add Ingredient'
-    #   ingredient = Ingredient.where(name: params[:ingredient][:name]).first
-    #   if ingredient && !@pantry.ingredients.exists?(ingredient)
-    #     @pantry.ingredients << ingredient
-    #     @pantry.save
-    #   elsif !ingredient
-    #     # Probably want to flash message that ingredient couldn't be found
-    #     flash.now[:ingredienterror] = "Sorry, #{params[:ingredient][:name]} is not a valid ingredient"
-    #   end
-    # end
-    # render 'dashboard'
-  end
-
-  def destroy
-  end
-
   def dashboard
     @user = current_user
     if @user

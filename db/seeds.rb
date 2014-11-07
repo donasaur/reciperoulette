@@ -35,6 +35,7 @@ seed_user.save
 
 #create a ton of ingredients
 Ingredient.create({name: 'salt'})
+Ingredient.create({name: 'avocado'})
 Ingredient.create({name: 'pepper'})
 Ingredient.create({name: 'egg'})
 Ingredient.create({name: 'rice'})
@@ -85,6 +86,9 @@ Ingredient.create({name: 'tomato sauce'})
 Ingredient.create({name: 'tortilla'})
 Ingredient.create({name: 'syrup'})
 Ingredient.create({name: 'bread'})
+Ingredient.create({name: 'lettuce'})
+Ingredient.create({name: 'pork'})
+Ingredient.create({name: 'bbq sauce'})
 
 # Add ingredient to user's pantry
 seed_user.pantry.ingredients << Ingredient.where(:name => ['salt', 'pepper'])
@@ -102,28 +106,28 @@ recipe_one = Recipe.create({name: 'Roast Chicken',
                         tags: Tag.where(name: ['lunch', 'dinner']),
                         image: File.new("app/assets/images/Roast_Chicken.jpg"),
                         ingredients: Ingredient.where(:name => ['whole chicken', 'salt', 'pepper', 'paprika', 'onion', 'celery', 'carrot', 'garlic', 'bay leaf', 'olive oil'])})
-recipe_two = Recipe.create(name: 'Scrambled Eggs', 
+recipe_two = Recipe.create(name: 'Scrambled Eggs',
                         cook_time: 5,
                         prep_time: 5,
                         tags: Tag.where(name: ['breakfast']),
                         image: File.new("app/assets/images/Scrambled_Eggs.jpg"),
                         ingredients: Ingredient.where(:name => ['egg', 'butter', 'salt', 'pepper']))
 
-recipe_three = Recipe.create(name: 'Spaghetti', 
+recipe_three = Recipe.create(name: 'Spaghetti',
                         cook_time: 15,
                         prep_time: 5,
                         tags: Tag.where(name: ['lunch', 'dinner']),
                         image: File.new("app/assets/images/Spaghetti.jpg"),
                         ingredients: Ingredient.where(:name => ['spaghetti', 'tomato sauce', 'pepper', 'salt']))
 
-recipe_four = Recipe.create(name: 'Chicken Fajitas', 
+recipe_four = Recipe.create(name: 'Chicken Fajitas',
                         cook_time: 10,
                         prep_time: 10,
                         tags: Tag.where(name: ['lunch', 'dinner']),
                         image: File.new("app/assets/images/Chicken_Fajitas.jpg"),
                         ingredients: Ingredient.where(:name => ['chicken breast', 'onion', 'bell pepper', 'salt', 'pepper']))
 
-recipe_five = Recipe.create(name: 'Quesadilla', 
+recipe_five = Recipe.create(name: 'Quesadilla',
                         cook_time: 5,
                         prep_time: 1,
                         tags: Tag.where(name: ['lunch', 'dinner']),
@@ -137,6 +141,31 @@ recipe_six = Recipe.create(name: 'French Toast',
                         image: File.new("app/assets/images/French_Toast.jpg"),
                         ingredients: Ingredient.where(:name => ['egg', 'bread', 'butter', 'sugar', 'cinnamon', 'syrup']))
 
+recipe_six = Recipe.create(name: 'Ham and Egg Fried Rice',
+                        cook_time: 10,
+                        prep_time: 20,
+                        tags: Tag.where(name: ['lunch', 'dinner']),
+                        image: File.new("app/assets/images/Ham_and_Egg_Fried_Rice.jpg"),
+                        ingredients: Ingredient.where(:name => ['egg', 'rice', 'ham', 'soy sauce', 'butter']))
 
+recipe_six = Recipe.create(name: 'Avocado BLT',
+                        cook_time: 5,
+                        prep_time: 10,
+                        tags: Tag.where(name: ['breakfast']),
+                        image: File.new("app/assets/images/Avocado_BLT.jpg"),
+                        ingredients: Ingredient.where(:name => ['avocado', 'bacon', 'lettuce', 'tomato', 'bread']))
 
+recipe_six = Recipe.create(name: 'Mashed Potatoes',
+                        cook_time: 10,
+                        prep_time: 20,
+                        tags: Tag.where(name: ['lunch', 'dinner']),
+                        image: File.new("app/assets/images/Mashed_Potatoes.jpg"),
+                        ingredients: Ingredient.where(:name => ['butter', 'potato']))
+
+recipe_six = Recipe.create(name: 'Pulled Pork Sandwhich',
+                        cook_time: 10,
+                        prep_time: 20,
+                        tags: Tag.where(name: ['lunch', 'dinner']),
+                        image: File.new("app/assets/images/Pulled_Pork_Sandwhich.jpg"),
+                        ingredients: Ingredient.where(:name => ['pork', 'bbq sauce', 'lettuce', 'carrot']))
 

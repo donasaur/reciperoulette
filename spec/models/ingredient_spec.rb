@@ -9,6 +9,10 @@ describe "IngredientModel" do
     @ingredient = Ingredient.new(name: "salt")
   end
 
+  it "should have a name" do
+    expect(@ingredient.to_s).to eq "salt"
+  end
+
   it "should have to_s equal to the name of the Ingredient" do
     expect(@ingredient.to_s).to eq @ingredient.name
   end
