@@ -13,12 +13,13 @@
 		<% end %>
 
 		<div class="add-ingredient">
-			<% # This form should link to an update route to add ingredients %>
-			<%= form_for(@pantry) do |i| %>
-  			<%= select_tag 'ingredient', options_from_collection_for_select(Ingredient.all.order('name ASC'), 'id', 'name') %>
-  			<%= submit_tag "Add Ingredient", class: "btn btn-success" %>
-			<% end %>
-		</div>
+      <% # This form should link to an update route to add ingredients %>
+      <%= form_for(@pantry) do |i| %>
+        <%= i.label :ingredient_name %> <br />
+        <%= text_field_tag :ingredient_name, nil, placeholder: "ingredient",  data: {autocomplete_source: Ingredient.all.map(&:name)} %>
+        <%= submit_tag "Add Ingredient" %>
+      <% end %>
+    </div>
 		<div class="pantry-list">
       <%= form_tag({ controller: 'users', action: 'roulette' }, method: :post) do %>
   		  <ul id="ingredients" data-update-url="<%= sort_pantries_url%>">
