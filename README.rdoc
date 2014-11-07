@@ -22,29 +22,29 @@ If you want to see our code on production, go here:
 Enjoy!
 
 == How to use the app 
-  When you first open the app, you should be directed an empty page. On the top right will find two links: sign up and login. You can choose to make your own account or log in with an existing one (such as the one mentioned above). Once logged in, you will see a dashboard page.
+When you first open the app, you should be directed an empty page. On the top right will find two links: sign up and login. You can choose to make your own account or log in with an existing one (such as the one mentioned above). Once logged in, you will see a dashboard page.
 === Dashboard 
 
 ==== Pantry   
-  On the left side, you will see a panel that allows you modify your pantry. You can enter your desired ingredient into the text box and a list of valid ingredients are suggested below it. When ready to add the ingredient to your pantry, you can click the 'Add Ingredient' button. It should then appear in your pantry.
+On the left side, you will see a panel that allows you modify your pantry. You can enter your desired ingredient into the text box and a list of valid ingredients are suggested below it. When ready to add the ingredient to your pantry, you can click the 'Add Ingredient' button. It should then appear in your pantry.
 
-  Below the text box is the list of ingredients that already exist in your pantry. You can remove an ingredient by clicking on the 'X' to the right of the ingredient name. You can mark an ingredient as 'Active' for your roulette search (explained in the 'Roulette' section below) with the check box to the left of the ingredient name. Marking no check boxes is the same as marking all the check boxes. You can also organize your pantry by dragging and dropping the ingredients.
+Below the text box is the list of ingredients that already exist in your pantry. You can remove an ingredient by clicking on the 'X' to the right of the ingredient name. You can mark an ingredient as 'Active' for your roulette search (explained in the 'Roulette' section below) with the check box to the left of the ingredient name. Marking no check boxes is the same as marking all the check boxes. You can also organize your pantry by dragging and dropping the ingredients.
 
 ==== Saved Recipes
-  On the right side of the dashboard, you will see a panel with a list of recipes you have saved in the past. Clicking on the name of a recipe will bring you to the page for that recipe. How to save recipes is explained below in the 'Recipe' section.
+On the right side of the dashboard, you will see a panel with a list of recipes you have saved in the past. Clicking on the name of a recipe will bring you to the page for that recipe. How to save recipes is explained below in the 'Recipe' section.
 
 ==== Roulette Button
-  At the bottom of the dashboard, you will find a series of check boxes under the header 'Recipe Filters' as well as a button labeled 'Play Roulette'. Marking a check box will permit recipes of that type to appear in the roulette search. Marking no check boxes in the same as marking all the check boxes. To find new recipes, click on the 'Play Roulette' button! See the 'Roulette' section below.
+At the bottom of the dashboard, you will find a series of check boxes under the header 'Recipe Filters' as well as a button labeled 'Play Roulette'. Marking a check box will permit recipes of that type to appear in the roulette search. Marking no check boxes in the same as marking all the check boxes. To find new recipes, click on the 'Play Roulette' button! See the 'Roulette' section below.
 
 === Roulette
-  Roulette search uses the list of your active ingredients and selected tags to find matching recipes. You do not need to have all the ingredients in a recipe for it to show up, but at least one of the tags in the recipe must have been selected.
+Roulette search uses the list of your active ingredients and selected tags to find matching recipes. You do not need to have all the ingredients in a recipe for it to show up, but at least one of the tags in the recipe must have been selected.
 
-  On the roulette pages, you can see a recipe, a 'Block' button and a 'Skip' button. Clicking on the image of the recipe will send you to that recipe's page (see 'Recipe' section). Clicking on 'Block' will prevent that recipe from appearing again in your future roulette searches and will load a new recipe on your roulette page. Clicking on 'Skip' will load a new new recipe on your roulette page, and the recipe may appear in your future roulette plays.
+On the roulette pages, you can see a recipe, a 'Block' button and a 'Skip' button. Clicking on the image of the recipe will send you to that recipe's page (see 'Recipe' section). Clicking on 'Block' will prevent that recipe from appearing again in your future roulette searches and will load a new recipe on your roulette page. Clicking on 'Skip' will load a new new recipe on your roulette page, and the recipe may appear in your future roulette plays.
 
-  The border around the recipe indicates how many of the recipe's ingredients are present in your active ingredients list. Its color ranges from red (indicating very few matching ingredients) to green (indicating mostly matching ingredients).
+The border around the recipe indicates how many of the recipe's ingredients are present in your active ingredients list. Its color ranges from red (indicating very few matching ingredients) to green (indicating mostly matching ingredients).
 
 === Recipe ===
-  On the recipe page you can see all the information about your recipe: its name, an image, its preparation and cooking time, the ingredients and the instructions. The 'Block' button from the roulette pages is also present and has the same functionality except it sends you back to your dashboard page instead of a new roulette page. The 'Save' button allows you to save this recipe to your saved recipes list for future viewing.
+On the recipe page you can see all the information about your recipe: its name, an image, its preparation and cooking time, the ingredients and the instructions. The 'Block' button from the roulette pages is also present and has the same functionality except it sends you back to your dashboard page instead of a new roulette page. The 'Save' button allows you to save this recipe to your saved recipes list for future viewing.
 
 
 == Current list of valid ingredients:
