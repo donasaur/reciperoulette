@@ -19,7 +19,7 @@ RSpec.describe PantriesController, :type => :controller do
   it "should add an ingredient to the user pantry" do
     params = {}
     params[:commit] = "Add Ingredient"
-    params[:ingredient] = @ingredient.id
+    params[:ingredient_name] = @ingredient.name
     post :update, parameters = params
     expect(response).to redirect_to users_dashboard_path
     expect(@user.pantry.ingredients.exists?(@ingredient)).to be true
@@ -40,7 +40,7 @@ RSpec.describe PantriesController, :type => :controller do
     expect(@user.pantry.ingredients.where( :name => @ingredient.name ).count).to eq 0
     params = {}
     params[:commit] = "Add Ingredient"
-    params[:ingredient] = @ingredient.id
+    params[:ingredient_name] = @ingredient.name
     post :update, parameters = params
     expect(response).to redirect_to users_dashboard_path
     expect(@user.pantry.ingredients.where( :name => @ingredient.name ).count).to eq 1
