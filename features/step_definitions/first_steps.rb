@@ -29,10 +29,18 @@ Given(/^the default user$/) do
   @user.save
 end
 
+Given(/^an ingredient salt is the DB$/) do
+  Ingredient.create(name:"salt")
+end
+
 Then(/^the default user exists$/) do
   expect(User.all).to  include(@user)
 end
 
 Then(/^I can check its email$/) do
   expect(@user.email).to eq "test@helper.com"
+end
+
+Given /^I am on(?: the)* (.+)$/ do |page_name|    # assign the variable in second parenthesis to page_name
+  visit "#{page_name}"
 end
