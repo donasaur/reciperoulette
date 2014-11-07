@@ -1,7 +1,14 @@
-<% #@recipe.instructions %>
-<div id="recipe-instructions-header">
+<div id="recipe-instructions-list-header">
   <h2>Instructions</h2>
 </div>
-<div id="recipe-instructions-text">
-  <%= @recipe.instructions %>
+
+<div id="recipe-instructions-list">
+  <ul>
+  <% @instruction_list = @recipe.instructions.split("\n") %>
+  <% @instruction_list.each do |instruction| %>
+    <li>
+    <%= instruction %>
+    </li>
+  <% end %>
+  </ul>
 </div>
