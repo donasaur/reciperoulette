@@ -119,7 +119,7 @@ recipe_two = Recipe.create({name: 'Scrambled Eggs',
                         prep_time: 5,
                         tags: Tag.where(name: ['breakfast']),
                         image: File.new("app/assets/images/Scrambled_Eggs.jpg"),
-                        ingredients: Ingredient.where(:name => ['egg', 'butter', 'salt', 'pepper']), 
+                        ingredients: Ingredient.where(:name => ['egg', 'butter', 'salt', 'pepper']),
                         instructions: "Break eggs into a bowl.\n
                                 Beat eggs until blended.\n
                                 Heat butter in a large nonstick skillet over medium heat until hot.\n
@@ -176,26 +176,47 @@ recipe_six = Recipe.create(name: 'Ham and Egg Fried Rice',
                         prep_time: 20,
                         tags: Tag.where(name: ['lunch', 'dinner']),
                         image: File.new("app/assets/images/Ham_and_Egg_Fried_Rice.jpg"),
-                        ingredients: Ingredient.where(:name => ['egg', 'rice', 'ham', 'soy sauce', 'butter']))
+                        ingredients: Ingredient.where(:name => ['egg', 'rice', 'ham', 'soy sauce', 'butter']),
+                        instructions: "Heat a wok or a small, heavy skillet over high heat. Add 1 1/2 tablespoons oil, swirl to coat the pan.\n
+                                Add eggs and scramble them. As soon as there is no more freely running egg, turn them out into a bowl and break them into small bits. They should be soft and a bit runny -- not brown.\n
+                                Heat the wok or a large skillet and add 2 tablespoon oil to coat.\n
+                                Add the rice and toss briskly to coat and separate each grain, about 2 to 3 minutes.\n
+                                Add the ham and peas.\n
+                                Toss to mix in the ingredients and allow the mixture to heat through, about 30 seconds.\n
+                                Return the eggs to the pan and toss to combine.\n
+                                Season with salt, scallions and peanuts, tossing another 5 to 10 seconds to let the eggs get hot.")
 
 recipe_six = Recipe.create(name: 'Avocado BLT',
                         cook_time: 5,
                         prep_time: 10,
                         tags: Tag.where(name: ['breakfast']),
                         image: File.new("app/assets/images/Avocado_BLT.jpg"),
-                        ingredients: Ingredient.where(:name => ['avocado', 'bacon', 'lettuce', 'tomato', 'bread']))
+                        ingredients: Ingredient.where(:name => ['avocado', 'bacon', 'lettuce', 'tomato', 'bread']),
+                        instructions: "Toast the bread to your liking.\n
+                                Build sandwich by adding mayo and layers of bacon and lettuce to one slice of toasted bread.\n
+                                Top with another slice of bread with mayo and layer with half the avocado and tomato slices'.\n
+                                Season with salt and pepper, and cover with the last slice of toasted bread.\n
+                                Tip: prep the tomato, avocado and lettuce leaves while the bread is toasting and the bacon is cooking.")
 
 recipe_six = Recipe.create(name: 'Mashed Potatoes',
                         cook_time: 10,
                         prep_time: 20,
                         tags: Tag.where(name: ['lunch', 'dinner']),
                         image: File.new("app/assets/images/Mashed_Potatoes.jpg"),
-                        ingredients: Ingredient.where(:name => ['butter', 'potato']))
+                        ingredients: Ingredient.where(:name => ['butter', 'potato']),
+                        instructions: "Place the peeled and cut potatoes into a medium saucepan. Add cold water to the pan until the potatoes are covered by at least an inch. Add a half teaspoon of salt to the water. Turn the heat on to high, and bring the water to a boil. Reduce the heat to low to maintain a simmer, and cover. Cook for 15 to 20 minutes, or until you can easily poke through them with a fork.\n
+                                While the potatoes are cooking, melt the butter and warm the cream. You can heat them together in a pan on the stove or in the microwave.\n
+                                When the potatoes are done, drain the water and place the steaming hot potatoes into a large bowl. Pour the heated cream and melted butter over the potatoes. Mash the potatoes with a potato masher. Then use a strong wooden spoon (a metal spoon might bend) to beat further. Add milk and beat until the mashed potatoes are smooth. Don't over-beat the potatoes or the mashed potatoes will end up gluey.
+                                Add salt and pepper to taste.")
 
 recipe_six = Recipe.create(name: 'Pulled Pork Sandwhich',
                         cook_time: 10,
                         prep_time: 20,
                         tags: Tag.where(name: ['lunch', 'dinner']),
                         image: File.new("app/assets/images/Pulled_Pork_Sandwhich.jpg"),
-                        ingredients: Ingredient.where(:name => ['pork', 'bbq sauce', 'lettuce', 'carrot']))
+                        ingredients: Ingredient.where(:name => ['pork', 'bbq sauce', 'lettuce', 'carrot']),
+                        instructions: "Combine 1 tablespoon brown sugar, the paprika, mustard powder, cumin, 2 teaspoons salt and 1/2 teaspoon pepper in a small bowl. Rub the spice mixture all over the pork.\n
+                                Heat the vegetable oil in a large skillet; add the pork and cook, turning, until browned on all sides, 5 minutes. Remove the pork and transfer to a plate; whisk 3/4 cup water into the drippings in the skillet. Transfer the liquid to a 5-to-6-quart slow cooker.\n
+                                Add the vinegar, tomato paste, the remaining 2 tablespoons brown sugar and 2 cups water to the slow cooker and whisk to combine. Add the pork, cover and cook on low, 8 hours.\n
+                                Remove the pork and transfer to a cutting board. Strain the liquid into a saucepan, bring to a boil and cook until reduced by half, about 10 minutes. Season with salt. Roughly chop the pork and mix in a bowl with 1 cup of the reduced cooking liquid, and salt and vinegar to taste. Serve on buns with barbecue sauce and coleslaw.")
 
