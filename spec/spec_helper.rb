@@ -14,7 +14,10 @@
 # users commonly want.
 
 # Only need to enable these lines if supporting JS testing
-# require 'capybara/rspec'
+require 'capybara/rspec'
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end
 # Capybara.javascript_driver = :webkit
 # Capybara.ignore_hidden_elements = false
 
@@ -23,6 +26,7 @@
 RSpec.configure do |config|
   require 'simplecov'
   SimpleCov.start
+
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin
