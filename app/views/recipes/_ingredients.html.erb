@@ -7,7 +7,7 @@
 	<% @recipe.ingredients.each do |ingredient| %>
 		<li>
     <% #At some point we should add ingredient qtys here %>
-    <%= ingredient %>
+    <span style="color:<%=recipe_ingredient_in_pantry(ingredient)%>"><%= ingredient %></span>
     </li>
 	<% end %>
   </ul>
