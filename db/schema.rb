@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141106093822) do
+ActiveRecord::Schema.define(version: 20141122074226) do
 
   create_table "blockedrecipelists", force: true do |t|
     t.datetime "created_at"
@@ -56,6 +56,17 @@ ActiveRecord::Schema.define(version: 20141106093822) do
     t.datetime "updated_at"
     t.integer  "position",      default: 0
   end
+
+  create_table "ratings", force: true do |t|
+    t.integer  "recipe_id"
+    t.integer  "user_id"
+    t.integer  "score",      default: 0
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "ratings", ["recipe_id"], name: "index_ratings_on_recipe_id"
+  add_index "ratings", ["user_id"], name: "index_ratings_on_user_id"
 
   create_table "recipes", force: true do |t|
     t.string   "name"

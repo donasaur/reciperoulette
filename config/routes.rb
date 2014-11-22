@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get  'users/dashboard' => 'users#dashboard'
   post 'users/dashboard' => 'users#update'
   post 'pantries/update' => 'pantries#update'
+  resources :ratings, only: :update
   resources :recipes
   resources :pantries do
     collection {post :sort}

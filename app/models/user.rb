@@ -10,4 +10,5 @@ class User < ActiveRecord::Base
   before_create :build_blockedrecipelist
   validates_associated :blockedrecipelist
   validates_associated :pantry
+  has_many :ratings
 end

@@ -1,5 +1,6 @@
 <div class="outer-recipe contain-center">
 
+
 	<div class="row">
 		<div class="row1">
 
@@ -31,7 +32,16 @@
 	 	<div class="row2">
 		 	<div class="bottomleft">
 		 		<%= render 'recipes/ingredients' %>
+
+			 	<div class="ratingblock">
+		 			<p>Average rating</p>
+					<div id="star"></div>
+
+					<p>Your rating</p>
+					<div id="user_star"></div>
+				</div>
 		 	</div>
+
 		 	<div class="bottomright">
 		 		<%= render 'recipes/instructions' %>
 		 	</div>
@@ -39,3 +49,7 @@
 	 </div>
 
 </div>
+
+<script>
+<%= render 'ratingsupport.js' %>
+</script>

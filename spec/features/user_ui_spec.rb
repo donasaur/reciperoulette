@@ -31,7 +31,6 @@ describe "the signin process", :type => :feature do
 
   it "goes to the edit page from dashboard" do
     visit_edit_page('user@example.com', 'password')
-    puts page.html
     expect(page).to have_content "Edit User"
   end
 
@@ -45,6 +44,16 @@ describe "the signin process", :type => :feature do
     end
 
     expect(page).to have_content "Welcome to Recipe Roulette!"
+  end
+
+  it "add one ingredient", :js => true do
+    login_as(@user, :scope => :user, :run_callbacks => false)
+    visit '/users/dashboard'
+    fill_in('ingredient_name', :with => 'Milk')
+    click_button('Add Ingredient')
+
+    expect(page).to have_content "milk"
+    expect(page).to_not have_content "salt"
   end
 
 end
