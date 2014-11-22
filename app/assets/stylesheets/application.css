@@ -29,19 +29,30 @@ body {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: black;
+  color: white;
   /*text-transform: uppercase;*/
   letter-spacing: -1px;
-  padding-top: 9px;
   font-weight: bold;
 }
 
 .logo:hover {
-  color: blue;
+  color: black;
   text-decoration: none;
 }
 
 .dropdown-toggle{
+  color:white;
+  background: none !important;
+  border:none;
+  padding:10px !important;
+  cursor: pointer;
+}
+
+.dropdown-toggle:hover{
+  color:black;
+}
+
+.dropdown-toggle:focus{
   color:black;
 }
 
@@ -56,6 +67,7 @@ body {
   padding-top: 10px;
   padding-left:10px;
   padding-right:10px;
+  background-color: FireBrick;
 }
 
 .mainbody {
