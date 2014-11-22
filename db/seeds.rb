@@ -89,6 +89,7 @@ Ingredient.create({name: 'bread'})
 Ingredient.create({name: 'lettuce'})
 Ingredient.create({name: 'pork'})
 Ingredient.create({name: 'bbq sauce'})
+Ingredient.create({name: 'flour'})
 
 # Add ingredient to user's pantry
 seed_user.pantry.ingredients << Ingredient.where(:name => ['salt', 'pepper'])
@@ -219,4 +220,34 @@ recipe_six = Recipe.create(name: 'Pulled Pork Sandwhich',
                                 Heat the vegetable oil in a large skillet; add the pork and cook, turning, until browned on all sides, 5 minutes. Remove the pork and transfer to a plate; whisk 3/4 cup water into the drippings in the skillet. Transfer the liquid to a 5-to-6-quart slow cooker.\n
                                 Add the vinegar, tomato paste, the remaining 2 tablespoons brown sugar and 2 cups water to the slow cooker and whisk to combine. Add the pork, cover and cook on low, 8 hours.\n
                                 Remove the pork and transfer to a cutting board. Strain the liquid into a saucepan, bring to a boil and cook until reduced by half, about 10 minutes. Season with salt. Roughly chop the pork and mix in a bowl with 1 cup of the reduced cooking liquid, and salt and vinegar to taste. Serve on buns with barbecue sauce and coleslaw.")
+
+recipe_seven = Recipe.create(name: "Chicken Pot Pie",
+                        cook_time: 30,
+                        prep_time: 20,
+                        tags: Tag.where(name: ['lunch', 'dinner']),
+                        image: File.new("app/assets/images/Chicken_Pot_Pie.jpg"),
+                        ingredients: Ingredient.where(:name => ['chicken', 'flour', 'peas', 'carrot', 'onion', 'butter', 'salt', 'pepper', 'celery']),
+                        instructions: "Preheat oven to 400°F.\n
+                                Saute onion, celery, carrots and potatoes in margarine for 10 minutes.\n
+                                Add flour to sauteed mixture, stirring well, cook one minute stirring constantly.\n
+                                Combine broth and half and half.\n
+                                Gradually stir into vegetable mixture.\n
+                                Cook over medium heat stirring constantly until thickened and bubbly.\n
+                                Stir in salt and pepper; add chicken and stir well.\n
+                                Pour into shallow 2 quart casserole dish and top with pie shells.\n
+                                Cut slits to allow steam to escape.\n
+                                Bake for 40-50 minutes or until pastry is golden brown and filling is bubbly and cooked through.")
+
+recipe_eight = Recipe.create(name: "Chicken and Dumpling Soup",
+                        cook_time: 20,
+                        prep_time: 15,
+                        tags: Tag.where(name: ['breakfast', 'lunch', 'dinner']),
+                        image: File.new("app/assets/images/Chicken_and_Dumpling_Soup.jpg"),
+                        ingredients: Ingredient.where(:name => ['flour', 'salt', 'water', 'carrot', 'celery', 'garlic', 'basil', 'milk']),
+                        instructions: "Start out by putting together the dough for your dumplings. Mix together the flour, salt and baking powder. Then slowly add in your ice water. Keep adding it in until you have enough to form a nice dough ball. Knead your dough for about 5 minutes and then set it the side and let it rest while you work on the other end of the soup. \n
+                                In a large pot add together your stock, chicken, carrots, celery, garlic, basil, oregano, and celery salt. Heat it up on medium heat and let the chicken cook through. When the chicken is cooked, remove it and set it to the side.\n
+                                Now grab up your dough and roll it out about 1/4 thick with your rolling pin. Cut it into small squares and place them in your hot broth. As they cook up, they will rise to the top of the broth.\n
+                                While your dumplings are cooking, go ahead and shred your chicken up. Add it to your soup. Last but not least, add in the half and half and give it a couple swirls around the pan to incorporate everything together.")
+
+
 
