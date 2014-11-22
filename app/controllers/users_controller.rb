@@ -160,7 +160,7 @@ class UsersController < ApplicationController
 
     def render_page_with_selected_recipe(recipe_id)
       if recipe_id == "None"
-        render "sorry"
+        render partial: 'sorrymessage'
       else
         @recipe = Recipe.find(recipe_id)
         render partial: 'roulettemain'
@@ -172,7 +172,7 @@ class UsersController < ApplicationController
         @recipe = Recipe.find(list_of_recipe_ids[0])
         render 'roulette'
       else
-        render "sorry"
+        render 'sorry'
       end
     end
 
