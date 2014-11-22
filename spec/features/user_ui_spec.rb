@@ -11,7 +11,7 @@ def visit_edit_page(email, password)
   login_as(@user, :scope => :user, :run_callbacks => false)
   visit '/users/dashboard'
   page.find(".dropdown").click
-  click_link("Edit profile")
+  click_link("User Settings")
 end
 
 describe "the signin process", :type => :feature do

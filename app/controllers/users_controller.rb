@@ -55,6 +55,17 @@ class UsersController < ApplicationController
     dashboard
   end
 
+  def unblock
+    recipes_to_be_unblocked = []
+    user_blocked_recipes = current_user.blockedrecipelist.recipes
+    params[:recipe].keys.each do |recipe_name|
+      recipes_to_be_unblocked << user_blocked_recipes.where(name: recipe_name)
+    end
+    user_blocked_recipes.destroy(recipes_to_be_unblocked)
+
+    redirect_to("/users/edit")
+  end
+
   def save
     @user = current_user
     recipe = Recipe.find(params[:id])
