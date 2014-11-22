@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   post 'users/roulette' => 'users#roulette'
   post 'users/block/:id' => 'users#block'
   post 'users/unblock' => 'users#unblock'
+  post 'users/set_threshold' => 'users#set_threshold'
   post 'users/save/:id' => 'users#save'
   get 'users/unblock_all' => 'users#unblock_all'
   get  'users/dashboard' => 'users#dashboard'

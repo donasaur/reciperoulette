@@ -66,6 +66,12 @@ class UsersController < ApplicationController
     redirect_to("/users/edit")
   end
 
+  def set_threshold
+    current_user.threshold = params[:threshold]
+    current_user.save
+    redirect_to("/users/edit")
+  end
+
   def save
     @user = current_user
     recipe = Recipe.find(params[:id])
@@ -188,6 +194,11 @@ class UsersController < ApplicationController
             recipe_search_results.delete?(recipe)
           end
         end
+      end
+
+      # this snippet of code is responsible for enforcing threshold
+      recipe_search_results.select! do |recipe|
+        (recipe.ingredients & user_ingredients).length >= current_user.threshold
       end
 
       recipe_search_results

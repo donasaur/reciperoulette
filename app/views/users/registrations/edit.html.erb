@@ -23,6 +23,12 @@
     <div><%= f.submit "Update" %></div>
   <% end %>
 
+  <h3>Ingredients threshold</h3>
+  <%= form_for current_user, url: "set_threshold", method: "post" do |f| %>
+    <%= number_field_tag 'threshold', current_user.threshold, min: 1 %>
+    <%= submit_tag("Update threshold") %>
+  <% end %>
+
   <h3>Blocked recipes list</h3>
 
   <% user_blocked_recipes = current_user.blockedrecipelist.recipes %>
