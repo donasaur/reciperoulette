@@ -11,7 +11,7 @@ class PantriesController < ApplicationController
           @pantry.save
         end
       else
-        flash[:notice] = "Attempted to add invalid ingredient: #{ingredient_name}"
+        flash[:alert] = "Attempted to add invalid ingredient: #{ingredient_name}"
       end
     elsif params["commit"] == "Delete Ingredient"
       deleted_ingredient = Ingredient.find(params["ingredient"].to_i)

@@ -11,9 +11,15 @@
     <%= render 'layouts/header' %>
 
     <div class="container mainbody">
-      <% if flash[:notice] || flash[:alert]%>
-        <div class="notice">
-          <%= flash[:notice] || flash[:alert] %>
+      <% if flash[:notice]%>
+        <div class="alert alert-success text-center" role="alert">
+          <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+          <%= flash[:notice]%>
+        </div>
+      <% elsif flash[:alert] %>
+        <div class="alert alert-danger text-center" role="alert">
+          <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+          <%= flash[:alert]%>
         </div>
       <% end %>
       <%= yield %>
