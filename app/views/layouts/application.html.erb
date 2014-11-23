@@ -11,14 +11,14 @@
     <%= render 'layouts/header' %>
 
     <div class="container mainbody">
-      <% if flash[:notice] %>
+      <% if flash[:notice] || flash[:alert]%>
         <div class="notice">
-          <%= flash[:notice] %>
+          <%= flash[:notice] || flash[:alert] %>
         </div>
       <% end %>
       <%= yield %>
     </div>
-    
+
   </div> <!-- end of wrapper -->
 </body>
 </html>
