@@ -7,9 +7,15 @@
 		  <h2> Your Pantry </h2>
 		</div>
 		<% if flash[:ingredienterror] %>
-			<p class="error">
-  			<%= h flash[:ingredienterror] %>
-			</p>
+			<div class="alert alert-warning text-center" role="alert">
+        <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
+        <%= flash[:ingredienterror]%>
+        <div class="col-md-7 col-md-offset-3">
+            <%= link_to("Add", { action: 'update', controller: "pantries", commit: "Add New Ingredient", ingredient_name: params[:ingredient_name] }, method: :post, class: "btn btn-default btn-md col-md-5") %>
+            <%= link_to("Nah", { action: 'update', controller: "pantries", commit: "Do Nothing", ingredient_name: params[:ingredient] }, class: "btn btn-default btn-md col-md-5", method: :post) %>
+        </div>
+        <p>&nbsp</p>
+      </div>
 		<% end %>
 
 		<div class="add-ingredient">
