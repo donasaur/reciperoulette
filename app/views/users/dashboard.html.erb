@@ -11,8 +11,8 @@
         <span class="glyphicon glyphicon-warning-sign" aria-hidden="true"></span>
         <%= flash[:ingredienterror]%>
         <div class="col-md-7 col-md-offset-3">
-          <%= link_to("Add", { action: 'update', controller: "pantries", commit: "Add New Ingredient", ingredient_name: params[:ingredient_name] }, method: :post, class: "btn btn-default btn-md col-md-5") %>
-          <%= link_to("Nah", { action: 'update', controller: "pantries", commit: "Do Nothing", ingredient_name: params[:ingredient] }, class: "btn btn-default btn-md col-md-5", method: :post) %>
+          <%= button_to("Add", { action: 'update', controller: "pantries", commit: "Add New Ingredient", ingredient_name: params[:ingredient_name] }, method: :post, class: "btn btn-default btn-md col-md-5") %>
+          <%= button_to "Nah", users_dashboard_path, {method: "get", class: "btn btn-default btn-md col-md-5"} %>
         </div>
         <p>&nbsp</p>
       </div>

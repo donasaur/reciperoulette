@@ -4,6 +4,8 @@ include Devise::TestHelpers
 RSpec.describe PantriesController, :type => :controller do
 
   before(:each) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
     @user = User.new(email: "obama@whitehouse.gov", password: 'password', password_confirmation: 'password')
     @user.save
     sign_in @user

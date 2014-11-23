@@ -25,8 +25,9 @@ RSpec.describe Pantry, :type => :model do
   it "can add multiple ingredients that are't repeated" do
     i = Ingredient.create(name:"chicken")
     j = Ingredient.create(name:"salt")
-    @p.ingredient_ids = @p.ingredient_ids << i.id
-    @p.ingredient_ids = @p.ingredient_ids << j.id
+    @p.ingredients = @p.ingredients << i
+    @p.ingredients = @p.ingredients << j
+    @p.save
     expect(@p.ingredient_ids.length).to eq 2
   end
 

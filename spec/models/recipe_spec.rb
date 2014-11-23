@@ -2,8 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Recipe, :type => :model do
   before(:each) do
-    @recipe = Recipe.new(name: "soup")
-    create_sample_recipe
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+    @recipe = Recipe.create(name: "soup")
   end
 
   it "should have to_s equal to the name of the Recipe" do
@@ -25,13 +26,13 @@ RSpec.describe Recipe, :type => :model do
     recipe1 = Recipe.create(name: "chicken noodle soup")
     recipe2 = Recipe.create(name: "split pea soup")
     recipe3 = Recipe.create(name: "vegetable garden soup")
-    expect(Recipe.all.length).to eq 3
+    expect(Recipe.all.length).to eq 4
   end
 
   it "should be able to have instructions, prep_time, cook_time, and description" do
     recipe = Recipe.create(name: "chicken noodle soup", tag: "chicken", prep_time: 10, cook_time: 20, description: "Yummy soup")
-    r = Recipe.first
-    expect(Recipe.all.length).to eq 1
+    r = Recipe.where(name: "chicken noodle soup").first
+    expect(Recipe.all.length).to eq 2
     expect(r.prep_time).to eq 10
     expect(r.cook_time).to eq 20
     expect(r.description).to eq "Yummy soup"
@@ -44,6 +45,8 @@ RSpec.describe Recipe, :type => :model do
     rating = Rating.create(recipe_id: recipe_of_interest.id, user_id: 3, score: 0)
     expect(recipe_of_interest.average_rating).to eq 2
   end
+
+
 
 end
 
