@@ -3,6 +3,9 @@
     <li>
     <div class="saved-recipe">
       <%= link_to "#{recipe.name}", recipe_path(recipe) %>
+      <span class="remove-button">
+        <%= link_to("X", { action: 'delete_recipe', controller: "recipes", commit: "Delete Saved Recipe", recipe_id: recipe.id }, style: 'color:red', method: :post) %>
+      </span>
     </div>
     </li>
   <% end %>

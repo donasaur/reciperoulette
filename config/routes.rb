@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get  'users/dashboard' => 'users#dashboard'
   post 'users/dashboard' => 'users#update'
   post 'pantries/update' => 'pantries#update'
+  post 'recipes/delete_recipe' => 'recipes#delete_recipe'
   resources :ratings, only: :update
   resources :recipes
   resources :pantries do
