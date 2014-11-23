@@ -20,8 +20,10 @@ class PantriesController < ApplicationController
 
     elsif params["commit"] == "Add New Ingredient"
       ingredient_name = params[:ingredient_name].downcase
-      Ingredient.create(name: ingredient_name)
+      i = Ingredient.create(name: ingredient_name)
       flash[:notice] = "Ingredient #{ingredient_name} was created!"
+      @pantry.ingredients << i
+      @pantry.save
     end
     redirect_to users_dashboard_path(ingredient_name: ingredient_name)
   end
