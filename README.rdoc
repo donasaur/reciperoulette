@@ -13,8 +13,11 @@ If you don't have MacPorts, you can get it here:
 
 Be sure to run db:reset so some sample ingredients and a few sample recipes can get seeded into the database. These are already seeded on heroku. Users can only add pre-existing ingredients to their pantries. The list of valid ingredients for this iteration can be found below. Along with the recipe and ingredient seeds, there is also seeded user with username: "test@example.com" password: "password". This user already has "salt" and "pepper" as ingredients added in their pantry - feel free to add more or just check out the roulette feature immediately.
 
-If you want to run the unit + functional tests locally, just type:
+If you want to run the all tests (unit + functional + UI) tests locally, just type:
   rspec
+
+To run only UI tests, type:
+  rspec . --tag type:feature
 
 If you want to see our code on production, go here:
   http://reciperoulette.herokuapp.com/

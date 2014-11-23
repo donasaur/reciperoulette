@@ -18,10 +18,11 @@ require 'capybara/rspec'
 Capybara.register_driver :selenium do |app|
   Capybara::Selenium::Driver.new(app, :browser => :chrome)
 end
+Capybara.raise_server_errors = false
 # Capybara.javascript_driver = :webkit
 # Capybara.ignore_hidden_elements = false
 
-#
+
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|
   require 'simplecov'

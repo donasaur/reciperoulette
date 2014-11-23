@@ -1,11 +1,3 @@
-# def login(email, password)
-#   visit '/users/sign_in'
-#   within("#new_user") do
-#     fill_in 'Email', :with => email
-#     fill_in 'Password', :with => password
-#   end
-#   click_button 'Log in'
-# end
 
 def visit_edit_page(email, password)
   login_as(@user, :scope => :user, :run_callbacks => false)
@@ -16,11 +8,9 @@ end
 
 describe "the signin process", :type => :feature do
   before :all do
+    User.destroy_all
     @user = User.create!(:email => 'testuser@example.com', :password => 'password', :password_confirmation => 'password')
-  end
-
-  after :all do
-    @user.destroy!
+    create_sample_recipe
   end
 
   it "signs me in" do
@@ -44,16 +34,6 @@ describe "the signin process", :type => :feature do
     end
 
     expect(page).to have_content "Welcome to Recipe Roulette!"
-  end
-
-  it "add one ingredient", :js => true do
-    login_as(@user, :scope => :user, :run_callbacks => false)
-    visit '/users/dashboard'
-    fill_in('ingredient_name', :with => 'Milk')
-    click_button('Add Ingredient')
-
-    expect(page).to have_content "milk"
-    expect(page).to_not have_content "salt"
   end
 
 end

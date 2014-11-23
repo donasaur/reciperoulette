@@ -2,6 +2,7 @@ module UsersHelper
 
   # For a given user, returns a list of ingredient objects that are active in the pantry
   # If no ingredients are active, will return all ingredients in pantry
+
   def get_active_ingredients(user)
     pantry = user.pantry
     pantry_ingredients = PantryIngredient.where(pantry_id: pantry.id, active: true)

@@ -4,11 +4,13 @@
 
 <div id="recipe-instructions-list">
   <ul>
-  <% @instruction_list = @recipe.instructions.split("\n") %>
-  <% @instruction_list.each do |instruction| %>
-    <li>
-    <%= instruction %><br>
-    </li>
+  <% unless @recipe.instructions.nil? %>
+    <% @instruction_list = @recipe.instructions.split("\n") %>
+    <% @instruction_list.each do |instruction| %>
+      <li>
+      <%= instruction %><br>
+      </li>
+    <% end %>
   <% end %>
   </ul>
 </div>
