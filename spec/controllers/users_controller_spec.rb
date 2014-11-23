@@ -55,7 +55,7 @@ RSpec.describe UsersController, :type => :controller do
     it "should make sure that unmatched recipes are not displayed to the user" do
       post :roulette, { commit: 'Play Roulette',
                         pantry: { ingredient_ids: @user.pantry.ingredients.pluck(:id) },
-                        tags: { tag_ids: Tag.pluck(:id) } }    
+                        tags: { tag_ids: Tag.pluck(:id) } }
       expect(response).to render_template('users/roulette')
       expect(assigns(:list_of_recipe_ids)).not_to include(@quesadilla.id)
     end
@@ -90,7 +90,34 @@ RSpec.describe UsersController, :type => :controller do
       expect(@user.recipes.length).to eq 1
       post :save, { id: @spaghetti.id }
       expect(response).to redirect_to(recipe_path(Recipe.find(@spaghetti.id)))
-      expect(flash[:notice]).to eq "Recipe already saved!" 
+      expect(flash[:notice]).to eq "Recipe already saved!"
+      expect(@user.recipes.length).to eq 1
+    end
+
+    it "should properly delete a saved recipe", type: "in_progress" do
+      @user.recipes << @spaghetti
+      expect {
+        post :delete, {recipe_id: @spaghetti.id}
+      }.to change{@user.recipes.length}.by 1
+    end
+
+    it "should not fail when deleting a saved recipe the user does not have" do
+      @user.recipes << @spaghetti
+      expect {
+        post :delete, {recipe_id: @roast_chicken.id}
+      }.to change{@user.recipes.length}.by 0
+    end
+
+    it "should be able to delete many saved recipes", type: "in_progress" do
+      @user.recipes << @spaghetti
+      @user.recipes << @roast_chicken
+      @user.recipes << @scrambled_eggs
+      @user.recipes << @quesadilla
+      expect {
+        post :delete, {recipe_id: @roast_chicken.id}
+        post :delete, {recipe_id: @quesadilla.id}
+        post :delete, {recipe_id: @spaghetti.id}
+      }.to change {@user.recipes.length}.by 0
       expect(@user.recipes.length).to eq 1
     end
 
@@ -102,7 +129,7 @@ RSpec.describe UsersController, :type => :controller do
       expect(assigns(:list_of_recipe_ids)).not_to include(@spaghetti.id)
       expect(assigns(:list_of_recipe_ids)).not_to include(@chicken_fajitas.id)
       expect(assigns(:list_of_recipe_ids)).not_to include(@roast_chicken.id)
-      expect(assigns(:list_of_recipe_ids)).not_to include(@scrambled_eggs.id)      
+      expect(assigns(:list_of_recipe_ids)).not_to include(@scrambled_eggs.id)
     end
 
     it "makes sure that unblocking recipes work", :type => 'unblock' do

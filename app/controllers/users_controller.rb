@@ -84,6 +84,15 @@ class UsersController < ApplicationController
     redirect_to recipe_path(recipe)
   end
 
+  def delete #delete saved recipe from user's saved recipes
+    recipe_id = params[:recipe_id].to_i
+    user = current_user
+    deleted_recipe = Recipe.find(recipe_id)
+    user.recipes.delete(deleted_recipe)
+    user.save
+    redirect_to users_dashboard_path
+  end
+
   def unblock_all
     current_user.blockedrecipelist.recipes.clear
 
