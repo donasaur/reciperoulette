@@ -58,7 +58,7 @@ RSpec.describe UsersController, :type => :controller do
       expect(assigns(:list_of_recipe_ids)).not_to include(@quesadilla.id)
     end
 
-    it "should should not match recipes which have recipes exceeding the max prep time" do
+    it "should not match recipes which have recipes exceeding the max prep time" do
       post :roulette, { commit: 'Play Roulette',
                         pantry: { ingredient_ids: @user.pantry.ingredients.pluck(:id) },
                         tags: { tag_ids: Tag.pluck(:id) },
@@ -71,7 +71,7 @@ RSpec.describe UsersController, :type => :controller do
       expect(assigns(:list_of_recipe_ids)).to include(@scrambled_eggs.id)
     end
 
-    it "should should not match recipes which have recipes exceeding the max cook time" do
+    it "should not match recipes which have recipes exceeding the max cook time" do
       post :roulette, { commit: 'Play Roulette',
                         pantry: { ingredient_ids: @user.pantry.ingredients.pluck(:id) },
                         tags: { tag_ids: Tag.pluck(:id) },

@@ -4,6 +4,15 @@ class UsersController < ApplicationController
   def dashboard
     @user = current_user
     if @user
+      recipe_avg_rating = {}
+      Recipe.all.each do |recipe|
+        recipe_avg_rating[recipe] = recipe.average_rating
+      end
+      sorted = recipe_avg_rating.sort_by { |k, v| v }
+      @popular_recipes = []
+      sorted.reverse[0..9].each do |recipe_value|
+        @popular_recipes << recipe_value[0]
+      end
       @pantry = @user.pantry
       render 'dashboard'
     else

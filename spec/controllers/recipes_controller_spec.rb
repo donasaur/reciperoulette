@@ -11,7 +11,7 @@ RSpec.describe RecipesController, :type => :controller do
   end
 
   it "should render the correct recipe page" do
-    r = Recipe.create(id: 1, :name => 'Soup')
+    r = Recipe.create(id: 1, :name => 'Soup', instructions: 'a', prep_time:1, cook_time:1)
     get :show, id: r.id
     expect(response).to render_template("recipes/show")
   end
