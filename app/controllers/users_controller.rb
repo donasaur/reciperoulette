@@ -88,7 +88,7 @@ class UsersController < ApplicationController
     recipe_id = params[:recipe_id].to_i
     user = current_user
     deleted_recipe = Recipe.find(recipe_id)
-    user.recipes.delete(deleted_recipe)
+    user.recipes.destroy(deleted_recipe)
     user.save
     redirect_to users_dashboard_path
   end

@@ -1,5 +1,4 @@
 require 'rails_helper'
-include Devise::TestHelpers
 
 RSpec.describe UsersController, :type => :controller do
 
@@ -16,17 +15,12 @@ RSpec.describe UsersController, :type => :controller do
       get :dashboard
       expect(response).to render_template('users/new')
     end
-
-    it "should render dashboard if logged in" do
-      get :dashboard
-      expect(response).to render_template('users/dashboard')
-    end
   end
 
   describe "user activity" do
 
     before(:each) do
-      load Rails.root + "db/seeds.rb"
+      load Rails.root + "db/seeds_snapshot_iter3.rb"
       @user = User.where(email: "test@example.com").first
       sign_in @user
       @spaghetti = Recipe.find_by(name: "Spaghetti")
@@ -34,6 +28,8 @@ RSpec.describe UsersController, :type => :controller do
       @roast_chicken = Recipe.find_by(name: "Roast Chicken")
       @scrambled_eggs = Recipe.find_by(name: "Scrambled Eggs")
       @quesadilla = Recipe.find_by(name: "Quesadilla")
+      @chicken_pot_pie = Recipe.find_by(name: "Chicken Pot Pie")
+      @chicken_soup = Recipe.find_by(name: "Chicken and Dumpling Soup")
     end
 
     # Note: only one recipe is shown to the user at a time
@@ -49,7 +45,6 @@ RSpec.describe UsersController, :type => :controller do
       expect(assigns(:list_of_recipe_ids)).to include(@spaghetti.id)
       expect(assigns(:list_of_recipe_ids)).to include(@chicken_fajitas.id)
       expect(assigns(:list_of_recipe_ids)).to include(@roast_chicken.id)
-      expect(assigns(:list_of_recipe_ids)).to include(@scrambled_eggs.id)
     end
 
     it "should make sure that unmatched recipes are not displayed to the user" do
@@ -73,13 +68,16 @@ RSpec.describe UsersController, :type => :controller do
       expect(assigns(:list_of_recipe_ids)).to include(@scrambled_eggs.id)
     end
 
-    it "should make sure sorry page is displayed when there are no matched recipes" do
+    it "should make sure sorry page is displayed when there are no matched recipes", :type => "nomatch" do
       post :block, { :id => @spaghetti.id }
       post :block, { :id => @chicken_fajitas.id }
       post :block, { :id => @roast_chicken.id }
       post :block, { :id => @scrambled_eggs.id }
+      post :block, { :id => @chicken_pot_pie.id }
+      post :block, { :id => @chicken_soup.id }
 
       post :roulette
+
       expect(response).to render_template('users/sorry')
     end
 
@@ -94,30 +92,29 @@ RSpec.describe UsersController, :type => :controller do
       expect(@user.recipes.length).to eq 1
     end
 
-    it "should properly delete a saved recipe", type: "in_progress" do
+    it "should properly delete a saved recipe" do
       @user.recipes << @spaghetti
-      expect {
-        post :delete, {recipe_id: @spaghetti.id}
-      }.to change{@user.recipes.length}.by 1
+      post :delete, {recipe_id: @spaghetti.id}
+      @user.reload
+      expect(@user.recipes.length).to eq 0
     end
 
     it "should not fail when deleting a saved recipe the user does not have" do
       @user.recipes << @spaghetti
-      expect {
-        post :delete, {recipe_id: @roast_chicken.id}
-      }.to change{@user.recipes.length}.by 0
+      post :delete, {recipe_id: @roast_chicken.id}
+      @user.reload
+      expect(@user.recipes.length).to eq 1
     end
 
-    it "should be able to delete many saved recipes", type: "in_progress" do
+    it "should be able to delete many saved recipes" do
       @user.recipes << @spaghetti
       @user.recipes << @roast_chicken
       @user.recipes << @scrambled_eggs
       @user.recipes << @quesadilla
-      expect {
-        post :delete, {recipe_id: @roast_chicken.id}
-        post :delete, {recipe_id: @quesadilla.id}
-        post :delete, {recipe_id: @spaghetti.id}
-      }.to change {@user.recipes.length}.by 0
+      post :delete, {recipe_id: @roast_chicken.id}
+      post :delete, {recipe_id: @quesadilla.id}
+      post :delete, {recipe_id: @spaghetti.id}
+      @user.reload
       expect(@user.recipes.length).to eq 1
     end
 
