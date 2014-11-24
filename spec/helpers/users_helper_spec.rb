@@ -61,10 +61,10 @@ RSpec.describe UsersHelper, :type => :helper do
 
   describe "progress bar percentage" do
     before(:each) do
-      @red = "rgba(255,0,0,0.7)"
-      @orange = "rgba(255,165,0,0.7)"
-      @yellow = "rgba(255,255,0,0.7)"
-      @green = "rgba(0,100,0,0.7)"
+      @red = "#FF6600"
+      @orange = "#FFCC00"
+      @yellow = "#99FF00"
+      @green = "#339900"
       @r1 = Recipe.create({name: 'r1', ingredients: [@a, @b]})
       @r2 = Recipe.create({name: 'r2', ingredients: [@b, @c]})
       @r3 = Recipe.create({name: 'r3', ingredients: [@b, @c, @d]})
