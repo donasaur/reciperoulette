@@ -7,13 +7,15 @@ class PantriesController < ApplicationController
       added_ingredient = Ingredient.find_by_name(ingredient_name.singularize) ||  Ingredient.find_by_name(ingredient_name.pluralize)
       if added_ingredient && @pantry.ingredients.include?(added_ingredient)
         flash[:notice] = "#{ingredient_name} is already in your pantry"
+        redirect_to users_dashboard_path
       elsif added_ingredient
         @pantry.ingredients << added_ingredient
         @pantry.save
+        redirect_to users_dashboard_path
       else
         flash[:ingredienterror] = "You tried to add #{ingredient_name}, an ingredient not in our database. If you would like to add this ingredient, click Add. Else click Nah"
+        redirect_to users_dashboard_path(ingredient_name: ingredient_name)
       end
-      redirect_to users_dashboard_path
     elsif params["commit"] == "Delete Ingredient"
       deleted_ingredient = Ingredient.find(params["ingredient"].to_i)
       @pantry.ingredients.delete(deleted_ingredient)
@@ -26,7 +28,7 @@ class PantriesController < ApplicationController
       flash[:notice] = "Ingredient #{ingredient_name} was created!"
       @pantry.ingredients << i
       @pantry.save
-      redirect_to users_dashboard_path(ingredient_name: ingredient_name)
+      redirect_to users_dashboard_path
     end
   end
 

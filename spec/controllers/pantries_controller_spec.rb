@@ -27,6 +27,24 @@ RSpec.describe PantriesController, :type => :controller do
     expect(@user.pantry.ingredients.exists?(@ingredient)).to be true
   end
 
+  it "should warn user when adding a new ingredient to the pantry", type: "in_progress" do
+    params = {}
+    params[:commit] = "Add Ingredient"
+    params[:ingredient_name] = "random"
+    post :update, parameters = params
+    expect(flash[:ingredienterror]).to eq "You tried to add random, an ingredient not in our database. If you would like to add this ingredient, press add. Else press no"
+  end
+
+  it "should add new ingredient if user agrees to", type: "in_progress" do
+    params = {}
+    params[:commit] = "Add New Ingredient"
+    params[:ingredient_name] = "random"
+    post :update, parameters = params
+    i = Ingredient.find_by(name: "random")
+    expect(i).to be_truthy
+    expect(@user.pantry.ingredients.first).to eq i
+  end
+
   it "should not add an invalid ingredient to the user pantry" do
     params = {}
     params[:commit] = "Add Ingredient"

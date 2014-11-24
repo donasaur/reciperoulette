@@ -29,12 +29,12 @@ When you first open the app, you should be directed an empty page. On the top ri
 === Dashboard
 
 ==== Pantry
-On the left side, you will see a panel that allows you modify your pantry. You can enter your desired ingredient into the text box and a list of valid ingredients are suggested below it. When ready to add the ingredient to your pantry, you can click the 'Add Ingredient' button. It should then appear in your pantry.
+On the left side, you will see a panel that allows you modify your pantry. You can enter your desired ingredient into the text box and a list of valid ingredients are suggested below it. When ready to add the ingredient to your pantry, you can click the 'Add Ingredient' button. It should then appear in your pantry. If you try to add an ingredient that isn't included in the database, you will be prompted with an option that will allow you to create that ingredient for the first time.
 
 Below the text box is the list of ingredients that already exist in your pantry. You can remove an ingredient by clicking on the 'X' to the right of the ingredient name. You can mark an ingredient as 'Active' for your roulette search (explained in the 'Roulette' section below) with the check box to the left of the ingredient name. Marking no check boxes is the same as marking all the check boxes. You can also organize your pantry by dragging and dropping the ingredients.
 
 ==== Saved Recipes
-On the right side of the dashboard, you will see a panel with a list of recipes you have saved in the past. Clicking on the name of a recipe will bring you to the page for that recipe. How to save recipes is explained below in the 'Recipe' section.
+On the right side of the dashboard, you will see a panel with a list of recipes you have saved in the past. Clicking on the name of a recipe will bring you to the page for that recipe. How to save recipes is explained below in the 'Recipe' section. You can delete or refer to recipes that you've saved.
 
 ==== Roulette Button
 At the bottom of the dashboard, you will find a series of check boxes under the header 'Recipe Filters' as well as a button labeled 'Play Roulette'. Marking a check box will permit recipes of that type to appear in the roulette search. Marking no check boxes in the same as marking all the check boxes. To find new recipes, click on the 'Play Roulette' button! See the 'Roulette' section below.
@@ -54,4 +54,4 @@ On the recipe page you can see all the information about your recipe: its name, 
   salt, pepper, egg, rice, tomato, sour cream, spinach, bell pepper, ham, onion, carrot, sugar, cinnamon, ketchup, mustard, garlic, paprika, oregano, olive oil, vegetable oil, honey, soy sauce, tuna, basil, cheese, lemon, lime, chicken breast, ground beef, ground turkey, bacon, corn, butter, spaghetti, parsley, mayonnaise, cornstarch, lamb, steak, ginger, potato, thyme, milk, noodles, bay leaf, whole chicken, celery, tomato sauce, tortilla, syrup, bread, avocado, pork, lettuce, bbq sauce
 
 == Current list of Recipes:
-  Roast Chicken, Scrambled Eggs, Spaghetti, Chicken Fajitas, Quesadilla, French Toast, Ham and Egg Fried Rice, Avocado BLT, Pulled Pork Sandwhich, Mashed Potatoes
+  Roast Chicken, Scrambled Eggs, Spaghetti, Chicken Fajitas, Quesadilla, French Toast, Ham and Egg Fried Rice, Avocado BLT, Pulled Pork Sandwhich, Mashed Potatoes, Chicken Pot Pie, Chicken and Dumpling Soup

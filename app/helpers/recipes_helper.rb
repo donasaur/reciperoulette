@@ -1,6 +1,9 @@
 module RecipesHelper
 
   def recipe_ingredient_in_pantry(ingredient, user = current_user)
+    if !user
+      return "black"
+    end
     active_ingredients = get_active_ingredients(user)
     if active_ingredients.include?(ingredient)
       return "green"
@@ -15,7 +18,7 @@ module RecipesHelper
     Ingredient.create({name: 'salt'})
     Ingredient.create({name: 'pepper'})
 
-    recipe_two = Recipe.create({name: 'Scrambled Eggs',
+    recipe_two = Recipe.create({name: 'TEST_ONLY',
                         cook_time: 5,
                         prep_time: 5,
                         tags: Tag.where(name: ['breakfast']),

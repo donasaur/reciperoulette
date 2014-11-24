@@ -17,6 +17,8 @@ class UsersController < ApplicationController
     @user = current_user
     @pantry = @user.pantry
     @tags = []
+    @max_prep_time = 10000
+    @max_cook_time = 10000
     if params["commit"] == "Play Roulette"
       ingredient_ids = []
       if params["pantry"]
@@ -31,6 +33,12 @@ class UsersController < ApplicationController
       if params["tags"]
         @tags = Tag.where(id: params["tags"]["tag_ids"].map(&:to_i))
       end
+      if params['max_prep_time'] && !params['max_prep_time'].empty?
+        @max_prep_time = params['max_prep_time'].to_i
+      end
+      if params['max_cook_time'] && !params['max_cook_time'].empty?
+        @max_cook_time = params['max_cook_time'].to_i
+      end
     end
 
     @active_ingredients = get_active_ingredients(@user)
@@ -40,7 +48,7 @@ class UsersController < ApplicationController
       return
     end
 
-    set_of_recipes = gather_user_recipes(@active_ingredients, @tags)
+    set_of_recipes = gather_user_recipes(@active_ingredients, @tags, @max_prep_time, @max_cook_time)
     @list_of_recipe_ids = weighted_randomize(set_of_recipes, @active_ingredients)
 
     render_appropriate_page(@list_of_recipe_ids)
@@ -186,7 +194,7 @@ class UsersController < ApplicationController
       end
     end
 
-    def gather_user_recipes(user_ingredients, tags)
+    def gather_user_recipes(user_ingredients, tags, max_prep_time, max_cook_time)
       recipe_search_results = Set.new
 
       user_ingredients.each do |ingredient|
@@ -204,6 +212,11 @@ class UsersController < ApplicationController
             recipe_search_results.delete?(recipe)
           end
         end
+      end
+
+      # Ensures prep & cook time maximums are enforced
+      recipe_search_results.select! do |recipe|
+        recipe.prep_time <= max_prep_time && recipe.cook_time <= max_cook_time
       end
 
       # this snippet of code is responsible for enforcing threshold

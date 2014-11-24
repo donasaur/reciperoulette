@@ -11,6 +11,7 @@
                 <li><li class="divider"></li></li>
                 <li><%= link_to "Dashboard", users_dashboard_path, method: :get %></li>
                 <li><%= link_to "Roulette", users_roulette_path, method: :post %></li>
+                <li><%= link_to "Add New Recipe", new_recipe_path, method: :get %> </li>
                 <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
               </ul>
             </li>
