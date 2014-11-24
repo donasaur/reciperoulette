@@ -18,7 +18,7 @@ module RecipesHelper
     Ingredient.create({name: 'salt'})
     Ingredient.create({name: 'pepper'})
 
-    recipe_two = Recipe.create({name: 'Scrambled Eggs',
+    recipe_two = Recipe.create({name: 'TEST_ONLY',
                         cook_time: 5,
                         prep_time: 5,
                         tags: Tag.where(name: ['breakfast']),
