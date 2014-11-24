@@ -124,8 +124,10 @@ RSpec.describe UsersController, :type => :controller do
 
     it "should properly delete a saved recipe", type: "in_progress" do
       @user.recipes << @spaghetti
+      params = {}
+      params[:recipe_id] = @spaghetti.id
       expect {
-        post :delete, {recipe_id: @spaghetti.id}
+        post :delete, parameters = params
       }.to change{@user.recipes.length}.by 1
     end
 

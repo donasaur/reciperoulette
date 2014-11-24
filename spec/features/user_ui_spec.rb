@@ -24,6 +24,14 @@ describe "the signin process", :type => :feature do
     expect(page).to have_content "Edit User"
   end
 
+  it "sees an error message with wrong login information" do
+    visit "/users/sign_in"
+    fill_in('email', :with => 'Not@Right.com')
+    fill_in('password', :with => 'Wrong')
+    click_button('Log in')
+    expect(page).to have_content "Invalid"
+  end
+
   #todo: fix JS support
   it "cancels the user's account", :js => true do
     visit_edit_page('user@example.com', 'password')
