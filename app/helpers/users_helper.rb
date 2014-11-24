@@ -22,14 +22,26 @@ module UsersHelper
     num_of_ingredients_matched = (recipe.ingredients & get_active_ingredients(user)).length
     percent_of_ingredients_matched = num_of_ingredients_matched.fdiv(recipe.ingredients.length) * 100
     case percent_of_ingredients_matched
-    when 0..25
-      return "rgba(255,0,0,0.7)"
-    when 25..50
-      return "rgba(255,165,0,0.7)"
-    when 50..75
-      return "rgba(255,255,0,0.7)"
+    when 0..10
+      return "#A00000"
+    when 10..20
+      return "#FF0000"
+    when 20..30
+      return "#FF6600"
+    when 30..40
+      return "#FF9900"
+    when 40..50
+      return "#FFCC00"
+    when 50..60
+      return "#FFFF00"
+    when 60..70
+      return "#CCFF00"
+    when 70..80
+      return "#99FF00"  
+    when 80..90
+      return "#66CC00"
     else
-      return "rgba(0,100,0,0.7)"
+      return "#339900"
     end
   end
 end
