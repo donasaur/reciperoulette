@@ -32,7 +32,7 @@ RSpec.describe PantriesController, :type => :controller do
     params[:commit] = "Add Ingredient"
     params[:ingredient_name] = "random"
     post :update, parameters = params
-    expect(flash[:ingredienterror]).to eq "You tried to add random, an ingredient not in our database. If you would like to add this ingredient, press add. Else press no"
+    expect(flash[:ingredienterror]).to eq "You tried to add random, an ingredient not in our database. If you would like to add this ingredient, click Add. Otherwise click Nah."
   end
 
   it "should add new ingredient if user agrees to", type: "in_progress" do
@@ -50,7 +50,7 @@ RSpec.describe PantriesController, :type => :controller do
     params[:commit] = "Add Ingredient"
     params[:ingredient_name] = "poop"
     post :update, parameters = params
-    expect(response).to redirect_to users_dashboard_path
+    expect(response).to redirect_to users_dashboard_path(ingredient_name: 'poop')
     expect(@user.pantry.ingredients.find_by(name: "poop")).to be nil
   end
 

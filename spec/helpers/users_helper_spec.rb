@@ -76,7 +76,7 @@ RSpec.describe UsersHelper, :type => :helper do
       p_i.active = true;
       p_i.save
       bar = progress_bar_percentage(@r4, @user)
-      expect(bar).to eq(@red)    
+      expect(bar).to eq('#FF6600')    
     end
 
     it "should return orange rgba if 1/2 ingredients match" do
@@ -84,7 +84,7 @@ RSpec.describe UsersHelper, :type => :helper do
       p_i.active = true;
       p_i.save
       bar = progress_bar_percentage(@r1, @user)
-      expect(bar).to eq(@orange)    
+      expect(bar).to eq('#FFCC00')    
     end
 
     it "should return yellow rgba if 2/3 ingredients match" do
@@ -95,12 +95,12 @@ RSpec.describe UsersHelper, :type => :helper do
       p_i.active = true;
       p_i.save
       bar = progress_bar_percentage(@r3, @user)
-      expect(bar).to eq(@yellow)         
+      expect(bar).to eq('#CCFF00')         
     end
 
     it "should return green if all ingredients match" do
       bar = progress_bar_percentage(@r4, @user)
-      expect(bar).to eq(@green)
+      expect(bar).to eq('#339900')
     end
   end
 
