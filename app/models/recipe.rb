@@ -12,6 +12,9 @@ class Recipe < ActiveRecord::Base
   }
 
   validates :name, presence: true, uniqueness: true
+  validates :instructions, presence: true
+  validates :prep_time, presence: true
+  validates :cook_time, presence: true
 
   validates_attachment :image, 
   :content_type => { :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"] },

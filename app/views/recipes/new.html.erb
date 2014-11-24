@@ -1,38 +1,45 @@
 <%= form_for(@recipe, multipart: true) do |f| %>
-  <% if @recipe.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@recipe.errors.count, "error") %> prohibited this recipe from being saved:</h2>
-
-      <ul>
-      <% @recipe.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
   <div class="field">
     <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :instructions %>
-    <%= text_area_tag :instructions, nil, size: "24x6" %>
+    <%= text_field_tag :name, nil, required: true %>
   </div>
   <div class="field">
     <%= f.label :prep_time, "Prep time (minutes)" %>
-    <%= number_field_tag :prep_time, nil, in: 0...30000, step: 1 %>
+    <%= number_field_tag :prep_time, nil, in: 0...10000, step: 1, required: true %>
   </div>
   <div class="field">
     <%= f.label :cook_time, "Cook time (minutes)" %>
-    <%= number_field_tag :cook_time, nil, in: 0...30000, step: 1 %>
+    <%= number_field_tag :cook_time, nil, in: 0...10000, step: 1, required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :instructions %>
+    <br>
+    <%= text_area_tag :instructions, nil, size: "24x6", required: true %>
+  </div>
+  <div class="field">
+    <%= f.label :ingredients %>
+    <br>
+    <% (1..24).each do |i| %>
+      <%= text_field_tag "ingredients[]", nil, class: "new_ingredient",data: {autocomplete_source: @all_ingredients} %>
+    <% end %>
+  </div>
+  <br>
+  <div class="field">
+    <%= f.label :tags %>
+    <% Tag.all.each do |t| %>
+      <span class="tag">
+        <%= check_box_tag("tags[tag_ids][]", t.id, true, id: dom_id(t)) %>
+        <%= label_tag dom_id(t), t.name %>
+      </span>
+    <% end %>
   </div>
   <div class="field">
     <%= f.label :image %>
-    <%= f.file_field :image %>
+    <%= f.file_field :image, required: true %>
   </div>
   <div class="actions">
     <%= f.submit 'Add a new recipe' %>
-    <%= link_to 'Go back to dashboard', users_dashboard_path, method: :get, class: 'button' %>
   </div>
 <% end %>
+
+<%= link_to 'Go back to dashboard', users_dashboard_path, method: :get, class: 'button' %>
