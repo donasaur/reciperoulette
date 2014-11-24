@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include UsersHelper
 
   def dashboard
     @user = current_user
@@ -207,7 +208,7 @@ class UsersController < ApplicationController
 
       # this snippet of code is responsible for enforcing threshold
       recipe_search_results.select! do |recipe|
-        (recipe.ingredients & user_ingredients).length >= current_user.threshold
+        percentage_of_ingredients_matched(recipe) >= current_user.threshold
       end
 
       recipe_search_results

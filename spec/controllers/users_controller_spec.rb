@@ -119,7 +119,7 @@ RSpec.describe UsersController, :type => :controller do
     end
 
     it "should make sure increasing threshold will stop showing certain recipes", :type => 'threshold' do
-      @user.threshold = 10
+      @user.threshold = 100
       @user.save
       post :roulette
 
