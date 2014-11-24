@@ -43,9 +43,10 @@ RSpec.describe UsersController, :type => :controller do
     it "should make sure that matched recipes are displayed to the user" do
       post :roulette, { commit: 'Play Roulette',
                         pantry: { ingredient_ids: @user.pantry.ingredients.pluck(:id) },
-                        tags: { tag_ids: Tag.pluck(:id) } }
+                        tags: { tag_ids: Tag.pluck(:id) },
+                        max_prep_time: '',
+                        max_cook_time: '' }
       expect(response).to render_template('users/roulette')
-
       expect(assigns(:list_of_recipe_ids)).to include(@spaghetti.id)
       expect(assigns(:list_of_recipe_ids)).to include(@chicken_fajitas.id)
       expect(assigns(:list_of_recipe_ids)).to include(@roast_chicken.id)
@@ -55,10 +56,38 @@ RSpec.describe UsersController, :type => :controller do
     it "should make sure that unmatched recipes are not displayed to the user" do
       post :roulette, { commit: 'Play Roulette',
                         pantry: { ingredient_ids: @user.pantry.ingredients.pluck(:id) },
-                        tags: { tag_ids: Tag.pluck(:id) } }
+                        tags: { tag_ids: Tag.pluck(:id) },
+                        max_prep_time: '',
+                        max_cook_time: '' }
       expect(response).to render_template('users/roulette')
       expect(assigns(:list_of_recipe_ids)).not_to include(@quesadilla.id)
     end
+
+    it "should should not match recipes which have recipes exceeding the max prep time" do
+      post :roulette, { commit: 'Play Roulette',
+                        pantry: { ingredient_ids: @user.pantry.ingredients.pluck(:id) },
+                        tags: { tag_ids: Tag.pluck(:id) },
+                        max_prep_time: '5',
+                        max_cook_time: '' }
+      expect(response).to render_template('users/roulette')
+      expect(assigns(:list_of_recipe_ids)).to include(@spaghetti.id)
+      expect(assigns(:list_of_recipe_ids)).not_to include(@chicken_fajitas.id)
+      expect(assigns(:list_of_recipe_ids)).not_to include(@roast_chicken.id)
+      expect(assigns(:list_of_recipe_ids)).to include(@scrambled_eggs.id)
+    end
+
+    it "should should not match recipes which have recipes exceeding the max cook time" do
+      post :roulette, { commit: 'Play Roulette',
+                        pantry: { ingredient_ids: @user.pantry.ingredients.pluck(:id) },
+                        tags: { tag_ids: Tag.pluck(:id) },
+                        max_prep_time: '',
+                        max_cook_time: '10' }
+      expect(response).to render_template('users/roulette')
+      expect(assigns(:list_of_recipe_ids)).not_to include(@spaghetti.id)
+      expect(assigns(:list_of_recipe_ids)).to include(@chicken_fajitas.id)
+      expect(assigns(:list_of_recipe_ids)).not_to include(@roast_chicken.id)
+      expect(assigns(:list_of_recipe_ids)).to include(@scrambled_eggs.id)
+    end    
 
     it "should make sure that sending a POST request to /users/block/recipe_name prevents recipe from being shown again" do
       post :block, { :id => @spaghetti.id,
@@ -74,10 +103,9 @@ RSpec.describe UsersController, :type => :controller do
     end
 
     it "should make sure sorry page is displayed when there are no matched recipes" do
-      post :block, { :id => @spaghetti.id }
-      post :block, { :id => @chicken_fajitas.id }
-      post :block, { :id => @roast_chicken.id }
-      post :block, { :id => @scrambled_eggs.id }
+      Recipe.all.each do |recipe|
+        post :block, { id: recipe.id }
+      end
 
       post :roulette
       expect(response).to render_template('users/sorry')

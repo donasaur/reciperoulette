@@ -1,6 +1,9 @@
 module RecipesHelper
 
   def recipe_ingredient_in_pantry(ingredient, user = current_user)
+    if !user
+      return "black"
+    end
     active_ingredients = get_active_ingredients(user)
     if active_ingredients.include?(ingredient)
       return "green"
