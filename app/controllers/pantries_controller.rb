@@ -13,7 +13,7 @@ class PantriesController < ApplicationController
         @pantry.save
         redirect_to users_dashboard_path
       else
-        flash[:ingredienterror] = "You tried to add #{ingredient_name}, an ingredient not in our database. If you would like to add this ingredient, press add. Else press no"
+        flash[:ingredienterror] = "You tried to add #{ingredient_name}, an ingredient not in our database. If you would like to add this ingredient, click Add. Else click Nah"
         redirect_to users_dashboard_path(ingredient_name: ingredient_name)
       end
     elsif params["commit"] == "Delete Ingredient"

@@ -23,9 +23,9 @@
     <div><%= f.submit "Update" %></div>
   <% end %>
 
-  <h3>Ingredients threshold</h3>
+  <h3>Ingredients threshold (%)</h3>
   <%= form_for current_user, url: "set_threshold", method: "post" do |f| %>
-    <%= number_field_tag 'threshold', current_user.threshold, min: 1 %>
+    <%= number_field_tag 'threshold', current_user.threshold, min: 10 %>
     <%= submit_tag("Update threshold") %>
   <% end %>
 
