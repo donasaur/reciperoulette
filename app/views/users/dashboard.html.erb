@@ -54,7 +54,7 @@
     <% # link_to "Add a new recipe", new_recipe_path, class: "btn btn-success" %>
   </div>
 
-  <div id="dashboard-tags">
+  <div id="dashboard-filters">
     <h2> Recipe Filters </h2>
     <% Tag.all.each do |t| %>
       <span class="tag">
@@ -62,6 +62,17 @@
         <%= label_tag dom_id(t), t.name %>
       </span>
     <% end %>
+    <br>
+    <div id ="prep-time-filter">
+      <%= label_tag 'prep-time', 'Max prep time' %>
+      <%= number_field_tag("max_prep_time", nil, in:0...10000, step:1, id: 'prep-time') %>
+      <%= label_tag 'prep-time', 'minutes' %>
+    </div>
+    <div id ="cook-time-filter">
+      <%= label_tag 'cook-time', 'Max cook time' %>
+      <%= number_field_tag("max_cook_time", nil, in: 0...10000, step:1, id: 'cook-time') %>
+      <%= label_tag 'cook-time', 'minutes' %>
+    </div>
   </div>
 
 	<div id="roulette-button">
