@@ -215,7 +215,7 @@ recipe_seven = Recipe.create(name: "Chicken Pot Pie",
                         prep_time: 20,
                         tags: Tag.where(name: ['lunch', 'dinner']),
                         image: File.new("app/assets/images/Chicken_Pot_Pie.jpg"),
-                        ingredients: Ingredient.where(:name => ['chicken', 'flour', 'peas', 'carrot', 'onion', 'butter', 'salt', 'pepper', 'celery']),
+                        ingredients: Ingredient.where(:name => ['chicken breast', 'flour', 'peas', 'carrot', 'onion', 'butter', 'salt', 'pepper', 'celery']),
                         instructions: "Preheat oven to 400°F.\n
                                 Saute onion, celery, carrots and potatoes in margarine for 10 minutes.\n
                                 Add flour to sauteed mixture, stirring well, cook one minute stirring constantly.\n
@@ -232,7 +232,7 @@ recipe_eight = Recipe.create(name: "Chicken and Dumpling Soup",
                         prep_time: 15,
                         tags: Tag.where(name: ['breakfast', 'lunch', 'dinner']),
                         image: File.new("app/assets/images/Chicken_and_Dumpling_Soup.jpg"),
-                        ingredients: Ingredient.where(:name => ['flour', 'salt', 'water', 'carrot', 'celery', 'garlic', 'basil', 'milk']),
+                        ingredients: Ingredient.where(:name => ['flour', 'salt', 'water', 'carrot', 'celery', 'garlic', 'basil', 'milk', 'chicken breast']),
                         instructions: "Start out by putting together the dough for your dumplings. Mix together the flour, salt and baking powder. Then slowly add in your ice water. Keep adding it in until you have enough to form a nice dough ball. Knead your dough for about 5 minutes and then set it the side and let it rest while you work on the other end of the soup. \n
                                 In a large pot add together your stock, chicken, carrots, celery, garlic, basil, oregano, and celery salt. Heat it up on medium heat and let the chicken cook through. When the chicken is cooked, remove it and set it to the side.\n
                                 Now grab up your dough and roll it out about 1/4 thick with your rolling pin. Cut it into small squares and place them in your hot broth. As they cook up, they will rise to the top of the broth.\n
