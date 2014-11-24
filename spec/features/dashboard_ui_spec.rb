@@ -15,7 +15,7 @@ describe "the signin process", :type => :feature do
     expect(page).to_not have_content "salt"
   end
 
-  it "adds an ingredient that doesn't exist", :js => true, type: "in_progress" do
+  it "adds an ingredient that doesn't exist", :js => true do
     login_as(@user, :scope => :user, :run_callbacks => false)
     visit '/users/dashboard'
     fill_in('ingredient_name', :with => 'random')

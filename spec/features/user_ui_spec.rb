@@ -24,7 +24,7 @@ describe "the signin process", :type => :feature do
     expect(page).to have_content "Edit User"
   end
 
-  it "sees an error message with wrong login information", type: "in_progress" do
+  it "sees an error message with wrong login information" do
     visit "/users/sign_in"
     fill_in('email', :with => 'Not@Right.com')
     fill_in('password', :with => 'Wrong')
