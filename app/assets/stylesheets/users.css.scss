@@ -88,9 +88,13 @@
   padding:10px;
 }
 
-#dashboard-tags {
+/* Styles for recipe filters & roulette button on dashboard */
+
+#dashboard-filters {
   padding:10px;
   position:relative;
+  margin-left:auto;
+  margin-right:auto;
   text-align:center;
   clear:both;
 }
@@ -101,12 +105,32 @@
   border-width:2px;
 }
 
+#prep-time-filter {
+  padding:5px;
+  margin-left:auto;
+  margin-right:auto;
+  border-style:groove;
+  border-width:2px;
+  display:inline-block;
+}
+
+#cook-time-filter {
+  padding:5px;
+  margin-left:auto;
+  margin-right:auto;
+  border-style:groove;
+  border-width:2px;  
+  display:inline-block;
+}
+
 #roulette-button {
   padding:10px;
 	position:relative;
 	text-align:center;
 	clear:both;
 }
+
+/* Pantry styles */
 
 .pantry-list {
   padding:10px;
