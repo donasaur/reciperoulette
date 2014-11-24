@@ -1,0 +1,9 @@
+<ul>
+  <% @popular_recipes.each do |recipe| %>
+    <li>
+    <div class="saved-recipe">
+      <%= link_to "#{recipe.name}", recipe_path(recipe) %>
+    </div>
+    </li>
+  <% end %>
+</ul>

@@ -50,8 +50,12 @@
 		</div>
 		<%= render 'users/dashboard/savedrecipes' %>
 	</div>
-  <div id="dashboard-add-recipe">
-    <% # link_to "Add a new recipe", new_recipe_path, class: "btn btn-success" %>
+
+  <div id="dashboard-top-rated-recipes">
+    <div class="dashboard-header-med">
+      <h2> Top Rated Recipes </h2>
+    </div>
+    <%= render 'users/dashboard/topratedrecipes' %>
   </div>
 
   <div id="dashboard-filters">

@@ -69,22 +69,24 @@
 #dashboard-pantry {
 	line-height:30px;
   background-color:lightblue;
-  width:40%;
+  width:33.3%;
   float:left;
   padding:10px;
 }
 
 #dashboard-saved-recipes {
 	line-height:30px;
-  width:40%;
-  float:right;
+  width:33.3%;
+  float:left;
   background-color:darkturquoise;
   padding:10px;
 }
 
-#dashboard-add-recipe {
-  width:40%;
+#dashboard-top-rated-recipes {
+  line-height: 30px;
+  width:33.3%;
   float:right;
+  background-color:white;
   padding:10px;
 }
 
