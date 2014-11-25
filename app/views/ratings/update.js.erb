@@ -1,6 +1,6 @@
 $('#star').raty({
   readOnly: true,
-  score: <%= @recipe.average_rating %>,
+  score: <%= Recipe.find(@recipe_id).average_rating %>,
   path: '/assets'
 });
 
@@ -11,7 +11,7 @@ $('#user_star').raty({
     $.ajax({
       url: '/ratings/' + <%= @rating.id %>,
       type: 'PATCH',
-      data: { score: score }
+      data: { score: score, recipe_id: <%= @recipe_id %> }
     }).done(function (data){});
   }
 });

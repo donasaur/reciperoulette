@@ -21,7 +21,7 @@ class Recipe < ActiveRecord::Base
   :size => { :in => 0..2.megabytes }
 
   def average_rating
-    if ratings.size > 0 
+    if ratings.size > 0
       return ratings.sum(:score) / ratings.size
     else
       return 0
