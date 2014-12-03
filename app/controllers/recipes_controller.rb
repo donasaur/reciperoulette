@@ -54,7 +54,7 @@ class RecipesController < ApplicationController
       flash[:notice] = "Successfully saved your new recipe!"
       redirect_to users_dashboard_path
     else
-      flash[:alert] = "Failed to add new recipe - " + @recipe.errors.full_messages.join('; ')
+      flash.now[:alert] = "Failed to add new recipe - " + @recipe.errors.full_messages.join('; ')
       render 'new'
     end
     return
