@@ -5,13 +5,13 @@ $('#star').raty({
 });
 
 $('#user_star').raty({
-  score: <%= @rating.score %>,
+  score: <%= @rating ? @rating.score : 0 %>,
   path: '/assets',
   click: function(score, evt) {
     $.ajax({
-      url: '/ratings/' + <%= @rating.id %>,
+      url: '/ratings/' + <%=  @rating ? @rating.id : -1 %>,
       type: 'PATCH',
-      data: { score: score }
+      data: { score: score, recipe_id: <%= @recipe.id %> }
     });
   }
 });
