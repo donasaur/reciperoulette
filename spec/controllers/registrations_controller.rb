@@ -1,4 +1,4 @@
-class Users::RegistrationsController < Devise::RegistrationsController
+class RegistrationsController < Devise::RegistrationsController
 # before_filter :configure_sign_up_params, only: [:create]
 # before_filter :configure_account_update_params, only: [:update]
 
@@ -24,7 +24,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   #DELETE /resource
   def destroy
-    byebug
+    #byebug
     Rating.where(user_id: current_user.id).destroy_all
     super
   end
